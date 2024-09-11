@@ -1,0 +1,37 @@
+<!-- resources/views/pack/subscribe.blade.php -->
+
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl leading-tight text-white">
+            {{ __('Souscrire au Pack') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class=" overflow-hidden shadow-sm sm:rounded-lg ">
+                <p class="text-center text-lg font-semibold mb-6 text-white">Veuillez choisir un numéro pour effectuer le paiement :</p>
+                <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full  ">
+
+                    <!-- Numéro Orange -->
+                    <div class="flex flex-col items-center justify-between text-white p-4 rounded-lg mb-4 w-full">
+                        <div class=" overflow-hidden  p-5">
+                            <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
+                        </div>
+                        <span class="text-xl font-bold">+237 696 42 86 51</span>
+                    </div>
+
+                    <!-- Numéro MTN -->
+                    <div class="flex  flex-col items-center justify-between text-white p-4 rounded-lg mb-4">
+                        <div class="flex items-center">
+                            <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
+                        </div>
+                        <span class="text-xl font-bold">+225 05 00 00 00 00</span>
+                    </div>
+
+              
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
