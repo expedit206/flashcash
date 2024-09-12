@@ -42,10 +42,10 @@
                         <tbody class="bg-gray-800 divide-y divide-gray-700">
                             @forelse($comptes as $compte)
                                 <tr>
-                                    <td class="px-6 py-4 text-sm text-gray-400">{{ $compte->solde }} FCFA</td>
-                                    <td class="px-6 py-4 text-sm text-gray-400">{{ $compte->pack->name }}</td>
-                                    <td class="px-6 py-4 text-sm text-gray-400">{{ $compte->pack->montant }}</td>
-                                    <td class="px-6 py-4 text-sm text-gray-400">{{ $compte->created_at?->format('d/m/Y H:i') }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-400 text-center" >{{ $compte->solde_actuel }} FCFA</td>
+                                    <td class="px-6 py-4 text-sm text-gray-400 text-center" >{{ $compte->pack->name }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-400 text-center" >{{ $compte->pack->montant }}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-400 text-center" >{{ $compte->created_at?->format('d/m/Y H:i') }}</td>
                                 </tr>
                                 @empty
                                 <p>Aucun Game, veuillez soucrire a un pack!!</p>

@@ -15,7 +15,21 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased  bg-gray-800">
+    <body class="font-sans antialiased  bg-gray-800 ">
+        <style>
+            .fa-times{
+                background: rgb(47, 68, 182);
+                padding: .5rem .9rem;
+                border-radius: 7px;
+                font-size: 1.5rem
+            }
+            .fa-edit{
+                background: rgb(47, 200, 182);
+                padding: .5rem .6rem;
+                border-radius: 7px;
+                font-size: 1.3rem
+            }
+        </style>
         <div class="min-h-screen  bg-gray-800">
             @include('layouts.navigation')
 

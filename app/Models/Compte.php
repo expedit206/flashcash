@@ -11,7 +11,7 @@ class Compte extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'pack_id', 'solde','a_fait_retrait','montant_retrait_total'];
+    protected $fillable = ['user_id', 'pack_id', 'solde','a_fait_retrait','montant_retrait_total','montant_retrait'];
 
     public function user()
     {

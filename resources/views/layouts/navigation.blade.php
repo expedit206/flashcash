@@ -4,23 +4,36 @@
         <div class="flex justify-between h-16">
             <div class="flex items-center">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="shrink-0  items-center  ">
                     <a href="{{ route('packs.index') }}"><i class="fas fa-dove text-amber-500 text-4xl"></i>
 
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class=" space-x-2 sm:-my-px sm:ms-2 sm:flex">
-                    <x-nav-link :href="route('packs.index')" :active="request()->routeIs('dashboard')">
+                <div class=" space-x-2 sm:-my-px sm:ms-2 sm:flex gap-2 ">
+                    <x-nav-link :href="route('packs.index')" :active="request()->routeIs('dashboard')" class="hidden sm:flex">
                         {{ __(config('app_name.name')) }}
                     </x-nav-link>
+                    @auth
+
+                    @if (auth()->user()->isAdmin() )
+
+                    <a href="{{ route('admin.comptes.retraits') }}" class="bg-blue-500 rounded-lg p-2 text-white">retraits</a>
+
+<a href="{{ route('admin.all_comptes') }}" class="bg-blue-500 rounded-lg p-2 text-white">comptes</a>
+<a href="{{ route('comptes.create') }}" class="bg-blue-500 rounded-lg p-2 text-white">Add compte</a>
+<a href="{{ route('admin.users') }}" class="bg-blue-500 rounded-lg p-2 text-white">Users</a>
+
+@endif
+@endauth
+<a href="{{ route('packs.index') }}" class="bg-blue-500 rounded-lg p-2 text-white">Packs disponible</a>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
      @auth
-                
+
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -107,5 +120,14 @@
     <a href="{{ route('login') }}" class="bg-slate-800 border-3 rounded-lg  p-2">Se connecter</a>
     </div>
     @endguest
+    @if(session('success'))
+    <div class="mb-4 p-4 bg-green-300 text-green-700 rounded-md">
+        {{ session('success') }}
+    </div>
+@elseif(session('error'))
+    <div class="mb-4 p-4 bg-red-400 text-white rounded-md">
+        {{ session('error') }}
+    </div>
+@endif
 
 </nav>

@@ -14,7 +14,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Les commandes Artisan que tu souhaites enregistrer
-        \App\Console\Commands\IncrementSolde::class,
     ];
 
     /**
@@ -26,7 +25,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // Planifie l'exécution de la commande tous les jours à minuit
-        $schedule->command('solde:increment')->daily();
     }
 
     /**

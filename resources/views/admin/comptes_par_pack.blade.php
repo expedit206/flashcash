@@ -1,8 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-100 leading-tight">
-            {{ __('Comptes par Pack') }}
-        </h2>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-100 leading-tight">
+                {{ __('Comptes par Pack') }}
+            </h2>
+            <div class="bg-blue-500 rounded-lg p-2 text-white">
+                <a href="{{ route('admin.stats.retraits') }}" class="text-white">Total des Retraits</a>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12 bg-gray-800 min-h-screen">
@@ -16,15 +21,36 @@
                             <tr>
                                 <th>Pack</th>
                                 <th>Nombre de Comptes</th>
+                                <th>Montant par Pack</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $totalGeneral = 0;
+                            @endphp
                             @foreach($packs as $pack)
+                                @php
+                                    $totalPack = $pack->comptes_count * $pack->montant; // Calculer le total pour chaque pack
+                                    $totalGeneral += $totalPack; // Ajouter au total général
+                                @endphp
                                 <tr>
-                                    <td>{{ $pack->nom }}</td>
-                                    <td>{{ $pack->comptes_count }}</td>
+                                    <td>{{ $pack->name }}</td>
+                                    <td class="text-center">{{ $pack->comptes_count }}</td>
+                                    <td class="text-center">{{ number_format($pack->montant, 2) }} FCFA</td>
+                                    <td class="text-center">{{ number_format($totalPack, 2) }} FCFA</td>
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right font-bold">Total Général :</td>
+                                <td class="text-center font-bold">{{ number_format($totalGeneral, 2) }} FCFA</td>
+                            </tr>
+                        </tfoot>
                     </table>
-                </div
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

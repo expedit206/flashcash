@@ -12,13 +12,24 @@ class AdminController extends Controller
 {
     public function listUsers()
 {
+    $this->authorizeAdmin();
     $users = User::all();
     return view('admin.users', compact('users'));
 }
 
+public function allComptes()
+{
+    $this->authorizeAdmin(); // Autorisation pour l'administrateur
+
+    // Récupérer tous les comptes avec leurs utilisateurs
+    $comptes = Compte::with('user')->get();
+
+    return view('admin.all_comptes', compact('comptes'));
+}
 
 public function viewUserComptes($userId)
 {
+    $this->authorizeAdmin();
     $user = User::with('comptes')->findOrFail($userId);
     $totalRetrait = $user->comptes->sum('montant_retrait_total');
     return view('admin.user_comptes', compact('user', 'totalRetrait'));
@@ -26,17 +37,22 @@ public function viewUserComptes($userId)
 
 public function editCompte($compteId)
 {
+    $this->authorizeAdmin();
     $compte = Compte::findOrFail($compteId);
     return view('admin.edit_compte', compact('compte'));
 }
 
 public function updateCompte(Request $request, $compteId)
 {
+    $this->authorizeAdmin();
     $request->validate([
         'solde_actuel' => 'required|numeric|min:0',
+
+        'a_fait_retrait' => 'required|boolean',
     ]);
 
     $compte = Compte::findOrFail($compteId);
+    
     $compte->update($request->all());
 
     return redirect()->route('admin.user.comptes', $compte->user_id)
@@ -45,6 +61,7 @@ public function updateCompte(Request $request, $compteId)
 
 public function deleteCompte($compteId)
 {
+    $this->authorizeAdmin();
     $compte = Compte::findOrFail($compteId);
     $compte->delete();
 
@@ -53,14 +70,33 @@ public function deleteCompte($compteId)
 
 public function totalRetraits()
 {
+    $this->authorizeAdmin();
     $totalRetraitGlobal = Compte::sum('montant_retrait_total');
     return view('admin.total_retraits', compact('totalRetraitGlobal'));
 }
 
 public function comptesParPack()
 {
+    $this->authorizeAdmin();
     $packs = Pack::withCount('comptes')->get();
     return view('admin.comptes_par_pack', compact('packs'));
+}
+
+public function comptesAvecRetraits()
+{
+    $this->authorizeAdmin(); // Vérification que l'utilisateur est administrateur
+
+    // Récupérer tous les comptes où a_fait_retrait est true
+    $comptes = Compte::with('user')->where('a_fait_retrait', true)->get();
+
+    return view('admin.comptes_avec_retraits', compact('comptes'));
+}
+
+protected function authorizeAdmin()
+{
+    if (auth()->check() && !auth()->user()->isAdmin()) {
+        return redirect()->route('packs.index')->with('error', 'Vous n\'avez pas les autorisations nécessaires.');
+    }
 }
 
 

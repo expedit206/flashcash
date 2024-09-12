@@ -1,8 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
+<div class="flex justify-between">
+
         <h2 class="font-semibold text-xl text-gray-100 leading-tight">
             {{ __('Comptes de ' . $user->name) }}
         </h2>
+        <div class="bg-blue-500 rounded-lg p-2 text-whtie">
+            <a href="{{ route('admin.all_comptes') }}" class="text-white">Tous les comptes</a>
+            </div>
+    </div>
+
     </x-slot>
 
     <div class="py-12 bg-gray-800 min-h-screen">
@@ -24,15 +31,17 @@
                         <tbody>
                             @foreach($user->comptes as $compte)
                                 <tr>
-                                    <td>{{ $compte->pack->nom }}</td>
-                                    <td>{{ $compte->solde_actuel }} FCFA</td>
-                                    <td>{{ $compte->montant_retrait_total }} FCFA</td>
-                                    <td>
-                                        <a href="{{ route('admin.compte.edit', $compte->id) }}" class="text-blue-500">Modifier</a>
-                                        <form action="{{ route('admin.compte.delete', $compte->id) }}" method="POST" style="display:inline;">
+                                    <td class="text-center">{{ $compte->pack->name }}</td>
+                                    <td class="text-center">{{ $compte->solde_actuel }} FCFA</td>
+                                    <td class="text-center">{{ $compte->montant_retrait_total }} FCFA</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('admin.comptes.edit', $compte->id) }}" class="text-blue-500"><i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('admin.comptes.destroy', $compte->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce compte ?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-500">Supprimer</button>
+                                            <button type="submit" class="text-red-500"><i class="fas fa-times" style="color: red;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce compte ?');"></i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

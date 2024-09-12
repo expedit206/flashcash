@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Pack;
 use App\Models\User;
 use App\Models\Compte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +19,46 @@ class CompteController extends Controller
         $comptes = Compte::where('user_id', $user->id)->get();
         return view('comptes.index', compact('comptes'));
     }
+
+    public function create()
+{
+    $users = User::all();  // Récupérer tous les utilisateurs avec leurs téléphones
+    $packs = Pack::all();  // Récupérer tous les packs
+
+    return view('admin.add_compte', compact('users', 'packs'));
+}
+
+public function store(Request $request)
+{
+    // Validation des données entrantes
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'pack_id' => 'required|exists:packs,id',
+    ]);
+
+    $exists = \DB::table('comptes')
+    ->where('user_id', $request->user_id)
+    ->where('pack_id', $request->pack_id)
+    ->exists();
+
+if ($exists) {
+    return redirect()->back()->withError('Cette combinaison de utilisateur et pack existe déjà.');
+}
+    // Création du compte avec les données soumises
+    \DB::table('comptes')->insert([
+        'user_id' => $request->user_id,
+        'pack_id' => $request->pack_id,
+        'solde_actuel' => 0,
+        'a_fait_retrait' => false,
+        'montant_retrait_total' => 0,
+        'montant_retrait' => 0,
+        'last_incremented_at' => now(),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->back()->with('success', 'Compte créé avec succès.');
+}
 
     public function show(User $user,Pack $pack)
     {
@@ -71,6 +113,7 @@ public function storeRetrait(Request $request, $userId, $compteId)
     // Effectuer le retrait
     $compte->solde_actuel -= $montant;
 
+    $compte->montant_retrait = $montant;
     $compte->montant_retrait_total += $montant;
     $compte->save();
 
@@ -79,5 +122,61 @@ public function storeRetrait(Request $request, $userId, $compteId)
 
     return redirect()->route('comptes.show', ['user' => $userId, 'pack' => $compte->pack_id])
                      ->with('success', 'Retrait effectué avec succès. Vous recevrez vos frais dans les cinq prochaines heures.');
+}
+public function destroy($id)
+{
+    // Validation pour vérifier si le compte existe
+    $compte = DB::table('comptes')->find($id);
+
+    if (!$compte) {
+        return redirect()->back()->with('error','Compte non trouvé.');
+    }
+
+    // Suppression du compte
+    DB::table('comptes')->where('id', $id)->delete();
+
+    // Redirection avec message de succès
+    return redirect()->route('admin.all_comptes')->with('success', 'Compte supprimé avec succès.');
+}
+public function actualiser($userId, $packId)
+{
+    // Récupérer l'utilisateur et le pack concernés
+    $user = DB::table('users')->find($userId);
+    $pack = DB::table('packs')->find($packId);
+    
+    if (!$user || !$pack) {
+        return redirect()->back()->withErrors('Utilisateur ou Pack non trouvé.');
+    }
+
+    $now = Carbon::now();
+    
+    $lastUpdate = Carbon::parse($user->derniere_actualisation);
+    $diffInHours = $now->diffInHours($lastUpdate);
+    $diffInHours = $now->diffInHours($lastUpdate);
+
+    // Si au moins un jour est passé, on incrémente le solde
+    /* `dd();` is a debugging function in Laravel that stands for "Dump and Die". It is
+    used to dump the variable or expression passed to it and then immediately stop the script
+    execution. */
+    // dd($diffInHours);
+        if ($diffInHours >= 1) {
+        $montantIncremente = $pack->montant * 0.15; // 15% du montant du pack
+        $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('pack_id', $pack->id)->value('solde_actuel');
+
+        // Mise à jour du solde actuel dans la table comptes
+        DB::table('comptes')->where('user_id', $user->id)->where('pack_id', $pack->id)->update([
+            'solde_actuel' => $soldeActuel + $montantIncremente,
+        ]);
+
+        // Mettre à jour la date de la dernière actualisation de l'utilisateur
+        DB::table('users')->where('id', $user->id)->update([
+            'derniere_actualisation' => $now,
+        ]);
+
+        return redirect()->back()->with('success', 'Le solde a été actualisé avec succès.');
+    } else {
+        $remainingTime = $lastUpdate->addDay()->diffForHumans($now, true); // Temps restant avant la prochaine actualisation
+        return redirect()->back()->withError("Veuillez attendre encore $remainingTime avant de pouvoir actualiser.");
+    }
 }
 }

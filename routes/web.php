@@ -1,6 +1,6 @@
 <?php
 
-use Closure;
+// use Closure;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\AdminController;
@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/packs/souscrire', [CompteController::class, 'subscribe'])->name('packs.subscribe');
+    Route::get('admin/utilisateur/{user}/{pack}/actualiser', [CompteController::class, 'actualiser'])->name('admin.utilisateur.actualiser');
+
 });
 
 
@@ -37,30 +39,25 @@ Route::post('/retrait/{userId}/{compteId}', [CompteController::class, 'storeRetr
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/comptes', [AdminController::class, 'allComptes'])->name('admin.all_comptes');
+
     Route::get('/admin/users', [AdminController::class, 'listUsers'])->name('admin.users');
     Route::get('/admin/user/{userId}/comptes', [AdminController::class, 'viewUserComptes'])->name('admin.user.comptes');
-});
-
-Route::middleware(function ($request,Closure $next) {
-    if (auth()->user() && auth()->user()->isAdmin()) {
-        return $next($request);
-    }
-    return redirect('packs.index')->with('error', 'Vous n\'avez pas les autorisations nécessaires.');
-})->group(function () {
-    // Liste de tous les utilisateurs
-    Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users.index');
-
-    // Voir les comptes d'un utilisateur spécifique
-    Route::get('/admin/users/{user}/comptes', [AdminController::class, 'showUserComptes'])->name('admin.users.comptes.show');
-
-    // CRUD sur les comptes
     Route::get('/admin/comptes/{compte}/edit', [AdminController::class, 'editCompte'])->name('admin.comptes.edit');
     Route::put('/admin/comptes/{compte}', [AdminController::class, 'updateCompte'])->name('admin.comptes.update');
-    Route::delete('/admin/comptes/{compte}', [AdminController::class, 'destroyCompte'])->name('admin.comptes.destroy');
+    Route::delete('/admin/comptes/{compte}', [CompteController::class, 'destroy'])->name('admin.comptes.destroy');
 
     // Statistiques administratives
     Route::get('/admin/stats/retraits', [AdminController::class, 'totalRetraits'])->name('admin.stats.retraits');
     Route::get('/admin/stats/comptes-pack', [AdminController::class, 'comptesParPack'])->name('admin.stats.comptes-pack');
+    Route::get('/admin/comptes-retraits', [AdminController::class, 'comptesAvecRetraits'])->name('admin.comptes.retraits');
+
+
+    Route::get('/admin/comptes/create', [CompteController::class, 'create'])->name('comptes.create');
+    Route::post('/admin/comptes/store', [CompteController::class, 'store'])->name('comptes.store');
+
 });
+
+    // CRUD sur les comptes
 
 require __DIR__.'/auth.php';

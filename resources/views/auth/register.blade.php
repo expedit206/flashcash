@@ -5,22 +5,26 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nom')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Abena tiako"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        
+
         <!--telephone -->
         <div  class="mt-4">
             <x-input-label for="phone" :value="__('Telephone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542"/>
+            <span class="text-green-800 italic">
+
+                celui avec lequel vous ferez vos transfert d'argent
+            </span>
             <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
         </div>
-        
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="gaston@gmail.com" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -31,7 +35,7 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="new-password" />
+                            required autocomplete="new-password" placeholder="Votre mot de passe" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -42,13 +46,13 @@
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation" required autocomplete="new-password" placeholder="Confirmer Votre mot de passe" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            Deja inscrit?  
+            Deja inscrit?
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __(' Se connecter') }}
             </a>
