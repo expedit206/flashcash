@@ -16,8 +16,8 @@
                 <div class="p-6 text-gray-100">
                     <h1 class="text-2xl mb-4">Comptes par Pack</h1>
 
-                    <table class="min-w-full divide-y divide-gray-700">
-                        <thead>
+                    <table class="min-w-full divide-y divide-gray-700" border=2>
+                        <thead class="bg-orange-500">
                             <tr>
                                 <th>Pack</th>
                                 <th>Nombre de Comptes</th>
@@ -25,7 +25,7 @@
                                 <th>Total</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="bg-gray-700">
                             @php
                                 $totalGeneral = 0;
                             @endphp
@@ -45,7 +45,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="3" class="text-right font-bold">Total Général :</td>
-                                <td class="text-center font-bold">{{ number_format($totalGeneral, 2) }} FCFA</td>
+                                <td class="text-center font-bold bg-slate-500 ">{{ number_format($totalGeneral, 2) }} FCFA</td>
                             </tr>
                         </tfoot>
                     </table>
