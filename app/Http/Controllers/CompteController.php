@@ -62,7 +62,7 @@ if ($exists) {
 
     public function show(User $user,Pack $pack)
     {
-        
+
         // Trouver le pack par ID
         $pack = Pack::findOrFail($pack->id);
         // Trouver l'utilisateur par ID
@@ -77,9 +77,10 @@ return view('comptes.show', compact('pack', 'compte'));// Adaptez si nécessaire
 
     }
 
-    public function subscribe(Request $request, Pack $pack)
+    public function subscribe(Request $request, User $user)
     {
-        return view("packs.subscribe");
+
+        return view("packs.subscribe", compact('user'));
     }
 
     public function showRetrait($id)
@@ -95,7 +96,7 @@ public function storeRetrait(Request $request, $userId, $compteId)
 
     // Validation du montant
     $request->validate([
-        'montant' => 'required|numeric|min:1',
+        'montant' => 'required|numeric|min:3000',
     ]);
 
     $montant = $request->input('montant');
@@ -138,39 +139,42 @@ public function destroy($id)
     // Redirection avec message de succès
     return redirect()->route('admin.all_comptes')->with('success', 'Compte supprimé avec succès.');
 }
-public function actualiser($userId, $packId)
+
+
+public function actualiser($userId, $compteId)
 {
     // Récupérer l'utilisateur et le pack concernés
     $user = DB::table('users')->find($userId);
-    $pack = DB::table('packs')->find($packId);
-    
-    if (!$user || !$pack) {
-        return redirect()->back()->withErrors('Utilisateur ou Pack non trouvé.');
+    $compte = DB::table('comptes')->find($compteId);
+    $pack = Pack::whereRelation('comptes', 'id', $compteId)->first();
+// dd($pack);
+    if (!$user || !$compte) {
+        return redirect()->back()->withErrors('Utilisateur ou compte non trouvé.');
     }
 
     $now = Carbon::now();
-    
-    $lastUpdate = Carbon::parse($user->derniere_actualisation);
-    $diffInHours = $now->diffInHours($lastUpdate);
-    $diffInHours = $now->diffInHours($lastUpdate);
 
+    $lastUpdate = Carbon::parse($compte->last_incremented_at);
+    $diffInHours = $now->diffInHours($lastUpdate);
+    $diffInHours = $now->diffInHours($lastUpdate);
     // Si au moins un jour est passé, on incrémente le solde
     /* `dd();` is a debugging function in Laravel that stands for "Dump and Die". It is
     used to dump the variable or expression passed to it and then immediately stop the script
     execution. */
     // dd($diffInHours);
         if ($diffInHours >= 1) {
-        $montantIncremente = $pack->montant * 0.15; // 15% du montant du pack
-        $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('pack_id', $pack->id)->value('solde_actuel');
+        $montantIncremente = $pack->montant * 0.10; // 15% du montant du compte
+        $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('id', $compte->id)->value('solde_actuel');
+        // die;
 
         // Mise à jour du solde actuel dans la table comptes
-        DB::table('comptes')->where('user_id', $user->id)->where('pack_id', $pack->id)->update([
+        Compte::where('id', $compte->id)->where('user_id', $user->id)->update([
             'solde_actuel' => $soldeActuel + $montantIncremente,
         ]);
 
         // Mettre à jour la date de la dernière actualisation de l'utilisateur
-        DB::table('users')->where('id', $user->id)->update([
-            'derniere_actualisation' => $now,
+        DB::table('comptes')->where('user_id', $user->id)->update([
+            'last_incremented_at' => $now,
         ]);
 
         return redirect()->back()->with('success', 'Le solde a été actualisé avec succès.');

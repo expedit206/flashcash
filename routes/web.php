@@ -6,6 +6,7 @@ use App\Http\Controllers\PackController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PolitiqueController;
 
 Route::get('/', [PackController::class, 'index'])->name('packs.index');
 
@@ -22,8 +23,8 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/packs/souscrire', [CompteController::class, 'subscribe'])->name('packs.subscribe');
-    Route::get('admin/utilisateur/{user}/{pack}/actualiser', [CompteController::class, 'actualiser'])->name('admin.utilisateur.actualiser');
+    Route::post('/packs/souscrire/{user}', [CompteController::class, 'subscribe'])->name('packs.subscribe');
+    Route::get('admin/utilisateur/{user}/{compte}/actualiser', [CompteController::class, 'actualiser'])->name('admin.utilisateur.actualiser');
 
 });
 
@@ -57,6 +58,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/comptes/store', [CompteController::class, 'store'])->name('comptes.store');
 
 });
+
+// Afficher le formulaire de modification du numéro de téléphone
+Route::get('/profile/phone/{user}', [ProfileController::class, 'editPhone'])->name('profile.phone.edit');
+// Traiter la demande de modification du numéro de téléphone
+Route::patch('/profile/phone', [ProfileController::class, 'updatePhone'])->name('profile.phone.update');
+
+Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->name('politique.utilisation');
 
     // CRUD sur les comptes
 

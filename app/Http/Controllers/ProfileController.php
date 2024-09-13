@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -57,4 +59,25 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    
+    // Afficher le formulaire de modification du numéro de téléphone
+public function editPhone(User $user)
+{
+    return view('profile.edit-phone', compact('user')); // Assurez-vous de créer cette vue
+}
+
+// Traiter la demande de modification du numéro de téléphone
+public function updatePhone(Request $request)
+{
+    $request->validate([
+        'telephone' => ['required', 'integer', 'min:9'],
+    ]);
+
+    $user = auth()->user();
+    $user->telephone = $request->input('telephone');
+    $user->save();
+
+    return redirect()->route('profile.phone.edit', compact('user'))->with('status', 'Numéro de téléphone mis à jour.');
+}
 }

@@ -31,7 +31,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'integer'],
+            'telephone' => ['required', 'digits_between:9,15'],  // Le numéro doit avoir entre 9 et 15 chiffres
+
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -53,4 +54,6 @@ class RegisteredUserController extends Controller
         }
         return redirect(route('packs.index', absolute: false));
     }
+
+
 }

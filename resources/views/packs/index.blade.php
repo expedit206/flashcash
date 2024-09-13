@@ -39,10 +39,10 @@
                                  text-6xl"></i></p>
                                 <h3 class="text-3xl font-bold text-gray-100 mb-2">{{ $pack->name }}</h3>
                                 <p class="text-gray-300 mb-4">Montant: {{ $pack->montant }} FCFA</p>
-                                <span class="text-gray-300 mb-4">Gain: {{ $pack->montant*0.15 }} FCFA/jour</span>
-                                <form action="{{ route('packs.subscribe') }}" method="POST">
+                                <span class="text-gray-300 mb-4">Gain: {{ $pack->montant*0.10 }} FCFA/jour</span>
+                                <form action="{{ route('packs.subscribe', $user->id) }}" method="POST">
                                     @csrf
-                                  
+
                                   <div class="flex gap-4 items-center">
                                       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                                           Souscrire

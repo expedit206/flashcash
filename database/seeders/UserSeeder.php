@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(30)->create();
+        User::factory(2)->create();
         DB::table('users')->insert([
            [ 'name' => 'Expedit',
             'email' => 'expedit@gmail.com',

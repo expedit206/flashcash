@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pack;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PackController extends Controller
 {
@@ -12,8 +14,8 @@ class PackController extends Controller
     {
         $packs = Pack::orderBy('id','asc')->get();
         // dd($packs);
-
-        return view('packs.index', compact('packs'));
+$user=Auth::user();
+        return view('packs.index', compact('packs','user'));
     }
 
     // Afficher un pack spécifique
@@ -24,18 +26,4 @@ class PackController extends Controller
         return view('packs.show', compact('pack'));
     }
 
-    // Gérer la souscription à un pack
-    public function subscribe(Request $request, $id)
-    {
-        $user = $request->user();
-        $pack = Pack::findOrFail($id);
-
-        // Logique pour gérer la souscription
-        $user->soldePrincipals()->create([
-            'solde' => $pack->montant,
-            'pack_id' => $pack->id,
-        ]);
-
-        return redirect()->route('packs.index')->with('success', 'Souscription réussie !');
-    }
 }

@@ -18,7 +18,7 @@ class CompteSeeder extends Seeder
     public function run()
     {
         // Récupérer tous les utilisateurs
-        Compte::factory(30)->create();
+        Compte::factory(6)->create();
 
     }
 }

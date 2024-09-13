@@ -13,7 +13,7 @@
         <!--telephone -->
         <div  class="mt-4">
             <x-input-label for="phone" :value="__('Telephone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542"/>
+            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min=9 />
             <span class="text-green-800 italic">
 
                 celui avec lequel vous ferez vos transfert d'argent
@@ -51,6 +51,11 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div >
+            en vous inscrivant, vous acceptez notre
+        <a href="{{ route('politique.utilisation') }}" class="text-green-600 hover:text-green-900"> Politique d'Utilisation!!
+            </a>
+        </div>
         <div class="flex items-center justify-end mt-4">
             Deja inscrit?
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
