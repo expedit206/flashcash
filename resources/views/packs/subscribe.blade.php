@@ -10,7 +10,7 @@
     <div class="py-12 bg-gray-800">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg ">
-                <p class="text-center text-lg font-semibold mb-6 text-white">Veuillez choisir un numéro pour effectuer le paiement : votre  numero est {{ $user->telephone }}</p>
+                <p class="text-center text-lg font-semibold mb-6 text-white">Veuillez choisir un numéro pour effectuer le paiement : votre  numero est {{ auth()->user()->telephone }}</p>
                 <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full  ">
 
                     <!-- Numéro Orange -->
@@ -34,10 +34,10 @@
             </div>
         </div>
         <p class="text-center">
-            <a href="{{ route('profile.phone.edit',$user->id) }}" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">
+            <a href="{{ route('profile.phone.edit',auth()->user()->id) }}" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">
                 {{ __('Modifier le numéro de téléphone') }}
             </a>
         </p>
-        
+
     </div>
 </x-app-layout>
