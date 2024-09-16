@@ -27,13 +27,21 @@
 
 @endif
 @endauth
+
 <a href="{{ route('packs.index') }}" class="bg-blue-500 rounded-lg p-2 text-white">Packs disponible</a>
+
+
+
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
      @auth
+     <p class="flex items-center justify-center">
 
+        <a href="https://t.me/potjacker" class=" text-green-400 p-2 rounded-lg font-bold flex items-center justify-center gap-2 border-2 border-green-500">Telegram <i class="fab fa-telegram text-blue-500 text-2xl"></i>
+        </a>
+        </p>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -114,6 +122,7 @@
         </div>
     </div>
     @endauth
+
     @guest
     <div class="flex items-center text-white border-3 rounded-lg  ">
 

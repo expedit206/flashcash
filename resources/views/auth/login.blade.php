@@ -45,7 +45,7 @@
             </x-primary-button>
         </div>
         <p class="mt-2">
-           Vous n'avez pas encore de compte,  <a href="{{ route('register') }}" class="text-slate-600 border-2 rounded-full p-1 bg-green-200 border-black">créer ici</a>
+            pas encore de compte,  <a href="{{ route('register') }}" class="text-slate-600 border-2 rounded-full p-1 bg-green-200 border-black">créer ici</a>
         </p>
     </form>
 </x-guest-layout>

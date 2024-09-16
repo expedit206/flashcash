@@ -18,7 +18,7 @@
                         <div class=" overflow-hidden  p-5">
                             <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
                         </div>
-                        <span class="text-xl font-bold">+237 696 42 86 51</span>
+                        <span class="text-xl font-bold">+237 696 428 651</span>
                     </div>
 
                     <!-- Numéro MTN -->
@@ -26,7 +26,7 @@
                         <div class="flex items-center">
                             <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
                         </div>
-                        <span class="text-xl font-bold">+225 05 00 00 00 00</span>
+                        <span class="text-xl font-bold">+237 678 647 748</span>
                     </div>
 
                 </div>
@@ -38,6 +38,7 @@
                 {{ __('Modifier le numéro de téléphone') }}
             </a>
         </p>
+        <p  class="text-center text-white italic mt-3">En cas de requetes, envoyer nous un sms a l'un de ces numero</p>
 
     </div>
 </x-app-layout>
