@@ -1,9 +1,9 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register', request('user_id')) }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
 
         @if ($referredBy)
-        <input type="hidden" name="user_id" value="{{ $referredBy->id }}">
+        <input type="hidden" name="user_id" value="{{ $referredBy->id ?? request('user_id') }}">
         @endif
 
         <!-- Name -->
