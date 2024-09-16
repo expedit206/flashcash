@@ -25,6 +25,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::post('/packs/souscrire', [CompteController::class, 'subscribe'])->name('packs.subscribe');
     Route::get('admin/utilisateur/{user}/{compte}/actualiser', [CompteController::class, 'actualiser'])->name('admin.utilisateur.actualiser');
+
+    Route::get('/packs/{id}/edit', [PackController::class, 'edit'])->name('packs.edit');
+    Route::put('/packs/{id}', [PackController::class, 'update'])->name('packs.update');
+
 });
 
 

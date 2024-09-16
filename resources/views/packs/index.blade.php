@@ -49,6 +49,11 @@
                                         </button>
                                     @auth
                                         <a href="{{ route('comptes.show',['user'=>auth()->user()->id, 'pack'=>$pack->id]) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Voir</a>
+
+                    @if (auth()->user()->isAdmin() )
+                        <a href="{{ route('packs.edit', $pack->id) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Modifier</a>
+                    </td>
+                    @endif
                                     @endauth
                                     </div>
                                 </form>

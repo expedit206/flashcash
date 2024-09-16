@@ -26,7 +26,7 @@
                         <div class="flex items-center">
                             <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
                         </div>
-                        <span class="text-xl font-bold">+237 678 647 748</span>
+                        <span class="text-xl font-bold">+237 652 172 346</span>
                     </div>
 
                 </div>
