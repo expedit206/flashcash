@@ -39,7 +39,7 @@
      @auth
      <p class="flex items-center justify-center">
 
-        <a href="https://t.me/potjacker" class=" text-green-400 rounded-lg font-bold flex items-center justify-center gap-2  border-green-500">Telegram <i class="fab fa-telegram text-blue-500 text-2xl"></i>
+        <a href="https://t.me/potjackerpiece" class=" text-green-400 rounded-lg font-bold flex items-center justify-center gap-2  border-green-500">Telegram <i class="fab fa-telegram text-blue-500 text-2xl"></i>
         </a>
         </p>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
