@@ -49,7 +49,7 @@
             </main>
         </div>
 
-            <a href="https://api.whatsapp.com/send?text={{ urlencode('Check%20out%20this%20amazing%20app:%20https://potjacker-a78c3d041f48.herokuapp.com/') }}" target="_blank" class=" text-green-500 top-[90vh] left-[90vw]"> Partage<i class="fas fa-share-alt text-2xl"></i></a>
+            <a href="https://api.whatsapp.com/send?text={{ urlencode('Check%20out%20this%20amazing%20app:%20https://potjacker-a78c3d041f48.herokuapp.com/') }}" target="_blank" class="fixed text-green-500 top-[90vh] left-[90vw]"> Partage<i class="fas fa-share-alt text-2xl"></i></a>
 
     </body>
 </html>
