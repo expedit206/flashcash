@@ -105,6 +105,7 @@ public function parrain()
     $usersWhoReferOthers = User::whereHas('referrals')->get();
 
     // Passer les utilisateurs à la vue
+    dd($usersWhoReferOthers->first()->referral_count);
     return view('admin.parrains', compact('usersWhoReferOthers'));
 }
 

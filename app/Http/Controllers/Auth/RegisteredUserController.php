@@ -22,8 +22,8 @@ class RegisteredUserController extends Controller
         $referredBy = null;
 
         // Vérifier si un user_id est passé dans l'URL
-        if ($request->has('user_id')) {
-            $referredBy = User::find($request->get('user_id'));
+        if (request('user_id')) {
+            $referredBy = User::find(request('user_id'));
         }
 
         return view('auth.register',compact('referredBy'));
@@ -51,11 +51,12 @@ class RegisteredUserController extends Controller
             'password' => \Hash::make($request->password),
             'creatd_at'=> now()
         ]);
+        // dd($request);
 
         // Vérifier si un lien d'affiliation est présent
         if ($request->has('user_id')) {
             $referredBy = User::find($request->get('user_id'));
-
+// die;
             if ($referredBy) {
                 // Associer le nouvel utilisateur à l'utilisateur qui l'a référé
                 $user->referred_by = $referredBy->id;
