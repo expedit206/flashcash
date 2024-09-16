@@ -52,7 +52,7 @@ public function updateCompte(Request $request, $compteId)
     ]);
 
     $compte = Compte::findOrFail($compteId);
-    
+
     $compte->update($request->all());
 
     return redirect()->route('admin.user.comptes', $compte->user_id)
@@ -105,6 +105,6 @@ public function parrain()
     $usersWhoReferOthers = User::whereHas('referrals')->get();
 
     // Passer les utilisateurs à la vue
-    return view('users.index', compact('usersWhoReferOthers'));
+    return view('admin.parrains', compact('usersWhoReferOthers'));
 }
 }
