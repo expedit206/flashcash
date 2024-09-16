@@ -68,6 +68,23 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('profile.edit')">
+                                @if (Auth::check())
+
+                                <p class="sm:px-2 lg:px-2 space-y-2 ">
+                                    Votre lien d'affiliation : <br>
+                                    <a id="referral-link" href="https://wa.me/?text={{ urlencode('Rejoins-moi sur Potjacker via ce lien : ' . Auth::user()->referral_link) }}"
+                                        target="_blank"
+                                        class="bg-slate-500 rounded-lg p-2 text-white flex items-center gap-2 flex-col">
+                                        {{ Auth::user()->referral_link }}
+                                        <i class="fas fa-share-alt text-2xl text-green-600"></i>
+                                    </a>
+
+                                </p>
+                            @endif
+
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -104,6 +121,47 @@
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('politique.utilisation')" :active="request()->routeIs('politique.utilisation')">
                     {{ __('politique d\'utilisation') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('politique.utilisation')" :active="request()->routeIs('politique.utilisation')">
+                    @if (Auth::check())
+
+                    <p class="sm:px-2 lg:px-2 space-y-2 ">
+                        Votre lien d'affiliation : <br>
+                        <a id="referral-link" href="https://wa.me/?text={{ urlencode('Rejoins-moi sur Potjacker via ce lien : ' . Auth::user()->referral_link) }}"
+                            target="_blank"
+                            class="bg-slate-500 rounded-lg p-2 text-white flex items-center gap-2">
+                            {{ Auth::user()->referral_link }}
+                            <i class="fas fa-share-alt text-2xl text-green-600"></i>
+                        </a>
+
+                    </p>
+                @endif
+
+                {{-- <script>
+                    function copyToClipboard() {
+                        // Sélectionne l'élément du lien
+                        const link = document.getElementById('referral-link').href;
+
+                        // Crée un élément temporaire pour copier le texte
+                        const tempInput = document.createElement('input');
+                        tempInput.value = link;
+                        document.body.appendChild(tempInput);
+                        tempInput.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(tempInput);
+
+                        // Change le texte du bouton
+                        const button = document.getElementById('copy-button');
+                        button.textContent = 'Copié';
+
+                        // Réinitialise le texte du bouton après 2 secondes
+                        setTimeout(() => {
+                            button.textContent = 'Copier';
+                        }, 2000);
+                    }
+                </script> --}}
+
                 </x-responsive-nav-link>
             </div>
 

@@ -26,7 +26,7 @@
                     <div class="flex items-center gap-4">
                         <x-primary-button class="bg-slate-400">{{ __('Enregistrer') }}</x-primary-button>
 
-                 
+
                     </div>
                 </form>
                 <form method="POST" action="{{ route('packs.subscribe',$user->id) }}" class="mt-3">
