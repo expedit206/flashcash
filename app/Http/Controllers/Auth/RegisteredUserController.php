@@ -76,6 +76,13 @@ class RegisteredUserController extends Controller
         }
         return redirect(route('packs.index', absolute: false));
     }
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.users')->with('success', 'Utilisateur supprimé avec succès.');
+    }
 
 
 }

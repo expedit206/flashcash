@@ -56,4 +56,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    Route::delete('/admin/users/{id}', [RegisteredUserController::class, 'destroy'])->name('admin.user.delete');
+                
 });
