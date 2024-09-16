@@ -102,10 +102,11 @@ protected function authorizeAdmin()
 public function parrain()
 {
     // Récupérer tous les utilisateurs qui parrainent d'autres utilisateurs
-    $usersWhoReferOthers = User::whereHas('referrals')->get();
+    $usersWhoReferOthers = User::whereHas('referrals')->
+    withCount('referrals')->get();
 
     // Passer les utilisateurs à la vue
-    dd($usersWhoReferOthers->first()->referral_count);
+    // dd($usersWhoReferOthers->first()->referrals_count);
     return view('admin.parrains', compact('usersWhoReferOthers'));
 }
 
