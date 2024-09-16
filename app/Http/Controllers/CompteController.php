@@ -96,7 +96,7 @@ public function storeRetrait(Request $request, $userId, $compteId)
 
     // Validation du montant
     $request->validate([
-        'montant' => 'required|numeric|min:3000',
+        'montant' => 'required|numeric|min:1000',
     ]);
 
     $montant = $request->input('montant');
