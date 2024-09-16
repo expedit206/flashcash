@@ -68,7 +68,9 @@ Route::get('/profile/phone/{user}', [ProfileController::class, 'editPhone'])->na
 Route::patch('/profile/phone', [ProfileController::class, 'updatePhone'])->name('profile.phone.update');
 
 Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->name('politique.utilisation');
+// CRUD sur les comptes
 
-    // CRUD sur les comptes
+
+Route::get('/users-who-refer', [UserController::class, 'index'])->name('users.refer');
 
 require __DIR__.'/auth.php';

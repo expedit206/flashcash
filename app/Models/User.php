@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\User;
 use App\Models\Compte;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function referredBy()
     {
         return $this->belongsTo(User::class, 'referred_by');
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(User::class, 'referred_by');
     }
 
     // Dans app/Models/User.php
