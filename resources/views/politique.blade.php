@@ -20,6 +20,32 @@
                     <li>Chaque utilisateur est responsable des informations qu'il fournit lors de son inscription et de la mise à jour de ces informations.</li>
                 </ul>
 
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold mb-2">Partagez Notre Application</h3>
+                    <p class="mb-4">
+                        Partagez notre application avec 15 persoones et faite leur souscrire pour recevoir systematiquement un de pot de 3000 FCFA  !
+                    </p>
+                    <div class="share-btn">
+                        <div class="share-menu flex gap-2">
+                            <a href="https://api.whatsapp.com/send?text={{ urlencode('Découvrez cette application incroyable : s://potjacker-a78c3d041f48.herokuapp.com') }}" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=s://potjacker-a78c3d041f48.herokuapp.com" target="_blank">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url=s://potjacker-a78c3d041f48.herokuapp.com&text=Découvrez%20cette%20application%20incroyable!" target="_blank">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=s://potjacker-a78c3d041f48.herokuapp.com&title=Découvrez%20cette%20application%20incroyable" target="_blank">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="mailto:?subject=Découvrez%20cette%20application%20incroyable&body=s://potjacker-a78c3d041f48.herokuapp.com" target="_blank">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <h3 class="text-2xl font-bold mb-4">Souscription à des Packs</h3>
                 <p class="mb-4">
                     En souscrivant à un pack, vous acceptez de recevoir un gain quotidien basé sur le montant initial de la souscription.
