@@ -2,6 +2,10 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        @if ($referredBy)
+        <input type="hidden" name="user_id" value="{{ $referredBy->id }}">
+        @endif
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nom')" />

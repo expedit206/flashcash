@@ -17,9 +17,16 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
-        return view('auth.register');
+        $referredBy = null;
+
+        // Vérifier si un user_id est passé dans l'URL
+        if ($request->has('user_id')) {
+            $referredBy = User::find($request->get('user_id'));
+        }
+
+        return view('auth.register',compact('referredBy'));
     }
 
     /**
