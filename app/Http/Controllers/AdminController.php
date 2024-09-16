@@ -107,4 +107,5 @@ public function parrain()
     // Passer les utilisateurs à la vue
     return view('admin.parrains', compact('usersWhoReferOthers'));
 }
+
 }

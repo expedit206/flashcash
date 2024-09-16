@@ -20,6 +20,7 @@
                                 <th class="py-2">ID</th>
                                 <th>Nom</th>
                                 <th>Telephone</th>
+                                <th>referred_by</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -29,6 +30,7 @@
                                     <td class="text-center py-3">{{ $user->id }}</td>
                                     <td class="text-center">{{ $user->name }}</td>
                                     <td class="text-center">{{ $user->telephone }}</td>
+                                    <td class="text-center">{{ $user->referred_by }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.user.comptes', $user->id) }}" class=" bg-blue-400 text-white rounded-lg p-2">Voir les Comptes</a>
                                     </td>
