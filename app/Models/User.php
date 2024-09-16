@@ -53,11 +53,22 @@ class User extends Authenticatable
         return $this->hasMany(Compte::class);
     }
 
+    public function referredBy()
+    {
+        return $this->belongsTo(User::class, 'referred_by');
+    }
+
     // Dans app/Models/User.php
 public function isAdmin()
 {
     // Vérifier si l'utilisateur a un champ is_admin ou tout autre critère
     return $this->email === 'expedit@gmail.com' && \Hash::check('dominique2006', $this->password);
+}
+
+public function generateReferralLink()
+{
+    $this->referral_link = url('/') . '?user_id=' . $this->id;
+    $this->save();
 }
 
 }

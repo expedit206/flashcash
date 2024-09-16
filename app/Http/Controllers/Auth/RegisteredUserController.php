@@ -45,6 +45,20 @@ class RegisteredUserController extends Controller
             'creatd_at'=> now()
         ]);
 
+        // Vérifier si un lien d'affiliation est présent
+        if ($request->has('user_id')) {
+            $referredBy = User::find($request->get('user_id'));
+
+            if ($referredBy) {
+                // Associer le nouvel utilisateur à l'utilisateur qui l'a référé
+                $user->referred_by = $referredBy->id;
+                $user->save();
+            }
+        }
+
+        // Génération du lien d'affiliation unique
+        $user->generateReferralLink();
+
         event(new Registered($user));
 
         Auth::login($user);
