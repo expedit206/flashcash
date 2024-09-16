@@ -71,6 +71,6 @@ Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->nam
 // CRUD sur les comptes
 
 
-Route::get('/users-who-refer', [UserController::class, 'index'])->name('users.refer');
+Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users.refer');
 
 require __DIR__.'/auth.php';

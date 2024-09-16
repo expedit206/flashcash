@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function listUsers()
 {
     $this->authorizeAdmin();
-    $users = User::all();
+    $users = User::orderBy('created_at', 'asc')->paginate(15);
     return view('admin.users', compact('users'));
 }
 
@@ -99,5 +99,12 @@ protected function authorizeAdmin()
     }
 }
 
+public function parrain()
+{
+    // Récupérer tous les utilisateurs qui parrainent d'autres utilisateurs
+    $usersWhoReferOthers = User::whereHas('referrals')->get();
 
+    // Passer les utilisateurs à la vue
+    return view('users.index', compact('usersWhoReferOthers'));
+}
 }

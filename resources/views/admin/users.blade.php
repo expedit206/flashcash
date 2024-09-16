@@ -34,6 +34,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            {{$users->links() }}
                         </tbody>
                     </table>
                 </div>

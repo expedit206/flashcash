@@ -22,8 +22,8 @@ class CompteController extends Controller
 
     public function create()
 {
-    $users = User::all();  // Récupérer tous les utilisateurs avec leurs téléphones
-    $packs = Pack::all();  // Récupérer tous les packs
+    $users = User::orderBy('created_at', 'asc')->get();  // Récupérer tous les utilisateurs avec leurs téléphones
+    $packs = Pack::orderBy('created_at', 'asc')->get();  // Récupérer tous les packs
 
     return view('admin.add_compte', compact('users', 'packs'));
 }
