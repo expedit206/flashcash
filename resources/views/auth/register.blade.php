@@ -3,7 +3,7 @@
         @csrf
 
         @if ($referredBy)
-        <input type="hidden" name="user_id" value="{{ $referredBy->id ?? request('user_id') }}">
+        <input type="hidden" name="user_id" value="{{ $referredBy->id }}">
         @endif
 
         <!-- Name -->
