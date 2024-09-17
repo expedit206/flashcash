@@ -157,7 +157,10 @@ public function actualiser($userId, $compteId)
 
     // Calculer la différence en jours
     $diffInDays = $now->diffInDays($lastUpdate);
-
+dump($now);
+dump($lastUpdate);
+dump($lastUpdate);
+die;
     // Si au moins un jour est passé, on incrémente le solde
     if ($diffInDays >= 1) {
         $montantIncremente = $pack->montant * 0.15; // 15% du montant du compte
