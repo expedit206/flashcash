@@ -163,7 +163,7 @@ public function actualiser($userId, $compteId)
     execution. */
     // dd($diffInHours);
         if ($diffInHours >= 1) {
-        $montantIncremente = $pack->montant * 0.10; // 15% du montant du compte
+        $montantIncremente = $pack->montant * 0.15; // 15% du montant du compte
         $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('id', $compte->id)->value('solde_actuel');
         // die;
 
