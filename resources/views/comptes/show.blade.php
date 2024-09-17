@@ -44,10 +44,10 @@
                     </form>
                 </div>
             </div>
+            <p>Veuillez actualiser le solde chaque pour voir votre montant gagné s'accroitre</p>
         </div>
     </div>
     @else
     <p class="bg-red-500 py-3 text-white font-bold text-2xl">Veuillez souscrire a un pack pour voir vos revenu a ce Pack</p>
     @endif
-
 </x-app-layout>
