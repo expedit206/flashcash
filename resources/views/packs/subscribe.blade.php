@@ -30,7 +30,7 @@
                     </div>
 
                 </div>
-                <p class="text-center text-lg font-semibold mb-6 text-white">Vous devez effectuer depôt doit être éffectué avec le numéro qui correspond a votre inscription, pour qu'on puissent vous identifiez, si tel n'est pas le cas, cliquez sur le lien ci dessous pour change votre numero de telephone</p>
+                <p class="text-center text-lg font-semibold mb-6 text-white">Le depôt doit être éffectué avec le numéro qui correspond a votre inscription, pour qu'on puissent vous identifiez, si tel n'est pas le cas, cliquez sur le lien ci dessous pour change votre numero de telephone</p>
             </div>
         </div>
         <p class="text-center">
