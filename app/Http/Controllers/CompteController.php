@@ -156,7 +156,7 @@ public function actualiser($userId, $compteId)
     $lastUpdate = Carbon::parse($compte->last_incremented_at);
 
     // Calculer la différence en jours
-    $diffInDays = $now->diffInDays($lastUpdate);
+    $diffInDays = $lastUpdate->diffInDays($now);
 dump($now);
 dump($lastUpdate);
 dump($diffInDays);
