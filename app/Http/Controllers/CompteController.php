@@ -159,7 +159,7 @@ public function actualiser($userId, $compteId)
     $diffInDays = $now->diffInDays($lastUpdate);
 dump($now);
 dump($lastUpdate);
-dump($lastUpdate);
+dump($diffInDays);
 die;
     // Si au moins un jour est passé, on incrémente le solde
     if ($diffInDays >= 1) {
