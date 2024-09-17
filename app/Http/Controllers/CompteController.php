@@ -143,29 +143,25 @@ public function destroy($id)
 
 public function actualiser($userId, $compteId)
 {
-    // Récupérer l'utilisateur et le pack concernés
+    // Récupérer l'utilisateur et le compte concernés
     $user = DB::table('users')->find($userId);
     $compte = DB::table('comptes')->find($compteId);
     $pack = Pack::whereRelation('comptes', 'id', $compteId)->first();
-// dd($pack);
+
     if (!$user || !$compte) {
         return redirect()->back()->withErrors('Utilisateur ou compte non trouvé.');
     }
 
     $now = Carbon::now();
-
     $lastUpdate = Carbon::parse($compte->last_incremented_at);
-    $diffInHours = $now->diffInHours($lastUpdate);
-    $diffInHours = $now->diffInHours($lastUpdate);
+
+    // Calculer la différence en jours
+    $diffInDays = $now->diffInDays($lastUpdate);
+
     // Si au moins un jour est passé, on incrémente le solde
-    /* `dd();` is a debugging function in Laravel that stands for "Dump and Die". It is
-    used to dump the variable or expression passed to it and then immediately stop the script
-    execution. */
-    // dd($diffInHours);
-        if ($diffInHours >= 1) {
+    if ($diffInDays >= 1) {
         $montantIncremente = $pack->montant * 0.15; // 15% du montant du compte
         $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('id', $compte->id)->value('solde_actuel');
-        // die;
 
         // Mise à jour du solde actuel dans la table comptes
         Compte::where('id', $compte->id)->where('user_id', $user->id)->update([
@@ -179,8 +175,10 @@ public function actualiser($userId, $compteId)
 
         return redirect()->back()->with('success', 'Le solde a été actualisé avec succès.');
     } else {
-        $remainingTime = $lastUpdate->addDay()->diffForHumans($now, true); // Temps restant avant la prochaine actualisation
-        return redirect()->back()->withError("Veuillez attendre encore $remainingTime avant de pouvoir actualiser.");
+        // Temps restant avant la prochaine actualisation, en jours
+        $remainingTime = $lastUpdate->addDay()->diffForHumans($now, true);
+        return redirect()->back()->withErrors("Veuillez attendre encore $remainingTime avant de pouvoir actualiser.");
     }
 }
+
 }
