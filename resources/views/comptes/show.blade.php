@@ -25,9 +25,9 @@
                 <div class="p-6 text-gray-100">
                     <div class="bg-gray-700 p-6 rounded-lg shadow-md">
                         <h2 class="text-3xl font-bold text-gray-100 mb-4">{{ $pack->name }}</h2>
-                        <p class="text-gray-300 mb-2">Montant: {{ $pack->montant }} FCFA</p>
-                        <p class="text-gray-300 mb-4">Gain: {{ $pack->montant * 0.15 }} FCFA/jour</p>
-                        <p class="text-white underline mb-4">Solde actuel: {{ $compte->solde_actuel }} FCFA</p>
+                        <p class="text-gray-300 mb-2">Montant en jeu: {{ $pack->montant }} FCFA</p>
+                        <p class="text-gray-300 mb-4">Gain journalier: {{ $pack->montant * 0.15 }} FCFA/jour</p>
+                        <p class="text-white underline mb-4">Montant gagné: {{ $compte->solde_actuel }} FCFA</p>
                     </div>
 <div class="mt-6 mb-3">Effectuer un retrait</div>
                       <!-- Formulaire de retrait -->
