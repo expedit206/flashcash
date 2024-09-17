@@ -29,7 +29,7 @@
                         <p class="text-gray-300 mb-4">Gain journalier: {{ $pack->montant * 0.15 }} FCFA/jour</p>
                         <p class="text-white underline mb-4">Montant gagné: {{ $compte->solde_actuel }} FCFA</p>
                     </div>
-<div class="mt-6 mb-3">Effectuer un retrait</div>
+                    <div class="mt-6 mb-3">Effectuer un retrait</div>
                       <!-- Formulaire de retrait -->
                       <form action="{{ route('retrait.store', ['userId' => $compte->user_id, 'compteId' => $compte->id]) }}" method="POST">
                         @csrf
@@ -42,9 +42,9 @@
                             Effectuer le retrait
                         </button>
                     </form>
+                    <p>Veuillez actualiser le solde chaque pour voir votre montant gagné s'accroitre</p>
                 </div>
             </div>
-            <p>Veuillez actualiser le solde chaque pour voir votre montant gagné s'accroitre</p>
         </div>
     </div>
     @else
