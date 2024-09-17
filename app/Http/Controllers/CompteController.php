@@ -149,7 +149,7 @@ public function actualiser($userId, $compteId)
     $pack = Pack::whereRelation('comptes', 'id', $compteId)->first();
 
     if (!$user || !$compte) {
-        return redirect()->back()->withErrors('Utilisateur ou compte non trouvé.');
+        return redirect()->back()->withError('Utilisateur ou compte non trouvé.');
     }
 
     $now = Carbon::now();
@@ -177,7 +177,7 @@ public function actualiser($userId, $compteId)
     } else {
         // Temps restant avant la prochaine actualisation, en jours
         $remainingTime = $lastUpdate->addDay()->diffForHumans($now, true);
-        return redirect()->back()->withErrors("Veuillez attendre encore $remainingTime avant de pouvoir actualiser.");
+        return redirect()->back()->withError("Veuillez attendre encore $remainingTime avant de pouvoir actualiser.");
     }
 }
 
