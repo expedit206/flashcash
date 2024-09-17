@@ -42,7 +42,7 @@
                             Effectuer le retrait
                         </button>
                     </form>
-                    <p>Veuillez actualiser le solde chaque pour voir votre montant gagné s'accroitre</p>
+                    <p class="mt-3" >Veuillez actualiser le solde chaque pour voir votre "montant gagné" s'accroitre</p>
                 </div>
             </div>
         </div>
