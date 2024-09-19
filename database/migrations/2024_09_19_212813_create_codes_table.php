@@ -15,8 +15,8 @@ class CreateCodesTable extends Migration
     {
         Schema::create('codes', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable; // Champ pour stocker un code unique par utilisateur
-            $table->string('codeOrange')->nullable; // Champ pour stocker un code unique par utilisateur
+            $table->string('code')->nullable(); // Champ pour stocker un code unique par utilisateur
+            $table->string('codeOrange')->nullable(); // Champ pour stocker un code unique par utilisateur
             $table->string('numero_telephone'); // Champ pour le numéro de téléphone
             $table->timestamps(); // Pour created_at et updated_at
         });
