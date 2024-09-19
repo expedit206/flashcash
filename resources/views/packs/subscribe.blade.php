@@ -23,6 +23,7 @@
                         </div>
 
                         <form onsubmit="launchUSSDOrange();" action="{{ route('code.store') }}" method="post" class="flex flex-col gap-5 mt-4">
+                            @csrf
                            
                                 <div class="w-full">
                                     <label for="">Montant(FCFA)</label>
@@ -62,6 +63,7 @@
                         </div>
 
                         <form onsubmit="launchUSSD();" action="{{ route('code.store') }}" method="post" class="flex flex-col gap-5 mt-4">
+                            @csrf
                        
                             <div class="w-full">
                                 <label for="">Montant(FCFA)</label>

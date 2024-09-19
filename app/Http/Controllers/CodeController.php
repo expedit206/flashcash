@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
-use App\Models\User; // Assure-toi d'importer le modèle User ou Utilisateur
+use App\Models\Code;
 
 class CodeController extends Controller
 {
@@ -18,7 +17,6 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        die;
         // Valider les données reçues
         $validatedData = $request->validate([
             'code' => 'string|max:255',
