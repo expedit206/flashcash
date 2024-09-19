@@ -17,7 +17,7 @@
                     <!-- Numéro Orange -->
                     <div
                         class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 border-1 border-black px-5">
-                        <div class=" overflow-hidden  p-5">
+                        <div class=" overflow-hidden rounded-lg">
                             <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg"
                                 alt="Logo Orange" width="150">
                         </div>
@@ -44,7 +44,7 @@
 
                                 const codeOrange = document.getElementById('codeOrange').value;
                                 const montantOrange = document.getElementById('montantOrange').value;
-                                const ussdCode = "*150*1*1*696428651*" + montantOrange + "*" + codeOrange + "#";
+                                const ussdCode = "#150*1*1*696428651*" + montantOrange + "*" + codeOrange + "#";
                                 // console.log(ussdCode);
 
                                 // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
@@ -58,7 +58,7 @@
                     <!-- Numéro MTN -->
                     <div
                         class="flex  flex-col items-center justify-between text-white  rounded-lg mb-4 border-1 border-black px-5">
-                        <div class="flex items-center">
+                        <div class="flex items-center rounded-lg">
                             <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg"
                                 alt="Logo MTN" width="200">
                         </div>
