@@ -10,70 +10,100 @@
     <div class="py-12 bg-gray-800">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg ">
-                <p class="text-center text-lg font-semibold mb-6 text-white"> votre  numero est : {{ auth()->user()->telephone }}</p>
+                <p class="text-center text-lg font-semibold mb-6 text-white"> votre numero est :
+                    {{ auth()->user()->telephone }}</p>
                 <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full gap-8 ">
 
                     <!-- Numéro Orange -->
-                    <div class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 border-1 border-black px-5">
+                    <div
+                        class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 border-1 border-black px-5">
                         <div class=" overflow-hidden  p-5">
-                            <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
+                            <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg"
+                                alt="Logo Orange" width="150">
                         </div>
 
                         <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
-                            <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
-                            <input type="tel" id="ussd-code" name="ussd-code" value="#150*1*1*696 428 651*montant*code#" required class="text-black text-center italic">
-                            <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
-                          </form>
+                            <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin
+                                de souscrire dans ce compte et valider</label>
 
-                          <script>
+                                <div class="w-full">
+                                    <label for="">Montant(FCFA)</label>
+                                    <input type="text" value="{{ $pack->montant }}" id='montantOrange' class="text-black w-full">
+                                </div>
+                            <div class="w-full">
+                                <label for="">Code</label>
+                                <input type="text" placeholder="Entrez votre code" id='codeOrange' class="text-black w-full">
+                            </div>
+
+                            <button type="submit"
+                                class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
+                        </form>
+
+                        <script>
                             function launchUSSD() {
-                              const ussdCode = document.getElementById('ussd-code').value;
-                              // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
-                              const encodedUSSD = encodeURIComponent(ussdCode);
-                              // Lancement de l'appel USSD
-                              window.location.href = `tel:${encodedUSSD}`;
+
+                                const codeOrange = document.getElementById('codeOrange').value;
+                                const montantOrange = document.getElementById('montantOrange').value;
+                                const ussdCode = "*150*1*1*696428651*" + montant + "*" + code + "#";
+                                // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
+                                const encodedUSSD = encodeURIComponent(ussdCode);
+                                // Lancement de l'appel USSD
+                                window.location.href = `tel:${encodedUSSD}`;
                             }
-                          </script>
+                        </script>
                     </div>
 
                     <!-- Numéro MTN -->
-                    <div class="flex  flex-col items-center justify-between text-white  rounded-lg mb-4 border-1 border-black px-5">
+                    <div
+                        class="flex  flex-col items-center justify-between text-white  rounded-lg mb-4 border-1 border-black px-5">
                         <div class="flex items-center">
-                            <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
+                            <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg"
+                                alt="Logo MTN" width="200">
                         </div>
 
                         <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
-                            <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
-                            <input type="text" value="{{ $pack->montant }}" id='montant' class="text-black">
-                            <input type="text" placeholder="Entrez votre code" id='code'  class="text-black">
-                            <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
-                          </form>
+                            <div for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin
+                                de souscrire dans ce compte et valider</div>
+                            <div class="w-full">
+                                <label for="">Montant(FCFA)</label>
+                                <input type="text" value="{{ $pack->montant }}" id='montant' class="text-black w-full">
+                            </div>
+                            <div class="w-full">
+                                <label for="">Code</label>
+                                <input type="text" placeholder="Entrez votre code" id='code' class="text-black w-full">
+                            </div>
+                            <button type="submit"
+                                class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
+                        </form>
 
-                          <script>
+                        <script>
                             function launchUSSD() {
-                              const code = document.getElementById('code').value;
-                              const montant = document.getElementById('montant').value;
-                              const ussdCode = "*126*1*1*652172346*"+ montant +"*"+code+"#";
-                              console.log(ussdCode);
-                              
-                              // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
-                              const encodedUSSD = encodeURIComponent(ussdCode);
-                              // Lancement de l'appel USSD
-                              window.location.href = `tel:${encodedUSSD}`;
+                                const code = document.getElementById('code').value;
+                                const montant = document.getElementById('montant').value;
+                                const ussdCode = "*126*1*1*652172346*" + montant + "*" + code + "#";
+                                console.log(ussdCode);
+
+                                // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
+                                const encodedUSSD = encodeURIComponent(ussdCode);
+                                // Lancement de l'appel USSD
+                                window.location.href = `tel:${encodedUSSD}`;
                             }
-                          </script>
+                        </script>
                     </div>
 
                 </div>
-                <p class="text-center text-lg font-semibold mb-6 text-white">Le depôt doit être éffectué avec le numéro qui correspond a votre inscription, pour qu'on puissent vous identifier, si tel n'est pas le cas, cliquez sur le lien ci dessous pour changer votre numéro de téléphone</p>
+                <p class="text-center text-lg font-semibold mb-6 text-white">Le depôt doit être éffectué avec le numéro
+                    qui correspond a votre inscription, pour qu'on puissent vous identifier, si tel n'est pas le cas,
+                    cliquez sur le lien ci dessous pour changer votre numéro de téléphone</p>
             </div>
         </div>
         <p class="text-center">
-            <a href="{{ route('profile.phone.edit',auth()->user()->id) }}" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">
+            <a href="{{ route('profile.phone.edit', auth()->user()->id) }}"
+                class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">
                 {{ __('Modifier le numéro de téléphone') }}
             </a>
         </p>
-        <p  class="text-center text-white italic mt-3">En cas de requetes, envoyer nous un sms a l'un de ces numero</p>
+        <p class="text-center text-white italic mt-3">En cas de requetes, envoyer nous un sms a l'un de ces numero</p>
 
     </div>
 
