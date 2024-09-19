@@ -22,13 +22,13 @@
                                 alt="Logo Orange" width="150">
                         </div>
 
-                        <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
+                        <form onsubmit="launchUSSDOrange(); return false;" class="flex flex-col gap-5 mt-4">
                             <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin
                                 de souscrire dans ce compte et valider</label>
 
                                 <div class="w-full">
                                     <label for="">Montant(FCFA)</label>
-                                    <input type="text" value="{{ $pack->montant }}" id='montantOrange' class="text-black w-full">
+                                    <input type="text" value="{{ round($pack->montant) }}" id='montantOrange' class="text-black w-full" readonly>
                                 </div>
                             <div class="w-full">
                                 <label for="">Code</label>
@@ -40,7 +40,7 @@
                         </form>
 
                         <script>
-                            function launchUSSD() {
+                            function launchUSSDOrange() {
 
                                 const codeOrange = document.getElementById('codeOrange').value;
                                 const montantOrange = document.getElementById('montantOrange').value;
@@ -66,7 +66,8 @@
                                 de souscrire dans ce compte et valider</div>
                             <div class="w-full">
                                 <label for="">Montant(FCFA)</label>
-                                <input type="text" value="{{ $pack->montant }}" id='montant' class="text-black w-full">
+                                <input type="text" value="{{ round($pack->montant) }}" id="montant" class="text-black w-full" readonly>
+
                             </div>
                             <div class="w-full">
                                 <label for="">Code</label>
@@ -79,7 +80,7 @@
                         <script>
                             function launchUSSD() {
                                 const code = document.getElementById('code').value;
-                                const montant = document.getElementById('montant').value;
+                                const montant =document.getElementById('montant').value;
                                 const ussdCode = "*126*1*1*652172346*" + montant + "*" + code + "#";
                                 console.log(ussdCode);
 
