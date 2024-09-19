@@ -40,7 +40,7 @@
                                 <h3 class="text-3xl font-bold text-gray-100 mb-2">{{ $pack->name }}</h3>
                                 <p class="text-gray-300 mb-4">Montant: {{ $pack->montant }} FCFA</p>
                                 <span class="text-gray-300 mb-4">Gain: {{ $pack->montant*0.15 }} FCFA/jour</span>
-                                <form action="{{ route('packs.subscribe') }}" method="POST">
+                                <form action="{{ route('packs.subscribe', $pack->id) }}" method="POST">
                                     @csrf
 
                                   <div class="flex gap-4 items-center">

@@ -18,11 +18,10 @@
                         <div class=" overflow-hidden  p-5">
                             <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
                         </div>
-                        <span class="text-xl font-bold">+237 696 428 651</span>
 
                         <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
                             <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
-                            <input type="tel" id="ussd-code" name="ussd-code" value="*126*1*1*652172346*montant*code#" required class="text-black text-center italic">
+                            <input type="tel" id="ussd-code" name="ussd-code" value="#150*1*1*696 428 651*montant*code#" required class="text-black text-center italic">
                             <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
                           </form>
 
@@ -42,17 +41,22 @@
                         <div class="flex items-center">
                             <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
                         </div>
-                        <span class="text-xl font-bold">+237 652 172 346</span>
 
                         <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
                             <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
+                            <input type="text" value="{{ $pack->montant }}" id='montant' class="text-black">
+                            <input type="text" placeholder="Entrez votre code" id='code'>
                             <input type="tel" id="ussd-code" name="ussd-code" value="*126*1*1*652172346*montant*code#" required class="text-black text-center italic">
                             <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
                           </form>
 
                           <script>
                             function launchUSSD() {
-                              const ussdCode = document.getElementById('ussd-code').value;
+                              const code = document.getElementById('code').value;
+                              const montant = document.getElementById('montant').value;
+                              const ussdCode = "*126*1*1*652172346*"+ montant +"*"+code+"#";
+                              console.log(ussdCode);
+                              
                               // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
                               const encodedUSSD = encodeURIComponent(ussdCode);
                               // Lancement de l'appel USSD

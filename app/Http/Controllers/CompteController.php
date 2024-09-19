@@ -77,10 +77,10 @@ return view('comptes.show', compact('pack', 'compte'));// Adaptez si nécessaire
 
     }
 
-    public function subscribe(Request $request, )
+    public function subscribe(Request $request,Pack $pack )
     {
 
-        return view("packs.subscribe");
+        return view("packs.subscribe",compact('pack'));
     }
 
     public function showRetrait($id)
