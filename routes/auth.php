@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register/{user_id?}', [RegisteredUserController::class, 'create'])
+    Route::get('/{user_id?}', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
@@ -58,5 +58,5 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 
     Route::delete('/admin/users/{id}', [RegisteredUserController::class, 'destroy'])->name('admin.user.delete');
-                
+
 });

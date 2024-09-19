@@ -9,11 +9,9 @@ use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PolitiqueController;
 
-Route::get('/', [PackController::class, 'index'])->name('packs.index');
+Route::get('packs/index', [PackController::class, 'index'])->name('packs.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('packs', [PackController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
