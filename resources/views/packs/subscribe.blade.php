@@ -14,7 +14,7 @@
                 <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full gap-8 ">
 
                     <!-- Numéro Orange -->
-                    <div class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 bg-orange-300 px-5">
+                    <div class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 bg-orange-100 px-5">
                         <div class=" overflow-hidden  p-5">
                             <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
                         </div>
