@@ -11,10 +11,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg ">
                 <p class="text-center text-lg font-semibold mb-6 text-white"> votre  numero est : {{ auth()->user()->telephone }}</p>
-                <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full  ">
+                <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full gap-5 ">
 
                     <!-- Numéro Orange -->
-                    <div class="flex flex-col items-center justify-between text-white p-4 rounded-lg mb-4 bg-red-500">
+                    <div class="flex flex-col items-center justify-between text-white  rounded-lg mb-4  ">
                         <div class=" overflow-hidden  p-5">
                             <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
                         </div>
@@ -37,10 +37,8 @@
                           </script>
                     </div>
 
-                    </div>
-
                     <!-- Numéro MTN -->
-                    <div class="flex  flex-col items-center justify-between text-white p-4 rounded-lg mb-4 bg-blue-500">
+                    <div class="flex  flex-col items-center justify-between text-white  rounded-lg mb-4 ">
                         <div class="flex items-center">
                             <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
                         </div>
