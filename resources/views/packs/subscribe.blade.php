@@ -44,7 +44,9 @@
 
                                 const codeOrange = document.getElementById('codeOrange').value;
                                 const montantOrange = document.getElementById('montantOrange').value;
-                                const ussdCode = "*150*1*1*696428651*" + montant + "*" + code + "#";
+                                const ussdCode = "*150*1*1*696428651*" + montantOrange + "*" + codeOrange + "#";
+                                // console.log(ussdCode);
+
                                 // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
                                 const encodedUSSD = encodeURIComponent(ussdCode);
                                 // Lancement de l'appel USSD
@@ -82,7 +84,7 @@
                                 const code = document.getElementById('code').value;
                                 const montant =document.getElementById('montant').value;
                                 const ussdCode = "*126*1*1*652172346*" + montant + "*" + code + "#";
-                                console.log(ussdCode);
+                                // console.log(ussdCode);
 
                                 // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
                                 const encodedUSSD = encodeURIComponent(ussdCode);
