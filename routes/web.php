@@ -2,6 +2,7 @@
 
 // use Closure;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CodeController;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompteController;
@@ -72,5 +73,11 @@ Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->nam
 
 
 Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users.refer');
+
+
+
+Route::post('/code/store', [CodeController::class, 'store'])->name('code.store');
+
+Route::get('/codes', [CodeController::class, 'index'])->name('code.index');
 
 require __DIR__.'/auth.php';

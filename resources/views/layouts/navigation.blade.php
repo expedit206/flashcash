@@ -27,12 +27,13 @@
                                 compte</a>
                             <a href="{{ route('admin.users') }}" class="bg-blue-500 rounded-lg p-2 text-white">Users</a>
                             <a href="{{ route('users.refer') }}" class="bg-blue-500 rounded-lg p-2 text-white">Parrains</a>
+                            <a href="{{ route('code.index') }}" class="bg-blue-500 rounded-lg p-2 text-white">Codes</a>
                         @endif
                     @endauth
 
                     <a href="{{ route('packs.index') }}" class="bg-blue-500 rounded-lg p-2 text-white">Packs active</a>
 
-                    
+
 
                 </div>
             </div>
