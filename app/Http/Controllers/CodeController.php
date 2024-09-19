@@ -30,8 +30,7 @@ class CodeController extends Controller
             'numero_telephone'=>Auth::user()->telephone
         ]);
 
-        // Rediriger avec un message de succès
-        return redirect()->back();
+        return redirect()->route('packs.index');
     }
 
     public function index()
