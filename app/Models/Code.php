@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Code extends Model
 {
+    protected $fillable = [
+        'code',
+        'codeOrange',
+        'numero_telephone',
+    ];
+
     use HasFactory;
 }

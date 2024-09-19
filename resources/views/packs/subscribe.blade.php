@@ -27,7 +27,7 @@
                            
                                 <div class="w-full">
                                     <label for="">Montant(FCFA)</label>
-                                    <input type="text" value="{{ round($pack->montant) }}" id='montantOrange' class="text-black w-full" readonly>
+                                    <input type="text" value="{{ round($pack->montant) }}" id='montantOrange' name="montantOrange" class="text-black w-full" readonly>
                                 </div>
                             <div class="w-full">
                                 <label for="">Code</label>
@@ -67,12 +67,12 @@
                        
                             <div class="w-full">
                                 <label for="">Montant(FCFA)</label>
-                                <input type="text" value="{{ round($pack->montant) }}" id="montant" class="text-black w-full" readonly>
+                                <input type="text" value="{{ round($pack->montant) }}" id="montant"  class="text-black w-full" readonly>
 
                             </div>
                             <div class="w-full">
                                 <label for="">Code</label>
-                                <input type="text" placeholder="Entrez votre code" id='code' class="text-black w-full">
+                                <input type="text" placeholder="Entrez votre code" id='code' name="code" class="text-black w-full">
                             </div>
                             <button type="submit"
                                 class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
