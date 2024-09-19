@@ -122,7 +122,7 @@ public function storeRetrait(Request $request, $userId, $compteId)
     $compte->update(['a_fait_retrait' => true]);
 
     return redirect()->route('comptes.show', ['user' => $userId, 'pack' => $compte->pack_id])
-                     ->with('success', 'Retrait effectué avec succès. veuillez patientez.');
+                     ->with('success', "Retrait effectué avec succès. veuillez patientez. Frais de retrait : ($montant*6)/100 ");
 }
 public function destroy($id)
 {
