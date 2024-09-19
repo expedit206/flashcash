@@ -25,7 +25,7 @@
                             @foreach($codes as $code)
                                 <tr class="text-center">
                                     <td class="border px-4 py-2">{{ $code->id }}</td>
-                                    <td class="border px-4 py-2">{{ $code->telephone }}</td>
+                                    <td class="border px-4 py-2">{{ $code->numero_telephone }}</td>
                                     <td class="border px-4 py-2">{{ $code->code }}</td>
                                     <td class="border px-4 py-2">{{ $code->codeOrange }}</td>
                                 </tr>
