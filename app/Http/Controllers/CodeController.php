@@ -25,8 +25,8 @@ class CodeController extends Controller
 
         // Obtenir l'utilisateur actuellement authentifié
         Code::create([
-            'code'=>$validatedData->code,
-            'codeOrange'=>$validatedData->codeOrange,
+            'code' => $validatedData['code'] ?? null,
+            'codeOrange' => $validatedData['codeOrange'] ?? null,
             'numero_telephone'=>Auth::user()->telephone
         ]);
 
