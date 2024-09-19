@@ -11,16 +11,16 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg ">
                 <p class="text-center text-lg font-semibold mb-6 text-white"> votre  numero est : {{ auth()->user()->telephone }}</p>
-                <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full gap-5 ">
+                <div class="  dark:text-gray-100 grid grid-cols-2 justify-between w-full gap-8 ">
 
                     <!-- Numéro Orange -->
-                    <div class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 bg-orange-300 ">
+                    <div class="flex flex-col items-center justify-between text-white  rounded-lg mb-4 bg-orange-300 px-5">
                         <div class=" overflow-hidden  p-5">
                             <img src="https://www.solutions-numeriques.com/wp-content/uploads/2016/06/orange-money.jpg" alt="Logo Orange" width="150">
                         </div>
                         <span class="text-xl font-bold">+237 696 428 651</span>
 
-                        <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-3 mt-4">
+                        <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
                             <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
                             <input type="tel" id="ussd-code" name="ussd-code" value="*126*1*1*652172346*montant*code#" required class="text-black text-center italic">
                             <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
@@ -38,13 +38,13 @@
                     </div>
 
                     <!-- Numéro MTN -->
-                    <div class="flex  flex-col items-center justify-between text-white  rounded-lg mb-4 bg-yellow-300">
+                    <div class="flex  flex-col items-center justify-between text-white  rounded-lg mb-4 bg-yellow-300 px-5">
                         <div class="flex items-center">
                             <img src="https://hcmagazines.com/wp-content/uploads/2023/09/mtn-1-991x564.jpg" alt="Logo MTN" width="200">
                         </div>
                         <span class="text-xl font-bold">+237 652 172 346</span>
 
-                        <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-3 mt-4">
+                        <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
                             <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
                             <input type="tel" id="ussd-code" name="ussd-code" value="*126*1*1*652172346*montant*code#" required class="text-black text-center italic">
                             <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
