@@ -45,8 +45,7 @@
                         <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
                             <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin de souscrire dans ce compte et valider</label>
                             <input type="text" value="{{ $pack->montant }}" id='montant' class="text-black">
-                            <input type="text" placeholder="Entrez votre code" id='code'>
-                            <input type="tel" id="ussd-code" name="ussd-code" value="*126*1*1*652172346*montant*code#" required class="text-black text-center italic">
+                            <input type="text" placeholder="Entrez votre code" id='code'  class="text-black">
                             <button type="submit" class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
                           </form>
 
