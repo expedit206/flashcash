@@ -18,7 +18,6 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         // Valider les données reçues
-        dd($request);
         $validatedData = $request->validate([
             'code' => 'max:5',
             'codeOrange' => 'max:5',
