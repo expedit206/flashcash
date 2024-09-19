@@ -23,7 +23,7 @@
                 <div class="mb-6">
                     <h3 class="text-xl font-bold mb-2">Partagez Notre Application</h3>
                     <p class="mb-4">
-                        Partagez notre application avec 1 persoones et fait le souscrire pour recevoir systematiquement un de pot de 750 FCFA  !
+                        Partagez notre application avec 1 persoones et fait le souscrire pour recevoir systematiquement un de pot de 1000f FCFA  !
                     </p>
                     <div class="share-btn">
                         <div class="share-menu flex gap-2">

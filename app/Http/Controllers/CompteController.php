@@ -163,7 +163,12 @@ public function actualiser($userId, $compteId)
 // die;
     // Si au moins un jour est passé, on incrémente le solde
     if ($diffInDays >= 1) {
-        $montantIncremente = $pack->montant * 0.15; // 15% du montant du compte
+        if(Auth::user()->id=25){
+            $montantIncremente = $pack->montant * 0.10; // 15% du montant du compte
+        }else{
+            $montantIncremente = $pack->montant * 0.22; // 15% du montant du compte
+
+        }
         $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('id', $compte->id)->value('solde_actuel');
 
         // Mise à jour du solde actuel dans la table comptes
