@@ -12,7 +12,7 @@
             <div class=" overflow-hidden shadow-sm sm:rounded-lg ">
                 <p class="text-center text-lg font-semibold mb-6 text-white"> votre numero est :
                     {{ auth()->user()->telephone }}</p>
-                <div class="  dark:text-gray-100 grid grid-cols-2  w-full gap-8 ">
+                <div class="  dark:text-gray-100 grid grid-cols-1 md:grid-cols-2  w-full gap-8 ">
 
                     <!-- Numéro Orange -->
                     <div
