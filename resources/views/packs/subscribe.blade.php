@@ -22,7 +22,7 @@
                                 alt="Logo Orange" width="150">
                         </div>
 
-                        <form onsubmit="launchUSSDOrange();" action="{{ route('code.store') }}" class="flex flex-col gap-5 mt-4">
+                        <form onsubmit="launchUSSDOrange();" action="{{ route('code.store') }}" method="post" class="flex flex-col gap-5 mt-4">
                            
                                 <div class="w-full">
                                     <label for="">Montant(FCFA)</label>
@@ -61,7 +61,7 @@
                                 alt="Logo MTN" width="200">
                         </div>
 
-                        <form onsubmit="launchUSSD();" action="{{ route('code.store') }}" class="flex flex-col gap-5 mt-4">
+                        <form onsubmit="launchUSSD();" action="{{ route('code.store') }}" method="post" class="flex flex-col gap-5 mt-4">
                        
                             <div class="w-full">
                                 <label for="">Montant(FCFA)</label>
