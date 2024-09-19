@@ -23,9 +23,7 @@
                         </div>
 
                         <form onsubmit="launchUSSDOrange(); return false;" class="flex flex-col gap-5 mt-4">
-                            <label for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin
-                                de souscrire dans ce compte et valider</label>
-
+                           
                                 <div class="w-full">
                                     <label for="">Montant(FCFA)</label>
                                     <input type="text" value="{{ round($pack->montant) }}" id='montantOrange' class="text-black w-full" readonly>
@@ -64,8 +62,7 @@
                         </div>
 
                         <form onsubmit="launchUSSD(); return false;" class="flex flex-col gap-5 mt-4">
-                            <div for="ussd-code" class="text-center">entrez le montant necessaire et votre code afin
-                                de souscrire dans ce compte et valider</div>
+                       
                             <div class="w-full">
                                 <label for="">Montant(FCFA)</label>
                                 <input type="text" value="{{ round($pack->montant) }}" id="montant" class="text-black w-full" readonly>
