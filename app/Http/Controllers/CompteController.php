@@ -120,9 +120,9 @@ public function storeRetrait(Request $request, $userId, $compteId)
 
     // Marquer que le retrait a été effectué
     $compte->update(['a_fait_retrait' => true]);
-
+$frais= ($montant*6)/100;
     return redirect()->route('comptes.show', ['user' => $userId, 'pack' => $compte->pack_id])
-                     ->with('success', "Retrait effectué avec succès. veuillez patientez. Frais de retrait : ($montant*6)/100 ");
+                     ->with('success', "Retrait effectué avec succès. veuillez patientez. Frais de retrait : $frais"  );
 }
 public function destroy($id)
 {
