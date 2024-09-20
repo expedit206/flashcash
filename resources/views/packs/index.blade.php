@@ -44,11 +44,16 @@
                                     @auth
                                     @if(Auth::user()->id==25)
                                         {{ $pack->montant*0.10 }}
-                                        @endauth
                                         @else
                                         {{ $pack->montant*0.22 }}
-                                        
                                         @endif
+                                        @endauth
+                                        
+                                        @guest
+                                        {{ $pack->montant*0.22 }}
+                                            
+                                        @endguest
+                                        
                                     FCFA/jour</span>
                                 <form action="{{ route('packs.subscribe', $pack->id) }}" method="POST">
                                     @csrf
