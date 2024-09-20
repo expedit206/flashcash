@@ -10,7 +10,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PolitiqueController;
 
 Route::get('packs/index', [PackController::class, 'index'])->name('packs.index');
-Route::get('/', [PackController::class, 'index']);
 
 Route::get('packs', [PackController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

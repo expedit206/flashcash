@@ -12,6 +12,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+Route::get('/',  [RegisteredUserController::class, 'create']);
+
     Route::get('register/{user_id?}', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
