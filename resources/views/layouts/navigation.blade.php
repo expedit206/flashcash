@@ -42,8 +42,8 @@
             @auth
                 <p class="flex items-center justify-center">
 
-                    <a href="https://t.me/potjackerpiece"
-                        class=" text-green-400 rounded-lg font-bold flex items-center justify-center gap-1  border-green-500">Telegram
+                    <a href="https://chat.whatsapp.com/C7i8J2OmTCLFxuL04q2bga"
+                        class=" text-green-400 rounded-lg font-bold flex items-center justify-center gap-1  border-green-500">WHATSAPP
                         <i class="fab fa-telegram text-blue-500 text-2xl"></i>
                     </a>
                 </p>
