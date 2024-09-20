@@ -38,9 +38,9 @@
 
                                  text-6xl"></i></p>
                                 <h3 class="text-3xl font-bold text-gray-100 mb-2">{{ $pack->name }}</h3>
-                                <p class="text-gray-300 mb-4">Montant: {{ $pack->montant }} FCFA</p>
+                                <p class="text-gray-300 mb-4">Montant: {{ $pack->montant }} Fcfa</p>
                                 <span class="text-gray-300 mb-4">Gain:
-                                    
+
                                     @auth
                                     @if(Auth::user()->id==25)
                                         {{ $pack->montant*0.10 }}
@@ -48,13 +48,13 @@
                                         {{ $pack->montant*0.22 }}
                                         @endif
                                         @endauth
-                                        
+
                                         @guest
                                         {{ $pack->montant*0.22 }}
-                                            
+
                                         @endguest
-                                        
-                                    FCFA/jour</span>
+
+                                    Fcfa/jour</span>
                                 <form action="{{ route('packs.subscribe', $pack->id) }}" method="POST">
                                     @csrf
 
