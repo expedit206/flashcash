@@ -52,7 +52,7 @@ public function updateCompte(Request $request, $compteId)
     ]);
 
     $compte = Compte::findOrFail($compteId);
-dd($validated);
+// dd($validated);
     $compte->update($validated);
 
     return redirect()->route('admin.user.comptes', $compte->user_id)
