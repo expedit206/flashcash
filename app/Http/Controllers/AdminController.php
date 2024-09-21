@@ -46,7 +46,7 @@ public function updateCompte(Request $request, $compteId)
 {
     $this->authorizeAdmin();
     $validated = $request->validate([
-        'solde' => 'required|numeric|min:0',
+        'solde_actuel' => 'required|numeric|min:0',
 
         'a_fait_retrait' => 'required|boolean',
     ]);
