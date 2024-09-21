@@ -45,7 +45,7 @@ public function editCompte($compteId)
 public function updateCompte(Request $request, $compteId)
 {
     $this->authorizeAdmin();
-    $request->validate([
+    $validated = $request->validate([
         'solde' => 'required|numeric|min:0',
 
         'a_fait_retrait' => 'required|boolean',
@@ -53,7 +53,7 @@ public function updateCompte(Request $request, $compteId)
 
     $compte = Compte::findOrFail($compteId);
 
-    $compte->update($request->all());
+    $compte->update($validated);
 
     return redirect()->route('admin.user.comptes', $compte->user_id)
                      ->with('success', 'Compte mis à jour avec succès.');
