@@ -19,7 +19,7 @@
 
                         <div class="mb-4">
                             <label for="solde_actuel" class="block text-sm font-medium text-gray-200">Solde Actuel</label>
-                            <input type="number" name="solde" id="solde_actuel" step="0.01" class="bg-gray-700 border-gray-600 text-white rounded-lg p-2 mt-1 w-full" value="{{ old('solde_actuel', $compte->solde_actuel) }}" required>
+                            <input type="number" name="solde_actuel" id="solde_actuel" step="0.01" class="bg-gray-700 border-gray-600 text-white rounded-lg p-2 mt-1 w-full" value="{{ old('solde_actuel', $compte->solde_actuel) }}" required>
                             @error('solde_actuel')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror

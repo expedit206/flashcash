@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('montant_retrait_total')->default(0);  // Le solde qui s'incrémente quotidiennement
             $table->integer('montant_retrait')->default(0);  // Le solde qui s'incrémente quotidiennement
             $table->timestamp('last_incremented_at')->nullable();
-            
+
             $table->timestamps();
 
             $table->unique(['user_id', 'pack_id']);
