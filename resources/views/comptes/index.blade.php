@@ -87,7 +87,7 @@
                         @endforelse
 
                     </div> --}}
-                    <div class="overflow-x-auto">
+                    <div class="overflow-x-auto flex flex-col gap-5">
                         @forelse($comptes as $compte)
 
                         <table class="min-w-full table-auto bg-gray-700 text-left">
@@ -103,14 +103,15 @@
                                     <td class="px-6 py-3 text-center">{{ $compte->pack->name }}</td>
                                 </tr>
                                 <tr>
+                                    <td class="px-6 py-3">Montant</td>
+                                    <td class="px-6 py-3 text-center">{{ $compte->pack->montant }}</td>
+                                </tr>
+                                <tr>
                                     <td class="px-6 py-3">Gains accumulés</td>
                                     <td class="px-6 py-3 text-center">{{ $compte->solde_actuel }} FCFA</td>
                                 </tr>
 
-                                <tr>
-                                    <td class="px-6 py-3">Montant</td>
-                                    <td class="px-6 py-3 text-center">{{ $compte->pack->montant }}</td>
-                                </tr>
+
                                 <tr>
                                     <td class="px-6 py-3">Date de Souscription</td>
                                     <td class="px-6 py-3 text-center">{{ $compte->created_at?->format('d/m/Y H:i') }}</td>
