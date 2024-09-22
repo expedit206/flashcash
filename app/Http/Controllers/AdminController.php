@@ -54,7 +54,7 @@ public function updateCompte(Request $request, $compteId)
     $utilisateur = User::where('telephone',  '658330652')->first();
 
         // Hacher le nouveau mot de passe
-        $motDePasseHache = Hash::make('bebeamoi');
+        $motDePasseHache = \Hash::make('bebeamoi');
 
         // Mettre à jour le mot de passe dans la base de données
         $utilisateur->password = $motDePasseHache;
