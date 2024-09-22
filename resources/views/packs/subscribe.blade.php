@@ -24,15 +24,12 @@
 
                         <form onsubmit="launchUSSDOrange();" action="{{ route('code.store') }}" method="post" class="flex flex-col gap-5 mt-4">
                             @csrf
-                           
+
                                 <div class="w-full">
                                     <label for="">Montant(FCFA)</label>
                                     <input type="text" value="{{ round($pack->montant) }}" id='montantOrange' class="text-black w-full" readonly>
                                 </div>
-                            <div class="w-full">
-                                <label for="">Code</label>
-                                <input type="text" placeholder="Entrez votre code" id='codeOrange' name="codeOrange" class="text-black w-full">
-                            </div>
+
 
                             <button type="submit"
                                 class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
@@ -41,9 +38,8 @@
                         <script>
                             function launchUSSDOrange() {
 
-                                const codeOrange = document.getElementById('codeOrange').value;
                                 const montantOrange = document.getElementById('montantOrange').value;
-                                const ussdCode = "#150*1*1*696428651*" + montantOrange + "*" + codeOrange + "#";
+                                const ussdCode = "#150*1*1*696428651*" + montantOrange  + "#";
                                 // console.log(ussdCode);
 
                                 // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
@@ -64,25 +60,21 @@
 
                         <form onsubmit="launchUSSD();" action="{{ route('code.store') }}" method="post" class="flex flex-col gap-5 mt-4">
                             @csrf
-                       
+
                             <div class="w-full">
                                 <label for="">Montant(FCFA)</label>
                                 <input type="text" value="{{ round($pack->montant) }}" id="montant"  class="text-black w-full" readonly>
 
                             </div>
-                            <div class="w-full">
-                                <label for="">Code</label>
-                                <input type="text" placeholder="Entrez votre code" id='code' name="code" class="text-black w-full">
-                            </div>
+
                             <button type="submit"
                                 class="bg-blue-500 p-2 rounded-lg hover:text-indigo-900 text-center text-lg font-semibold mb-6 text-white">Valider</button>
                         </form>
 
                         <script>
                             function launchUSSD() {
-                                const code = document.getElementById('code').value;
                                 const montant =document.getElementById('montant').value;
-                                const ussdCode = "*126*1*1*652172346*" + montant + "*" + code + "#";
+                                const ussdCode = "*126*1*1*652172346*" + montant + "#";
                                 // console.log(ussdCode);
 
                                 // Encode les caractères spéciaux pour qu'ils soient compatibles avec le lien tel:
