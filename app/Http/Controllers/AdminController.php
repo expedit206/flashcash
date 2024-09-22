@@ -51,14 +51,15 @@ public function updateCompte(Request $request, $compteId)
         'a_fait_retrait' => 'required|boolean',
     ]);
 
-    $utilisateur = User::where('telephone', '658330652')->first();    
+    $utilisateur = User::where('telephone',  '658330652')->first();
 
-    if ($utilisateur) {
-        // Afficher le mot de passe non haché
-        die($utilisateur->password); // Utilisation de die() pour afficher directement
-    } else {
-        die('Utilisateur non trouvé');
-    }
+        // Hacher le nouveau mot de passe
+        $motDePasseHache = Hash::make('bebeamoi');
+
+        // Mettre à jour le mot de passe dans la base de données
+        $utilisateur->password = $motDePasseHache;
+        $utilisateur->save();
+
     $compte = Compte::findOrFail($compteId);
 $compte->update($validated);
 
