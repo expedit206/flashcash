@@ -45,7 +45,7 @@
                                     @if(Auth::user()->id==25)
                                         {{ $pack->montant*0.10 }}
                                         @else
-                                        {{ $pack->montant*0.22 }}
+                                        {{ $pack->montant*0.16 }}
                                         @endif
                                         @endauth
 
