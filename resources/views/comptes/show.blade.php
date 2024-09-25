@@ -40,8 +40,8 @@
                       <form action="{{ route('retrait.store', ['userId' => $compte->user_id, 'compteId' => $compte->id]) }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="montant" class="block text-sm font-medium text-gray-400">Montant du retrait en FCFA(Minimum 1000FCFA)</label>
-                            <input type="number" id="montant" name="montant" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 text-black" min="1000" placeholder="50000 " required>
+                            <label for="montant" class="block text-sm font-medium text-gray-400">Montant du retrait en FCFA(Minimum 3000FCFA)</label>
+                            <input type="number" id="montant" name="montant" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 text-black" min="3000" placeholder="50000 " required>
                         </div>
 
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
