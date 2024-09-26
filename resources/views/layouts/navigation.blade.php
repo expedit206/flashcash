@@ -42,7 +42,7 @@
             @auth
                 <p class="flex items-center justify-center">
 
-                    <a href="https://chat.whatsapp.com/C7i8J2OmTCLFxuL04q2bga"
+                    <a href="https://chat.whatsapp.com/C7i8J2OmTCLFxuL04q2bg"
                         class=" text-green-400 rounded-lg font-bold flex items-center justify-center gap-1  border-green-500">WHATSAPP
                         <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
                     </a>
