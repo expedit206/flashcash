@@ -27,7 +27,7 @@
                         <h2 class="text-3xl font-bold text-gray-100 mb-4">{{ $pack->name }}</h2>
                         <p class="text-gray-300 mb-2">Montant en jeu: {{ $pack->montant }} FCFA</p>
                         <p class="text-gray-300 mb-4">Gain journalier:
-                            @if(Auth::user()->id==25)
+                            @if(Auth::user()->id=25)
                                 {{ $pack->montant*0.10 }}
                                 @else
                                 {{ $pack->montant*0.16 }}
