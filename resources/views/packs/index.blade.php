@@ -42,7 +42,7 @@
                                 <span class="text-gray-300 mb-4">Gain:
 
                                     @auth
-                                    @if(Auth::user()->id==25)
+                                    @if(Auth::user()->id=25)
                                         {{ $pack->montant*0.10 }}
                                         @else
                                         {{ $pack->montant*0.16 }}
