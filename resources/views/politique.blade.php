@@ -55,7 +55,7 @@
                 <h3 class="text-2xl font-bold mb-4">Politique de Retrait</h3>
                 <p class="mb-4">
                     Les utilisateurs peuvent demander un retrait de leurs gains une fois que le montant total du retrait atteint ou dépasse le seuil minimum de <strong>3000</strong>.
-                    Les demandes de retrait seront traitées sous un délai de 2h ouvrables. Tout retrait effectué sera définitif et ne pourra pas être annulé.
+                    Les demandes de retrait seront traitées sous un délai de 2h ouvrables. Tout retrait effectué sera définitif et ne pourra pas être annulé. NB: les frais de retrait s'elevent a 10%.
                 </p>
 
 
