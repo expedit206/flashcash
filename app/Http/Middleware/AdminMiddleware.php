@@ -23,6 +23,6 @@ class AdminMiddleware
 
         // Rediriger si l'utilisateur n'est pas un administrateur
         return redirect('/login')->with('error', 'Accès refusé. Vous devez être administrateur.');
-   
+
     }
 }
