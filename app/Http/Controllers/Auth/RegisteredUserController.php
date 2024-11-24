@@ -51,12 +51,12 @@ class RegisteredUserController extends Controller
         // dd($request);
 
         // Vérifier si un lien d'affiliation est présent
-        if ($request->has('user_id')) {
-            $referredBy = User::find($request->get('user_id'));
+        if ($request->has('code')) {
+            $parrain = User::find($request->get('user_id'));
 // die;
-            if ($referredBy) {
+            if ($parrain) {
                 // Associer le nouvel utilisateur à l'utilisateur qui l'a référé
-                $user->referred_by = $referredBy->id;
+                $user->parrain_id = $parrain->id;
                 $user->save();
             }
         }

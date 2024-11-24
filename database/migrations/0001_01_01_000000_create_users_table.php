@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('telephone')->unique();
             $table->string('password');
+            $table->foreignId('parrain_id')->nullable()->constrained('users');
             $table->rememberToken();
             $table->timestamps();
         });

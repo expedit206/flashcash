@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div class="max-w-screen-md pb-20">
-        <div class="bg-gray-800 text-white p-6 shadow-lg"> 
+        <div class="bg-gray-800 text-white p-4 shadow-lg"> 
 
             <h1 class="text-2xl font-bold mb-4">Épargnes</h1>
             
@@ -24,8 +24,8 @@
             @forelse ($epargnes as $epargne)
                 <div class="bg-gradient-to-r from-yellow-300 to-orange-300 rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 mb-1">
                     <h5 class="text-lg font-bold mb-2">{{ $epargne->nom }}</h5>
-                    <p class="text-sm mb-2">Durée : {{ $epargne->duree }} jours</p>
-                    <p class="text-sm mb-4">Rendement : {{ number_format($epargne->rendement * 100, 2) }} %</p>
+                    <p class="text-md mb-2">Durée : {{ $epargne->duree }} jours</p>
+                    <p class="text-md mb-4">Rendement : {{ number_format($epargne->rendement * 100, 2) }} %</p>
                     <form action="{{ route('epargne.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="montant" value="100"> <!-- Montant d'exemple -->

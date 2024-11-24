@@ -65,14 +65,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Epargne::class, 'epargne_user');
     }
 
-    public function referredBy()
+    public function parrain()
     {
-        return $this->belongsTo(User::class, 'referred_by');
-    }
-
-    public function referrals()
-    {
-        return $this->hasMany(User::class, 'referred_by');
+        return $this->belongsTo(User::class);
     }
 
     // Dans app/Models/User.php
@@ -84,7 +79,7 @@ public function isAdmin()
 
 public function generateReferralLink()
 {
-    $this->referral_link = url('/register') . '?user_id=' . $this->id;
+    $this->referral_link = url('/register') . '?code=' . $this->id;
     $this->save();
 }
 
