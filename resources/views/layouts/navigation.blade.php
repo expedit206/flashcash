@@ -146,15 +146,15 @@
 
 <nav class="bg-slate-700 border-t border-gray-100 fixed bottom-0 left-0 right-0 z-10">
     <div class="flex justify-around p-4">
-        <a href="#" class="text-white text-center">
+        <a href="{{ route('produits.index') }}" class="text-white text-center">
             <i class="fas fa-home fa-lg"></i>
             <span class="block text-sm">Accueil</span>
         </a>
-        <a href="#" class="text-white text-center">
+        <a href="{{ route('user.produits.index') }}" class="text-white text-center">
             <i class="fas fa-box fa-lg"></i>
             <span class="block text-sm">Mes Produits</span>
         </a>
-        <a href="#" class="text-white text-center bg-yellow-500 rounded-lg p-2"> <!-- Onglet Épargne distinct -->
+        <a href="{{ route('epargne.index') }}" class="text-white text-center bg-yellow-500 rounded-lg p-2"> <!-- Onglet Épargne distinct -->
             <i class="font-bold fas fa-dollar-sign fa-lg text-gray-800"></i>
             <span class="block text-sm text-gray-800">Épargne</span>
         </a>

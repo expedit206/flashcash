@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="container mx-auto mb-10 -z-1">
+    <div class="container mx-auto mb-10 -z-1 pb-8">
         <!-- Image en haut -->
         <div class="mb-6">
             <img src="/img/image.png" alt="Description de l'image" class="w-full h-48 object-cover ">
@@ -17,9 +17,9 @@
         </div>
 
         <h1 class="text-3xl font-bold mb-6">Liste des Produits</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             @foreach ($produits as $produit)
-                <div class="bg-gradient-to-r from-yellow-300 to-orange-200 rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 mb-6"> <!-- Ajout de mb-6 pour espacement -->
+                <div class="bg-gradient-to-r from-yellow-300 to-orange-200 rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 mb-2"> <!-- Ajout de mb-6 pour espacement -->
                     <img src="/img/image.png" alt="{{ $produit->name }}" class="w-full h-32 object-cover rounded-md">
                     <div class="flex justify-between items-center mt-2">
                         <h2 class="text-xl font-semibold text-gray-900">{{ $produit->name }}</h2>

@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_produit', function (Blueprint $table) {
+        Schema::create('produit_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('produit_id')->constrained()->onDelete('cascade');
-            $table->integer('gangner');
+            $table->integer('gagner');
             $table->timestamp('duration')->nullable();
             $table->integer('count')->default(1); 
             $table->timestamp('last_incremented_at')->nullable();
-
             $table->timestamps();
 
             // $table->unique(['user_id', 'produit_id']);

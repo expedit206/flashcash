@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Models\Compte;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Produit extends Model
 {
@@ -17,7 +18,7 @@ class Produit extends Model
     }
     public function users()
     {
-        return $this->belongsTomany(User::class);
+        return $this->belongsToMany(User::class, 'produit_user')->withPivot(['gagner', 'duration', 'count', 'last_incremented_at']);
     }
 
 }

@@ -1,15 +1,19 @@
 <?php
 
 // use Closure;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CodeController;
-use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EpargneController;
 use App\Http\Controllers\PolitiqueController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\ProduitUserController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('produits/index', [ProduitController::class, 'index'])->name('produits.index');
+
+
+Route::get('produits/index', [ProduitController::class, 'index'])->name('produits.index')->middleware('auth');
 
 Route::get('produits', [ProduitController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -30,11 +34,16 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+Route::get('/mes-produits', [ProduitUserController::class, 'index'])->name('user.produits.index')->middleware('auth');
 
 Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index')->middleware('auth');
 
 Route::get('/comptes/{user}/{pack}', [CompteController::class, 'show'])->name('comptes.show')->middleware('auth');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/epargne', [EpargneController::class, 'index'])->name('epargne.index');
+    Route::post('/epargne', [EpargneController::class, 'store'])->name('epargne.store');
+});
 // web.php// routes/web.php
 
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Compte;
+use App\Models\Epargne;
 use App\Models\Produit;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,9 +54,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Compte::class);
     }
+   
     public function produits()
     {
-        return $this->belongsTomany(Produit::class);
+        return $this->belongsToMany(Produit::class, 'produit_user')->withPivot(['gagner', 'duration', 'count', 'last_incremented_at']);
+    }
+
+    public function epargnes()
+    {
+        return $this->belongsToMany(Epargne::class, 'epargne_user');
     }
 
     public function referredBy()

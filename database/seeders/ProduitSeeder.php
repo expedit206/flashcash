@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon; // N'oubliez pas d'importer Carbon
 
 class ProduitSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class ProduitSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now(); // Obtenir la date et l'heure actuelles
+
         DB::table('produits')->insert([
             [
                 'name' => 'Pack Énergie A',
@@ -22,6 +25,8 @@ class ProduitSeeder extends Seeder
                 'stock' => 100,
                 'gainJ' => 20,
                 'rendement' => 5,
+                'created_at' => $now, // Ajouter la date de création
+                'updated_at' => $now, // Ajouter la date de mise à jour
             ],
             [
                 'name' => 'Pack Énergie B',
@@ -30,6 +35,8 @@ class ProduitSeeder extends Seeder
                 'stock' => 50,
                 'gainJ' => 30,
                 'rendement' => 10,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'name' => 'Pack Énergie C',
@@ -38,6 +45,8 @@ class ProduitSeeder extends Seeder
                 'stock' => 0,  // Épuisé
                 'gainJ' => 40,
                 'rendement' => 15,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'name' => 'Pack Énergie D',
@@ -46,6 +55,8 @@ class ProduitSeeder extends Seeder
                 'stock' => 20,
                 'gainJ' => 50,
                 'rendement' => 20,
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
         ]);
     }
