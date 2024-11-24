@@ -24,10 +24,10 @@ class CompteFactory extends Factory
      */
     public function definition(): array
     {
-        $packs=Pack::all();
+        $produits=Pack::all();
         return [
             'user_id' => User::factory(), // Génère un utilisateur ou utilisez un utilisateur existant
-            'pack_id' => $packs->random()->id, // Génère un pack ou utilisez un pack existant
+            'pack_id' => $produits->random()->id, // Génère un pack ou utilisez un pack existant
             'solde_actuel' => $this->faker->numberBetween(100, 10000),
             'a_fait_retrait' => $this->faker->boolean,
             'montant_retrait_total' => $this->faker->numberBetween(0, 5000),

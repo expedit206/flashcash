@@ -15,7 +15,7 @@ class produitController extends Controller
         $produits = produit::orderBy('id','asc')->get();
         // dd($produits);
 $user=Auth::user();
-        return view('produits.index2', compact('produits','user'));
+        return view('produits.index', compact('produits','user'));
     }
 
     // Afficher un produit spécifique

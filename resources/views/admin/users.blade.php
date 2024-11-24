@@ -5,7 +5,7 @@
                 {{ __('Liste des Utilisateurs') }}
             </h2>
             <div class="bg-blue-500 rounded-lg p-2 text-white">
-                <a href="{{ route('admin.stats.comptes-pack') }}" class="text-white">Comptes par packs</a>
+                <a href="{{ route('admin.stats.comptes-pack') }}" class="text-white">Comptes par produits</a>
             </div>
         </div>
     </x-slot>

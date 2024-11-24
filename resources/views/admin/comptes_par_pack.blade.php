@@ -29,7 +29,7 @@
                             @php
                                 $totalGeneral = 0;
                             @endphp
-                            @foreach($packs as $pack)
+                            @foreach($produits as $pack)
                                 @php
                                     $totalPack = $pack->comptes_count * $pack->montant; // Calculer le total pour chaque pack
                                     $totalGeneral += $totalPack; // Ajouter au total général

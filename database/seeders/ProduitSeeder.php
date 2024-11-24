@@ -14,48 +14,38 @@ class ProduitSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('packs')->insert([
+        DB::table('produits')->insert([
             [
-                'name' => 'Junior',
-                'icon' => 'fa-compass',
+                'name' => 'Pack Énergie A',
+                'montant' => 1000.00,
+                'nbjour' => now()->addDays(30),
+                'stock' => 'Disponible',
+                'gainJ' => 20,
+                'rendement' => 5,
+            ],
+            [
+                'name' => 'Pack Énergie B',
+                'montant' => 1500.00,
+                'nbjour' => now()->addDays(45),
+                'stock' => 'Disponible',
+                'gainJ' => 30,
+                'rendement' => 10,
+            ],
+            [
+                'name' => 'Pack Énergie C',
+                'montant' => 2000.00,
+                'nbjour' => now()->addDays(60),
+                'stock' => 'Épuisé',
+                'gainJ' => 40,
+                'rendement' => 15,
+            ],
+            [
+                'name' => 'Pack Énergie D',
                 'montant' => 2500.00,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Elite',
-                'icon' => 'fa-rocket',
-                'montant' => 5000.00,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Champion',
-                'icon' => 'fa-crown',
-                'montant' => 10000.00,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Visionary',
-                'icon' => 'fa-medal',
-                'montant' => 15000.00,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Legendary',
-                'icon' => 'fa-trophy',
-                'montant' => 30000.00,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Ultimate',
-                'icon' => 'fa-star',
-                'montant' => 500000.00,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'nbjour' => now()->addDays(90),
+                'stock' => 'Disponible',
+                'gainJ' => 50,
+                'rendement' => 20,
             ],
         ]);
     }

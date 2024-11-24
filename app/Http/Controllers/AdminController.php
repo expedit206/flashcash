@@ -79,8 +79,8 @@ public function totalRetraits()
 public function comptesParPack()
 {
     $this->authorizeAdmin();
-    $packs = Pack::withCount('comptes')->get();
-    return view('admin.comptes_par_pack', compact('packs'));
+    $produits = Pack::withCount('comptes')->get();
+    return view('admin.comptes_par_pack', compact('produits'));
 }
 
 public function comptesAvecRetraits()
@@ -96,7 +96,7 @@ public function comptesAvecRetraits()
 protected function authorizeAdmin()
 {
     if (auth()->check() && !auth()->user()->isAdmin()) {
-        return redirect()->route('packs.index')->with('error', 'Vous n\'avez pas les autorisations nécessaires.');
+        return redirect()->route('produits.index')->with('error', 'Vous n\'avez pas les autorisations nécessaires.');
     }
 }
 

@@ -71,7 +71,7 @@ class RegisteredUserController extends Controller
         if (auth()->user()->isAdmin()) {
             return redirect()->route('admin.users');
         }
-        return redirect(route('packs.index', absolute: false));
+        return redirect(route('produits.index', absolute: false));
     }
     public function destroy($id)
     {

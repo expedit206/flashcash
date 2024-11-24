@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         if (auth()->user()->isAdmin()) {
             return redirect()->route('admin.users');
         }
-        return redirect()->intended(route('packs.index', absolute: false));
+        return redirect()->intended(route('produits.index', absolute: false));
     }
 
     /**

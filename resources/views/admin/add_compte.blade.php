@@ -29,7 +29,7 @@
                         <div class="mb-4">
                             <label for="pack_id" class="block text-gray-100 font-bold mb-2">Sélectionner un pack :</label>
                             <select name="pack_id" id="pack_id" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent">
-                                @foreach ($packs as $pack)
+                                @foreach ($produits as $pack)
                                     <option value="{{ $pack->id }}" class=" text-black">{{ $pack->name }}</option>
                                 @endforeach
                             </select>

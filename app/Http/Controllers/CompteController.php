@@ -23,9 +23,9 @@ class CompteController extends Controller
     public function create()
 {
     $users = User::orderBy('created_at', 'asc')->get();  // Récupérer tous les utilisateurs avec leurs téléphones
-    $packs = Pack::orderBy('created_at', 'asc')->get();  // Récupérer tous les packs
+    $produits = Pack::orderBy('created_at', 'asc')->get();  // Récupérer tous les produits
 
-    return view('admin.add_compte', compact('users', 'packs'));
+    return view('admin.add_compte', compact('users', 'produits'));
 }
 
 public function store(Request $request)
@@ -33,7 +33,7 @@ public function store(Request $request)
     // Validation des données entrantes
     $request->validate([
         'user_id' => 'required|exists:users,id',
-        'pack_id' => 'required|exists:packs,id',
+        'pack_id' => 'required|exists:produits,id',
     ]);
 
     $exists = \DB::table('comptes')
@@ -80,7 +80,7 @@ return view('comptes.show', compact('pack', 'compte'));// Adaptez si nécessaire
     public function subscribe(Request $request,Pack $pack )
     {
 
-        return view("packs.subscribe",compact('pack'));
+        return view("produits.subscribe",compact('pack'));
     }
 
     public function showRetrait($id)

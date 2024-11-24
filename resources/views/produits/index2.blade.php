@@ -3,7 +3,7 @@
         <div class="flex justify-between font-semibold text-xl text-green-300 leading-tight">
 
             <h2 class="font-semibold text-xl text-gray-100 leading-tight">
-                {{ __('Pack Disponibles') }}
+                {{ __('Pack Disponibls') }}
             </h2>
             <div class="flex gap-4">
 
@@ -25,8 +25,8 @@
                     @endif
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @forelse($packs as $pack)
-                        {{-- @dd($packs) --}}
+                        @forelse($produits as $pack)
+                        {{-- @dd($produits) --}}
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md flex flex-col items-center ">
                                 <p><i class="fas  {{ $pack->icon }}
                                     {{$pack->name == 'Junior'? 'text-green-300':""}}
@@ -55,7 +55,7 @@
                                         @endguest
 
                                     Fcfa/jour</span>
-                                <form action="{{ route('packs.subscribe', $pack->id) }}" method="POST">
+                                <form action="{{ route('produits.subscribe', $pack->id) }}" method="POST">
                                     @csrf
 
                                   <div class="flex gap-4 items-center">
@@ -66,7 +66,7 @@
                                         <a href="{{ route('comptes.show',['user'=>auth()->user()->id, 'pack'=>$pack->id]) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Voir</a>
 
                     @if (auth()->user()->isAdmin() )
-                        <a href="{{ route('packs.edit', $pack->id) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Modifier</a>
+                        <a href="{{ route('produits.edit', $pack->id) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Modifier</a>
                     </td>
                     @endif
                                     @endauth

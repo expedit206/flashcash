@@ -1,4 +1,4 @@
-<!-- resources/views/packs/show.blade.php -->
+<!-- resources/views/produits/show.blade.php -->
 
 <x-app-layout>
     <x-slot name="header">

@@ -29,7 +29,7 @@
 
                     </div>
                 </form>
-                <form method="POST" action="{{ route('packs.subscribe',$user->id) }}" class="mt-3">
+                <form method="POST" action="{{ route('produits.subscribe',$user->id) }}" class="mt-3">
                     @csrf
                     <button  class="bg-red-500 rounded-lg p-2">Retour</button>
                 </form>

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('produit_id')->constrained()->onDelete('cascade');
-            $table->integer('solde_actuel');
+            $table->integer('gangner');
+            $table->timestamp('duration')->nullable();
             $table->integer('count')->default(1); 
             $table->timestamp('last_incremented_at')->nullable();
 

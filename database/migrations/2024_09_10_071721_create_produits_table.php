@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('montant', 10, 2);  // Montant du pack
-            $table->string('nbjour');
-            $table->string('stock');
-            $table->int('gainJ');
-            $table->int('rendement');
+            $table->integer('nbjour');
+            $table->integer('stock');
+            $table->integer('gainJ');
+            $table->integer('rendement');
             // $table->string('icon')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('packs');
+        Schema::dropIfExists('produits');
     }
 };

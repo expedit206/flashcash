@@ -3,15 +3,15 @@
 // use Closure;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CodeController;
-use App\Http\Controllers\PackController;
+use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PolitiqueController;
 
-Route::get('packs/index', [PackController::class, 'index'])->name('packs.index');
+Route::get('produits/index', [ProduitController::class, 'index'])->name('produits.index');
 
-Route::get('packs', [PackController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('produits', [ProduitController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -22,11 +22,11 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/packs/souscrire/{pack}', [CompteController::class, 'subscribe'])->name('packs.subscribe');
+    Route::post('/produits/souscrire/{pack}', [CompteController::class, 'subscribe'])->name('produits.subscribe');
     Route::get('admin/utilisateur/{user}/{compte}/actualiser', [CompteController::class, 'actualiser'])->name('admin.utilisateur.actualiser');
 
-    Route::get('/packs/{id}/edit', [PackController::class, 'edit'])->name('packs.edit');
-    Route::put('/packs/{id}', [PackController::class, 'update'])->name('packs.update');
+    Route::get('/produits/{id}/edit', [ProduitController::class, 'edit'])->name('produits.edit');
+    Route::put('/produits/{id}', [ProduitController::class, 'update'])->name('produits.update');
 
 });
 
@@ -75,7 +75,7 @@ Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users
 
 
 Route::post('/code/store', [CodeController::class, 'store'])->name('code.store');
-
+    
 Route::get('/codes', [CodeController::class, 'index'])->name('code.index');
 
 require __DIR__.'/auth.php';

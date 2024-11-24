@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <h3 class="text-2xl font-bold mb-4">Modifier Pack</h3>
-                <form method="POST" action="{{ route('packs.update', $pack->id) }}">
+                <form method="POST" action="{{ route('produits.update', $pack->id) }}">
                     @csrf
                     @method('PUT')
 

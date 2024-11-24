@@ -5,14 +5,14 @@
             <div class="flex items-center">
                 <!-- Logo -->
                 <div class="shrink-0  items-center  ">
-                    <a href="{{ route('packs.index') }}"><i class="fas fa-dove text-amber-500 text-4xl"></i>
+                    <a href="{{ route('produits.index') }}"><i class="fas fa-dove text-amber-500 text-4xl"></i>
 
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class=" space-x-2 sm:-my-px sm:ms-2 sm:flex gap-2 ">
-                    <x-nav-link :href="route('packs.index')" :active="request()->routeIs('dashboard')" class="hidden sm:flex">
+                    <x-nav-link :href="route('produits.index')" :active="request()->routeIs('dashboard')" class="hidden sm:flex">
                         {{ __(config('app_name.name')) }}
                     </x-nav-link>
                     @auth
@@ -31,7 +31,7 @@
                         @endif
                     @endauth
 
-                    <a href="{{ route('packs.index') }}" class="bg-blue-500 rounded-lg p-2 text-white">Packs active</a>
+                    <a href="{{ route('produits.index') }}" class="bg-blue-500 rounded-lg p-2 text-white">produits active</a>
 
 
 

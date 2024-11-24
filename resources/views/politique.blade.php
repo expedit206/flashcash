@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <h3 class="text-2xl font-bold mb-4">Introduction</h3>
                 <p class="mb-4">
-                    Cette politique d'utilisation régit l'utilisation de notre application de gains d'argent basée sur des souscriptions à des packs. En souscrivant à l'un de nos packs, les utilisateurs acceptent de recevoir des gains quotidiens sous la forme d'intérêts accumulés, en fonction du pack choisi.
+                    Cette politique d'utilisation régit l'utilisation de notre application de gains d'argent basée sur des souscriptions à des produits. En souscrivant à l'un de nos produits, les utilisateurs acceptent de recevoir des gains quotidiens sous la forme d'intérêts accumulés, en fonction du pack choisi.
                 </p>
 
                 <h3 class="text-2xl font-bold mb-4">Conditions d'utilisation</h3>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-                <h3 class="text-2xl font-bold mb-4">Souscription à des Packs</h3>
+                <h3 class="text-2xl font-bold mb-4">Souscription à des produits</h3>
                 <p class="mb-4">
                     En souscrivant à un pack, vous acceptez de recevoir un gain quotidien basé sur le montant initial de la souscription.
                     Les gains sont calculés à raison de 10% du solde du pack souscrit et sont crédités quotidiennement à la date de souscription.
