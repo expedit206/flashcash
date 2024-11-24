@@ -15,4 +15,9 @@ class Produit extends Model
     {
         return $this->hasMany(Compte::class);
     }
+    public function users()
+    {
+        return $this->belongsTomany(User::class);
+    }
+
 }

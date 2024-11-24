@@ -3,12 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\User;
 use App\Models\Compte;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Produit;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -51,6 +52,10 @@ class User extends Authenticatable
     public function comptes()
     {
         return $this->hasMany(Compte::class);
+    }
+    public function produits()
+    {
+        return $this->belongsTomany(Produit::class);
     }
 
     public function referredBy()

@@ -16,7 +16,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link rel="stylesheet" href="/build/assets/app.css">
     </head>
-    <body class="font-sans antialiased  bg-gray-800 ">
+    <body class="font-sans antialiased   ">
         <style>
             .fa-times{
                 background: rgb(47, 68, 182);
@@ -31,12 +31,12 @@
                 font-size: 1.3rem
             }
         </style>
-        <div class="min-h-screen  bg-gray-800">
+        <div class="">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-gray-600 shadow">
+                <header class=" shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-7">
                         {{ $header }}
                     </div>
@@ -44,7 +44,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main class="bg-gray-400">
+            <main class="">
                 {{ $slot }}
             </main>
         </div>
