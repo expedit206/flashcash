@@ -1,1 +1,1 @@
-<i class="fas fa-dove text-amber-500 text-8xl"></i>
+<img src='/img/logo_flashcash.png' class="rounded-full h-[150px] w-[150px]" ></img>

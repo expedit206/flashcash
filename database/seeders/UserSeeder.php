@@ -20,16 +20,12 @@ class UserSeeder extends Seeder
         User::factory(2)->create();
         DB::table('users')->insert([
            [ 'name' => 'Expedit',
-            'email' => 'expedit@gmail.com',
             'telephone' => 696428651,
-            'email_verified_at' => now(),  // Timestamp actuel pour la vérification de l'email
             'password' => Hash::make('dominique2006'),  // Hachage du mot de passe
             'created_at' => now(),
             'updated_at' => now(),],
            [ 'name' => 'aaa',
-            'email' => 'aaa@aaa',
             'telephone' => 600028651,
-            'email_verified_at' => now(),  // Timestamp actuel pour la vérification de l'email
             'password' => Hash::make('aaaaaaaa'),  // Hachage du mot de passe
             'created_at' => now(),
             'updated_at' => now(),],

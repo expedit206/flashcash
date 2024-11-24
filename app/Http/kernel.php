@@ -2,11 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Admin;
-use App\Http\Middleware\MonAuth;
-use App\Http\Middleware\Etudiant;
-use App\Http\Middleware\MonGuest;
-use App\Http\Middleware\Enseignant;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -59,10 +54,6 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Autheticate::class,
-        'monGuest' => MonGuest::class,
-        'monAuth' => MonAuth::class,
-        'enseignant' => Enseignant::class,
-        'admin' => Admin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" class="w-full">
         @csrf
 
         @if ($referredBy)
@@ -7,7 +7,7 @@
         @endif
 
         <!-- Name -->
-        <div>
+        <div class="w-full">
             <x-input-label for="name" :value="__('Nom')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Abena tiako"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -25,12 +25,6 @@
             <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="gaston@gmail.com" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
 
         <!-- Password -->
         <div class="mt-4">

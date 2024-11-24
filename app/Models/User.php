@@ -21,7 +21,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
         'telephone',
     ];
@@ -68,7 +67,7 @@ class User extends Authenticatable
 public function isAdmin()
 {
     // Vérifier si l'utilisateur a un champ is_admin ou tout autre critère
-    return $this->email === 'expedit@gmail.com' && \Hash::check('dominique2006', $this->password);
+    return $this->telephone === 696428651 && \Hash::check('dominique2006', $this->password);
 }
 
 public function generateReferralLink()

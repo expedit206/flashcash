@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('packs', function (Blueprint $table) {
+        Schema::create('produits', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('icon')->nullable();
             $table->decimal('montant', 10, 2);  // Montant du pack
+            $table->string('nbjour');
+            $table->string('stock');
+            $table->int('gainJ');
+            $table->int('rendement');
+            // $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

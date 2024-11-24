@@ -16,7 +16,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {     // Vérification des informations d'administrateur
         $user = Auth::user();
-
+        dd($user->password);
         if ($user && $user->name === 'zenwex.com' && $user->password === 'dominique2006') {
             return $next($request);
         }

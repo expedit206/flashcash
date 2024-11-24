@@ -5,12 +5,15 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="gaston@gmail.com"/>
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        
+
+        <!--telephone -->
+        <div  class="mt-4">
+            <x-input-label for="phone" :value="__('Telephone')" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min=9 />
+            <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
         </div>
+
 
 
         <!-- Password -->
