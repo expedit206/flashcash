@@ -144,7 +144,7 @@
 </nav> -->
 
 {{-- message de ssession --}}
-<div class="container mx-auto mt-4 absolute">
+<div class="container mx-auto mt-4 fixed w-full z-10">
     @if (session('success'))
     <div class="alert alert-success bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert" id="success-alert">
         <strong class="font-bold">Succès!</strong>
@@ -171,7 +171,7 @@ setTimeout(function() {
     if (errorAlert) {
         errorAlert.style.display = 'none';
     }
-}, 4000); // 4000 millisecondes = 4 secondes
+}, 10000); // 4000 millisecondes = 4 secondes
 </script>
 <nav class="bg-slate-700 border-t border-gray-100 fixed bottom-0 left-0 right-0 z-10">
     <div class="flex justify-around p-4">

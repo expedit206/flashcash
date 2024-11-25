@@ -24,9 +24,10 @@
     const timerInterval = setInterval(updateCountdown, 2000); // Met à jour chaque seconde
 }
     </script>
-    
-    <div class="bg-gray-800 text-white p-6  shadow-lg pb-6">
-        <h2 class="text-2xl font-bold mb-4">Mes produits</h2>
+    <div class="pb-16">
+
+        <div class="bg-gray-800 text-white p-6  shadow-lg pb-6">
+            <h2 class="text-2xl font-bold mb-4">Mes produits</h2>
 
         <div class="flex justify-between items-center mb-2 text-sm">
             <span class="mr-2">Revenu total :</span>
@@ -58,9 +59,9 @@
     </div>
 
     @forelse ($produits as $produit)
-    <div class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg p-4 transition-transform transform hover:scale-105 mb-2">
+    <div class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg p-4 transition-transform transform hover:scale-105 mb-4">
         <div class="flex items-center justify-between mb-2">
-            <h3 class="text-lg font-bold">{{ $produit->name }} ({{ $produit->pivot->count }})</h3>
+            <h3 class="text-lg font-bold">{{ $produit->name }} ({{ $produit->pivot->count }} fois) </h3>
             <span class="font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
         </div>
         <div class="grid grid-cols-2 gap-2">
@@ -100,4 +101,5 @@
 
 
 
+</div>
 </x-app-layout>

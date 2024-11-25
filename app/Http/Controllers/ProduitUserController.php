@@ -20,6 +20,8 @@ class ProduitUserController extends Controller
         // Récupérer les produits de l'utilisateur avec les données de la table pivot
         $produits = $user->produits()
         ->withPivot(['gagner', 'duration', 'count', 'last_incremented_at', 'created_at'])
+        ->orderBy('produit_user.created_at', 'asc') // Utilisation du nom de la table pivot
+
         ->get();
         // dd(value)
         // dump($produits);
@@ -79,23 +81,22 @@ public function store(Request $request)
     $produit = Produit::find($request->produit_id);
 
     // Vérifier la disponibilité du stock
-    if ($produit->stock <= 0) {
-        return redirect()->route('produits.index')->with('error', 'Le produit est en rupture de stock.');
-    }
-
+    
     // Vérification si l'utilisateur a déjà acheté ce produit
     $produitUserExist = ProduitUser::where('user_id', $user->id)
     ->where('produit_id', $produit->id)
     ->latest('created_at') // Récupérer la dernière occurrence
     ->first();
-
+    
+    if ($produitUserExist && $produit->stock <= $produitUserExist->count) {
+        return redirect()->route('produits.index')->with('error', 'Le produit est en rupture de stock.');
+    }
 
     $produitUser = new ProduitUser();
         if ($produitUserExist) {
             // L'utilisateur a déjà acheté ce produit, on incrémente le compteur
-            $produitUser->count =$produitUserExist->count+  2;
+            $produitUser->count =$produitUserExist->count +  1;
         } else {
-        die;
         // L'utilisateur n'a pas encore acheté ce produit, on crée un nouvel enregistrement
         $produitUser->count = 1; // Initialiser à 1
     }
@@ -107,7 +108,6 @@ public function store(Request $request)
     $produitUser->save(); // Enregistrement dans la base de données
 
     // Décrémenter le stock du produit
-    $produit->stock -= 1;
     $produit->save(); // Enregistrer la mise à jour du stock
 
     // Redirection avec un message de succès
