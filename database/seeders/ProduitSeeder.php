@@ -19,7 +19,7 @@ class ProduitSeeder extends Seeder
 
         DB::table('produits')->insert([
             [
-                'name' => 'Pack Énergie A',
+                'name' => 'T-Cash A',
                 'montant' => 1000.00,
                 'nbjour' => 30,
                 'stock' => 100,
@@ -29,7 +29,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now, // Ajouter la date de mise à jour
             ],
             [
-                'name' => 'Pack Énergie B',
+                'name' => 'T-Cash B',
                 'montant' => 1500.00,
                 'nbjour' => 45,
                 'stock' => 50,
@@ -39,7 +39,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'Pack Énergie C',
+                'name' => 'T-Cash C',
                 'montant' => 2000.00,
                 'nbjour' => 60,
                 'stock' => 0,  // Épuisé
@@ -49,7 +49,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'Pack Énergie D',
+                'name' => 'T-Cash D',
                 'montant' => 2500.00,
                 'nbjour' => 90,
                 'stock' => 20,

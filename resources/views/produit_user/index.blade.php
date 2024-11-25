@@ -1,28 +1,56 @@
 <x-app-layout>
-    <div class="bg-gray-800 text-white p-6  shadow-lg pb-20">
+    <script>
+       function startCountdown(endTime, elementId) {
+    function updateCountdown() {
+        const currentTime = Date.now();
+        const remainingTime = endTime - currentTime;
+
+        if (remainingTime <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById(elementId).innerText = "Temps écoulé !";
+            return;
+        }
+
+        const remainingSeconds = Math.floor(remainingTime / 1000);
+        const days = Math.floor(remainingSeconds / (3600 * 24));
+        const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600);
+        const minutes = Math.floor((remainingSeconds % 3600) / 60);
+
+        document.getElementById(elementId).innerText =
+            `${days} Jrs ${hours} h ${minutes} Min`;
+    }
+
+    updateCountdown(); // Appeler une fois pour initialiser
+    const timerInterval = setInterval(updateCountdown, 2000); // Met à jour chaque seconde
+}
+    </script>
+    
+    <div class="bg-gray-800 text-white p-6  shadow-lg pb-6">
         <h2 class="text-2xl font-bold mb-4">Mes produits</h2>
-        
+
         <div class="flex justify-between items-center mb-2 text-sm">
             <span class="mr-2">Revenu total :</span>
             <span class="text-green-500 font-bold">{{ number_format($totalRevenu, 2) }} XAF</span>
         </div>
-    
+
         <div class="flex justify-between items-center mb-2 text-sm">
-            <span>Le revenu du jour :</span>
+            <span>revenu d'aujourd'hui :</span>
             <span class="text-green-500 font-bold">{{ number_format($revenueToday, 2) }} XAF</span>
         </div>
-        
+
         <div class="flex justify-between items-center mb-2 text-sm">
             <span>Produit(s) consommé(s) :</span>
             <span class="font-bold">{{ $produits->count() }}</span>
         </div>
-    
+
         <div class="flex justify-between mt-4">
-            <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-bold py-2 px-4 rounded-lg flex items-center">
+            <a href="#"
+                class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-bold py-2 px-4 rounded-lg flex items-center">
                 <i class="fas fa-download mr-2"></i>
                 Dépôt
             </a>
-            <a href="#" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg flex items-center">
+            <a href="#"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg flex items-center">
                 <i class="fas fa-upload mr-2"></i>
                 Retirer
             </a>
@@ -30,77 +58,46 @@
     </div>
 
     @forelse ($produits as $produit)
-        <div class="bg-gradient-to-r from-yellow-300 to-orange-300  shadow-lg p-4 transition-transform transform hover:scale-105 mb-2">
-            <div class="flex items-center justify-between mb-2">
-                <h3 class="text-lg font-bold">{{ $produit->name }}({{ $produit->pivot_count }})</h3>
-                <span class=" font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
+    <div class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg p-4 transition-transform transform hover:scale-105 mb-2">
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="text-lg font-bold">{{ $produit->name }} ({{ $produit->pivot->count }})</h3>
+            <span class="font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div>
+                <p class="text-gray-800 mb-1">Temps restant:</p>
+                @php
+                    $createdAt = \Carbon\Carbon::parse($produit->pivot->created_at);
+                    $duration = $produit->nbjour; // Durée en jours
+                    $endDate = $createdAt->copy()->addDays($duration); // Date de fin
+                    $formattedDate = $createdAt->format('YmdHis'); // Formatage de la date pour l'utiliser dans l'ID
+                @endphp
+                <p id="countdown-{{ $produit->id }}-{{ $formattedDate }}"></p> <!-- ID unique pour le compte à rebours -->
+                <script>
+                    (function() {
+                        const endDate = new Date("{{ $endDate }}").getTime();
+                        startCountdown(endDate, 'countdown-{{ $produit->id }}-{{ $formattedDate }}');
+                    })();
+                </script>
             </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div>
-                    <p class="text-gray-800 mb-1">Temps restant:</p>
-                    @php
-    $formattedDate = \Carbon\Carbon::parse($produit->pivot_created_at)->format('YsmdHi');
-@endphp
-<p id="{{ $produit->id }}{{ $formattedDate }}"></p> <!-- ID basé sur la date de création -->
-
-                    
-<script>
-    function startCountdown(initialDays, elementId) {
-        let startDate;
-        let totalHours = initialDays * 24; // Convertir les jours en heures
-
-                            // Récupérer startDate depuis le localStorage ou initialiser si pas présent
-                            if (localStorage.getItem(`startDate-${elementId}`)) {
-                                startDate = parseInt(localStorage.getItem(`startDate-${elementId}`), 10);
-                            } else {
-                                startDate = Date.now();
-                                localStorage.setItem(`startDate-${elementId}`, startDate); // Enregistrer dans le localStorage
-                            }
-        function updateCountdown() {
-            const currentTime = Date.now();
-            const remainingTime = (totalHours * 60 * 60 * 1000) - (currentTime - startDate);
-
-            if (remainingTime <= 0) {
-                clearInterval(timerInterval);
-                document.getElementById(elementId).innerText = "Temps écoulé !";
-                return;
-            }
-
-            const remainingSeconds = Math.floor(remainingTime / 1000);
-            const days = Math.floor(remainingSeconds / (3600 * 24));
-            const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600);
-            const minutes = Math.floor((remainingSeconds % 3600) / 60);
-
-            document.getElementById(elementId).innerText = 
-                `${days} Jrs ${hours} h ${minutes} Min`;
-        }
-
-        updateCountdown(); // Appeler une fois pour initialiser
-        const timerInterval = setInterval(updateCountdown, 1000); // Met à jour chaque seconde
-    }
-
-    // Appeler la fonction avec le nombre de jours et l'ID du produit
-    startCountdown({{ $produit->nbjour }}, {{$produit->id }}{{ $formattedDate }});
-</script>
-                 
-
-                    
-                </div>
-                <div>
-                    <p class="text-gray-800 mb-1">Rendement:</p>
-                    <span>{{ number_format($produit->rendement, 2) }} %</span>
-                </div>
-                <div>
-                    <p class="text-gray-800 mb-1">Revenu quotidien:</p>
-                    <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
-                </div>
-                <div>
-                    <p class="text-gray-800 mb-1">Revenu gagné:</p>
-                    <span>{{ number_format($produit->gagner, 2) }} XAF</span>
-                </div>
+            <div>
+                <p class="text-gray-800 mb-1">Rendement:</p>
+                <span>{{ number_format($produit->rendement, 2) }} %</span>
+            </div>
+            <div>
+                <p class="text-gray-800 mb-1">Revenu quotidien:</p>
+                <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
+            </div>
+            <div>
+                <p class="text-gray-800 mb-1">Revenu gagné:</p>
+                <span>{{ number_format($produit->gagner, 2) }} XAF</span>
             </div>
         </div>
-    @empty
-        <p>Aucun produit consommé</p>
-    @endforelse
+    </div>
+@empty
+    <p>Aucun produit consommé</p>
+@endforelse
+
+
+
 </x-app-layout>
