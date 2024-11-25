@@ -60,22 +60,20 @@ if ($exists) {
     return redirect()->back()->with('success', 'Compte créé avec succès.');
 }
 
-    public function show(User $user,Pack $pack)
-    {
+public function show(User $user)
+{
+    $totalDeposits = $user->deposits()->sum('amount');
+    $totalWithdrawals = $user->withdrawals()->sum('amount');
+    $totalBalance = $user->produits()->sum('gagner');
 
-        // Trouver le pack par ID
-        $pack = Pack::findOrFail($pack->id);
-        // Trouver l'utilisateur par ID
-        $user = User::findOrFail($user->id);
-
-        // Trouver le compte de l'utilisateur (vous devrez ajuster cela en fonction de votre relation)
-        $compte = Compte::where('user_id', $user->id)
-        ->where('pack_id', $pack->id)
-        ->first(); // Si le compte n'est pas trouvé, une erreur 404 sera lancée
-
-return view('comptes.show', compact('pack', 'compte'));// Adaptez si nécessaire
-
-    }
+    return view('comptes.show', [
+        'user' => $user,
+        'totalBalance' => $totalBalance,
+        'totalDeposits' => $totalDeposits,
+        'totalWithdrawals' => $totalWithdrawals,
+        // 'transactions' => $user->transactions()->latest()->take(5)->get(),
+    ]);
+}
 
     public function subscribe(Request $request,Pack $pack )
     {

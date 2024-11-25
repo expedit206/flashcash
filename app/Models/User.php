@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Commission;
 use App\Models\Compte;
+use App\Models\Deposit;
 use App\Models\Epargne;
 use App\Models\Produit;
 use App\Models\User;
+use App\Models\Withdrawal;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,9 +53,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function comptes()
+    public function commissions()
     {
-        return $this->hasMany(Compte::class);
+        return $this->hasMany(Commission::class);
     }
    
     public function produits()
@@ -69,6 +72,22 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class);
     }
+
+    public function comptes()
+    {
+        return $this->hasMany(Compte::class);
+    }
+   
+    public function deposits()
+    {
+        return $this->hasMany(Deposit::class);
+    }
+   
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
+    }
+   
 
     // Dans app/Models/User.php
 public function isAdmin()

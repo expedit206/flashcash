@@ -158,11 +158,11 @@
             <i class="font-bold fas fa-dollar-sign fa-lg text-gray-800"></i>
             <span class="block text-sm text-gray-800">Épargne</span>
         </a>
-        <a href="#" class="text-white text-center">
+        <a href="{{ route('parrainage.index') }}" class="text-white text-center">
             <i class="fas fa-users fa-lg"></i>
             <span class="block text-sm">Mon Équipe</span>
         </a>
-        <a href="#" class="text-white text-center">
+        <a href="{{ route('compte.show', ['user'=> auth()->user()->id]) }}" class="text-white text-center">
             <i class="fas fa-user fa-lg"></i>
             <span class="block text-sm">Compte</span>
         </a>

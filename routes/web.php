@@ -5,11 +5,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\EpargneController;
+use App\Http\Controllers\ParrainageController;
 use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -38,14 +40,16 @@ Route::get('/mes-produits', [ProduitUserController::class, 'index'])->name('user
 
 Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index')->middleware('auth');
 
-Route::get('/comptes/{user}/{pack}', [CompteController::class, 'show'])->name('comptes.show')->middleware('auth');
-
+// Route::get('/comptes/{user}/{pack}', [CompteController::class, 'show'])->name('comptes.show')->middleware('auth');
+Route::get('/compte/{user}', [CompteController::class, 'show'])->name('compte.show')->middleware('auth');
 Route::middleware(['auth'])->group(function () {
     Route::get('/epargne', [EpargneController::class, 'index'])->name('epargne.index');
     Route::post('/epargne', [EpargneController::class, 'store'])->name('epargne.store');
 });
 // web.php// routes/web.php
 
+
+Route::get('/parrainage', [ParrainageController::class, 'index'])->middleware('auth')->name('parrainage.index');
 
 Route::post('/retrait/{userId}/{compteId}', [CompteController::class, 'storeRetrait'])->name('retrait.store')->middleware('auth');
 
