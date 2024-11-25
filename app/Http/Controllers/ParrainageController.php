@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ParrainageController extends Controller
 {
     public function index()
-    {
+     {
         // Récupérer l'utilisateur authentifié
         $user = auth()->user();
 
