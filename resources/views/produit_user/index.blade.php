@@ -1,19 +1,19 @@
 <x-app-layout>
     <div class="bg-gray-800 text-white p-6  shadow-lg pb-20">
-        <h2 class="text-3xl font-bold mb-4">Mes produits</h2>
+        <h2 class="text-2xl font-bold mb-4">Mes produits</h2>
         
-        <div class="flex justify-between items-center mb-4">
-            <span class="mr-2">Revenu des produits:</span>
+        <div class="flex justify-between items-center mb-2 text-sm">
+            <span class="mr-2">Revenu total :</span>
             <span class="text-green-500 font-bold">{{ number_format($totalRevenu, 2) }} XAF</span>
         </div>
     
-        <div class="flex justify-between items-center mb-4">
-            <span>Le revenu du jour:</span>
+        <div class="flex justify-between items-center mb-2 text-sm">
+            <span>Le revenu du jour :</span>
             <span class="text-green-500 font-bold">{{ number_format($revenueToday, 2) }} XAF</span>
         </div>
         
-        <div class="flex justify-between items-center mb-4">
-            <span>Produit consommé(s):</span>
+        <div class="flex justify-between items-center mb-2 text-sm">
+            <span>Produit(s) consommé(s) :</span>
             <span class="font-bold">{{ $produits->count() }}</span>
         </div>
     
@@ -30,19 +30,15 @@
     </div>
 
     @forelse ($produits as $produit)
-        <div class="bg-gradient-to-r from-yellow-300 to-orange-300 rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 mb-3">
-            <div class="flex items-center justify-between mb-4">
+        <div class="bg-gradient-to-r from-yellow-300 to-orange-300  shadow-lg p-4 transition-transform transform hover:scale-105 mb-2">
+            <div class="flex items-center justify-between mb-2">
                 <h3 class="text-lg font-bold">{{ $produit->name }}({{ $produit->pivot_count }})</h3>
                 <span class=" font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <p class="text-gray-400 mb-1">Temps restant:</p>
+                    <p class="text-gray-800 mb-1">Temps restant:</p>
                     @php
-    // Formatez la date pour qu'elle soit utilisable comme ID
-    // @dump($produit);
-    // @dump($produit->pivot_created_at);
-    // @dump(\Carbon\Carbon::parse($produit->pivot_created_at)->format('Y/m/d/H/i/s'));
     $formattedDate = \Carbon\Carbon::parse($produit->pivot_created_at)->format('YsmdHi');
 @endphp
 <p id="{{ $produit->id }}{{ $formattedDate }}"></p> <!-- ID basé sur la date de création -->
@@ -50,8 +46,8 @@
                     
 <script>
     function startCountdown(initialDays, elementId) {
-        let totalHours = initialDays * 24; // Convertir les jours en heures
         let startDate;
+        let totalHours = initialDays * 24; // Convertir les jours en heures
 
                             // Récupérer startDate depuis le localStorage ou initialiser si pas présent
                             if (localStorage.getItem(`startDate-${elementId}`)) {
@@ -91,15 +87,15 @@
                     
                 </div>
                 <div>
-                    <p class="text-gray-400 mb-1">Rendement:</p>
+                    <p class="text-gray-800 mb-1">Rendement:</p>
                     <span>{{ number_format($produit->rendement, 2) }} %</span>
                 </div>
                 <div>
-                    <p class="text-gray-400 mb-1">Revenu quotidien:</p>
+                    <p class="text-gray-800 mb-1">Revenu quotidien:</p>
                     <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
                 </div>
                 <div>
-                    <p class="text-gray-400 mb-1">Revenu gagné:</p>
+                    <p class="text-gray-800 mb-1">Revenu gagné:</p>
                     <span>{{ number_format($produit->gagner, 2) }} XAF</span>
                 </div>
             </div>

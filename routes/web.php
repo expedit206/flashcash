@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/mes-produits', [ProduitUserController::class, 'index'])->name('user.produits.index')->middleware('auth');
+Route::post('/produit_user/store', [ProduitUserController::class, 'store'])->name('produit.user.store');
 
 Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index')->middleware('auth');
 

@@ -64,4 +64,22 @@ class ProduitUserController extends Controller
     // S'assurer que la durée restante ne soit pas négative
     return max(0, $remainingTimeInHours);
 }
+
+public function store(Request $request)
+{
+    // Validation des données
+    $request->validate([
+        'produit_id' => 'required|exists:produits,id',
+        // Ajoutez d'autres validations si nécessaire
+    ]);
+    $userId=Auth::id();
+
+    ProduitUser::create([
+        'user_id' => $userId,
+        'produit_id' => $request->produit_id,
+    ]);
+
+    // Redirection avec un message de succès
+    return redirect()->route('produits.index')->with('success', 'Produit Acheter avec succès!');
+}
 }

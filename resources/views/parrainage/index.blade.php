@@ -31,7 +31,7 @@
             <div class="bg-gradient-to-r from-yellow-300 to-orange-300 rounded-lg shadow-lg p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
                 <h3 class="text-lg md:text-xl font-semibold flex flex-col items-center">
                     <i class="fas fa-crown text-3xl text-yellow-500 mr-2"></i>
-                    VIP 1
+                    Niveau 1
                 </h3>
                 <div class="ml-auto">
                     <p>Investissement: <strong>{{ number_format($totalFirstDepositsVip1, 2, ',', ' ') }} XAF</strong></p>
@@ -46,7 +46,7 @@
             <div class="bg-gradient-to-r from-yellow-300 to-orange-300 rounded-lg shadow-lg p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
                 <h3 class="text-lg md:text-xl font-semibold flex flex-col items-center">
                     <i class="fas fa-crown text-3xl text-green-800 mr-2"></i>
-                    VIP 2
+                    Niveau 2
                 </h3>
                 <div class="ml-auto">
                     <p>Investissement: <strong>{{ number_format($totalFirstDepositsVip2, 2, ',', ' ') }} XAF</strong></p>
@@ -61,7 +61,7 @@
             <div class="bg-gradient-to-r from-yellow-300 to-orange-300  rounded-lg shadow-lg p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
                 <h3 class="text-lg md:text-xl font-semibold flex flex-col items-center justify-center">
                     <i class="fas fa-crown text-3xl text-blue-800 mr-2"></i>
-                    VIP 3
+                    Niveau 3
                 </h3>
                 <div class="ml-auto">
                     <p>Investissement: <strong>{{ number_format($totalFirstDepositsVip3, 2, ',', ' ') }} XAF</strong></p>
