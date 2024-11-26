@@ -90,8 +90,9 @@
                 <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
             </div>
             <div>
+                {{-- @dd($produit) --}}
                 <p class="text-gray-800 mb-1">Revenu gagné:</p>
-                <span>{{ number_format($produit->gagner, 2) }} XAF</span>
+                <span>{{ number_format($produit->pivot->gagner, 2) }} XAF</span>
             </div>
         </div>
     </div>

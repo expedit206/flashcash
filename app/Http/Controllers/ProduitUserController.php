@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Produit;
 use App\Models\ProduitUser;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,43 @@ class ProduitUserController extends Controller
     {
         // Récupérer l'utilisateur authentifié
         $user = Auth::user();
+        $produitUsers = ProduitUser::where('user_id',$user->id )->get();
+        // dd($produitUsers);
+
+        foreach ($produitUsers as $produitUser) {
+        // die;
+        $produit = Produit::find($produitUser->produit_id) ;
+        // dd($produitUser);    
         
+    if ($produitUser) {
+           
+                // Passer la date au JavaScript
+            $lastIncrementedAt = new DateTime($produitUser->last_incremented_at); // Exemple : remplacez par votre valeur
+            $now = new DateTime('now'); // Date actuelle
+            // Convertir les dates en timestamp
+            $lastIncrementedAtTimestamp = $lastIncrementedAt->getTimestamp();
+            $nowTimestamp = $now->getTimestamp();
+            
+            // Calculer la différence en jours
+            $secondsPerDay = 60*60*24 ; // Nombre de secondes dans un jour
+            $daysElapsed = ($nowTimestamp - $lastIncrementedAtTimestamp) / $secondsPerDay;
+   
+        
+        // Vérifiez si le nombre de jours est supérieur ou égal à 1
+        // echo "La différence en jours est : " . $daysElapsed . "<br>";
+        if ($daysElapsed >= 1) {
+            if ($daysElapsed >= 2) {
+                $produitUser->gagner += $produit->gainJ;
+                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at);
+                // Ajouter un jour
+                $produitUser->last_incremented_at->modify('+1 day');
+            }
+            $produitUser->save();
+        } 
+            }
+   
+
+    }
         // Récupérer les produits de l'utilisateur avec les données de la table pivot
         $produits = $user->produits()
         ->withPivot(['gagner', 'duration', 'count', 'last_incremented_at', 'created_at'])
@@ -32,9 +69,7 @@ class ProduitUserController extends Controller
         });
 
         // Calculer la durée restante pour chaque produit
-        foreach ($produits as $produit) {
-            $produit->remaining_duration = $this->calculateRemainingDuration($produit);
-        }
+
 
         return view('produit_user.index', compact('produits', 'totalRevenu', 'revenueToday'));
     }
@@ -89,7 +124,7 @@ public function store(Request $request)
     ->first();
     
     if ($produitUserExist && $produit->stock <= $produitUserExist->count) {
-        return redirect()->route('produits.index')->with('error', 'Le produit est en rupture de stock.');
+        return redirect()->route('produits.index')->with('error', 'Vous avez épuisé votre stock.');
     }
 
     $produitUser = new ProduitUser();

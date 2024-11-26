@@ -26,7 +26,7 @@ class ProduitUserSeeder extends Seeder
 
         // Créer 5 entrées pour la table produit_user
         for ($i = 0; $i < 5; $i++) {
-            // Date de création unique en ajoutant une seconde basée sur l'index
+            // Date de création unique en ajoutant une se   conde basée sur l'index
             $createdAt = now()->subDays(rand(0, 30))->addSeconds($i);
             $i=$i+3;
             // Insérer dans la table produit_user
@@ -36,7 +36,7 @@ class ProduitUserSeeder extends Seeder
                 'gagner' => rand(1000, 5000), // Montant aléatoire gagné
                 'duration' => now()->subHours(rand(1, 72)), // Durée aléatoire
                 'count' => rand(1, 10), // Quantité aléatoire
-                'last_incremented_at' => now()->subHours(rand(1, 24)), // Dernier incrément aléatoire
+                'last_incremented_at' => now(), // Dernier incrément aléatoire
                 'created_at' => $createdAt, // Date de création unique
                 'updated_at' => now(),
             ]);

@@ -20,9 +20,12 @@
     </head>
     <body class="font-sans text-gray-900 antialiased ">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-800">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <div class="flex justify-center">
+                <a href="/" class="flex justify-center h-[60%] w-[60%] md:h[70%] md:w-[50%] lg:w-[25%]">
+                    <div class="flex justify-center">
+
+                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    </div>
                 </a>
             </div>
 
