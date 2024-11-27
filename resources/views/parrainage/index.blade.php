@@ -73,6 +73,7 @@
                     <i class="fas fa-chevron-right text-2xl text-gray-600"></i>
                 </div>
             </div>
+            <a href="{{ route('filleuls') }}">iciciiiiiiiiiiiiiiiii</a>
         </div>
         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-8 shadow-md">
             <h2 class="text-xl md:text-2xl font-bold text-center  mb-4">Informations de Parrainage</h2>

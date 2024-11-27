@@ -28,7 +28,6 @@
 
         <div class="bg-gray-800 text-white p-6  shadow-lg pb-6">
             <h2 class="text-2xl font-bold mb-4">Mes produits</h2>
-
         <div class="flex justify-between items-center mb-2 text-sm">
             <span class="mr-2">Revenu total :</span>
             <span class="text-green-500 font-bold">{{ number_format($totalRevenu, 2) }} XAF</span>

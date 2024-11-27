@@ -15,6 +15,7 @@ class ProduitUserController extends Controller
 {
     public function index()
     {
+        // die;
         // Récupérer l'utilisateur authentifié
         $user = Auth::user();
         $produitUsers = ProduitUser::where('user_id',$user->id )->get();
@@ -50,7 +51,7 @@ class ProduitUserController extends Controller
             }
             $produitUser->save();
         } 
-            }
+     }
    
 
     }
@@ -160,6 +161,6 @@ public function store(Request $request)
     $produit->save(); // Enregistrer la mise à jour du stock
 
     // Redirection avec un message de succès
-    return redirect()->route('produit_user.index')->with('success', 'Produit acheté avec succès!');
+    return redirect()->route('produit.user.index')->with('success', 'Produit acheté avec succès!');
 }
 }

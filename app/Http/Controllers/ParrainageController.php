@@ -65,4 +65,33 @@ class ParrainageController extends Controller
 
         return $totalFirstDeposits;
     }
+
+    
+    public function showFilleul()
+    {
+        $user = \Auth::user();
+        $niveaux = $this->getFilleuls($user);
+        return view('parrainage.filleuls', compact('niveaux'));
+    }
+
+    private function getFilleuls(User $user)
+    {
+        $niveaux = [];
+
+        // Niveau 1 : Filleuls directs
+        $niveaux[1] = $user->filleuls;
+    
+        // Niveau 2 : Filleuls des filleuls directs
+        $niveaux[2] = $user->filleuls()->with('filleuls')->get()->flatMap(function($filleul) {
+            return $filleul->filleuls; // Récupérer les filleuls de chaque filleul direct
+        });
+    
+        // Niveau 3 : Filleuls des filleuls de niveau 2
+        $niveaux[3] = $niveaux[2]->flatMap(function($filleul) {
+            return $filleul->filleuls; // Récupérer les filleuls de chaque filleul de niveau 2
+        });
+
+        // dd($niveaux);
+        return $niveaux;
+    }
 }

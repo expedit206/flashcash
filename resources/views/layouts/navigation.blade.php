@@ -179,7 +179,7 @@ setTimeout(function() {
             <i class="fas fa-home fa-lg"></i>
             <span class="block text-sm">Accueil</span>
         </a>
-        <a href="{{ route('user.produits.index') }}" class="text-white text-center {{ request()->is('mes-produits') ? 'bg-yellow-400 bg-opacity-70 rounded-lg p-2' : '' }}">
+        <a href="{{ route('produit.user.index') }}" class="text-white text-center {{ request()->is('mes-produits') ? 'bg-yellow-400 bg-opacity-70 rounded-lg p-2' : '' }}">
             <i class="fas fa-box fa-lg"></i>
             <span class="block text-sm">Produits</span>
         </a>

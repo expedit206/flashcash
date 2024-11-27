@@ -102,7 +102,7 @@
         
                     // Initialisation du compte à rebours
                     createdAt = "{{ $epargne->pivot->created_at }}";
-                    startCountdown("{{ $uniqueId }}", createdAt, 7); // 7 jours
+                    startCountdown("{{ $uniqueId }}", createdAt, {{ $epargne->duree  }}); // 7 jours
                 </script>
             @endforeach
         </div>

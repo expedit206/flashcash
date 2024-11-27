@@ -71,9 +71,20 @@ class User extends Authenticatable
 
     public function parrain()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'parrain_id'); // Relation avec le parrain
     }
 
+   
+    public function filleuls()
+    {
+        return $this->hasMany(User::class, 'parrain_id'); // Filleuls directs
+    }
+
+    public function niveaux()
+    {
+        return $this->hasMany(User::class, 'parrain_id')->with('filleuls');
+    }
+    
     public function comptes()
     {
         return $this->hasMany(Compte::class);
