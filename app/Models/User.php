@@ -63,9 +63,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Produit::class, 'produit_user')->withPivot(['gagner', 'duration', 'count', 'last_incremented_at']);
     }
 
+  
     public function epargnes()
     {
-        return $this->belongsToMany(Epargne::class, 'epargne_user');
+        return $this->belongsToMany(Epargne::class)->withPivot('montant','id')->withTimestamps();
     }
 
     public function parrain()
@@ -88,6 +89,10 @@ class User extends Authenticatable
         return $this->hasMany(Withdrawal::class);
     }
    
+//     public function epargnes()
+// {
+//     return $this->belongsToMany(Epargne::class)->withPivot('montant')->withTimestamps();
+// }
 
     // Dans app/Models/User.php
 public function isAdmin()

@@ -5,12 +5,14 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\EpargneController;
+use App\Http\Controllers\EpargneUserController;
 use App\Http\Controllers\ParrainageController;
 use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -45,7 +47,11 @@ Route::get('/comptes', [CompteController::class, 'index'])->name('comptes.index'
 Route::get('/compte/{user}', [CompteController::class, 'show'])->name('compte.show')->middleware('auth');
 Route::middleware(['auth'])->group(function () {
     Route::get('/epargne', [EpargneController::class, 'index'])->name('epargne.index');
-    Route::post('/epargne', [EpargneController::class, 'store'])->name('epargne.store');
+    // Route::post('/epargne', [EpargneController::class, 'store'])->name('epargne.store');
+   
+    Route::post('/mes-epargne/store', [EpargneUserController::class, 'store'])->name('epargne.user.store');
+    Route::get('/mes-epargne/index', [EpargneUserController::class, 'index'])->name('epargne.user.index');
+    Route::post('/mes-epargne/retirer/{EpargneUser}', [EpargneUserController::class, 'retirer'])->name('epargne.user.retirer');
 });
 // web.php// routes/web.php
 

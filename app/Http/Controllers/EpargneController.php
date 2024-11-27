@@ -12,7 +12,9 @@ class EpargneController extends Controller
     {
         $epargnes = Epargne::get();
         // die;
-        return view('epargne.index', compact('epargnes'));
+        $user = \Auth::user();
+        $soldeTotal = $user->solde_total; // Assurez-vous que cela correspond à votre logique d'affaires
+        return view('epargne.index', compact('epargnes', 'soldeTotal'));
 
     }
 

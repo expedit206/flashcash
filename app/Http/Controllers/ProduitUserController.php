@@ -102,6 +102,8 @@ class ProduitUserController extends Controller
     // S'assurer que la durée restante ne soit pas négative
     return max(0, $remainingTimeInHours);
 }
+
+
 public function store(Request $request)
 {
     // Validation des données
@@ -115,6 +117,19 @@ public function store(Request $request)
     // Récupérer le produit
     $produit = Produit::find($request->produit_id);
 
+
+    if ($produit->stock == 0) {
+        return redirect()->route('produits.index')->with('error', 'Produit non disponible en stock.');
+    }
+// dd($user->solde_total);
+    // Vérifier si l'utilisateur a suffisamment de fonds
+    if ($user->solde_total < $produit->montant) {
+        return redirect()->route('produits.index')->with('error', 'Fonds insuffisants pour acheter ce produit.');
+    }else{
+        $user->solde_total -= $produit->montant;
+        $user->save();
+
+    }
     // Vérifier la disponibilité du stock
     
     // Vérification si l'utilisateur a déjà acheté ce produit
@@ -138,7 +153,6 @@ public function store(Request $request)
     $produitUser->user_id = $user->id;
     $produitUser->produit_id = $produit->id;
     $produitUser->gagner = 0; // Initialiser à zéro
-
     $produitUser->created_at = now(); // Date actuelle
     $produitUser->save(); // Enregistrement dans la base de données
 
@@ -146,6 +160,6 @@ public function store(Request $request)
     $produit->save(); // Enregistrer la mise à jour du stock
 
     // Redirection avec un message de succès
-    return redirect()->route('produits.index')->with('success', 'Produit acheté avec succès!');
+    return redirect()->route('produit_user.index')->with('success', 'Produit acheté avec succès!');
 }
 }

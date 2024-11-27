@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->integer('telephone')->unique();
             $table->string('password');
+            $table->decimal('solde_total', 15, 2)->default(0); // Total montant
+            $table->decimal('depot_total', 15, 2)->default(0); // Total dépôt
+            $table->decimal('retrait_total', 15, 2)->default(0); // Total retrait
             $table->foreignId('parrain_id')->nullable()->constrained('users');
             $table->rememberToken();
             $table->timestamps();

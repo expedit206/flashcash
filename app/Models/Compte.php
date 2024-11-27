@@ -18,10 +18,6 @@ class Compte extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pack()
-    {
-        return $this->belongsTo(Pack::class);
-    }
 
     // Méthode pour incrémenter le solde actuel
     public function incrementerSolde()
