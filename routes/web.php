@@ -56,8 +56,8 @@ Route::middleware(['auth'])->group(function () {
 // web.php// routes/web.php
 
 
-Route::get('/parrainage', [ParrainageController::class, 'index'])->middleware('auth')->name('parrainage.index');
-Route::get('/parrainage/filleuls', [ParrainageController::class, 'showFilleul'])->name('filleuls');
+Route::get('/parrainage', [ParrainageController::class, 'index'])->middleware('auth')->name('parrainage.index')->middleware('auth');
+Route::get('/parrainage/filleuls', [ParrainageController::class, 'showFilleul'])->name('filleuls')->middleware('auth');
 
 Route::post('/retrait/{userId}/{compteId}', [CompteController::class, 'storeRetrait'])->name('retrait.store')->middleware('auth');
 
