@@ -3,7 +3,7 @@
 <x-app-layout>
     <div class=" pb-20 text-sm">
         <div class="bg-gray-800 text-white p-2 shadow-lg">
-            <h1 class="text-2xl font-bold mb-2">Épargnes</h1>
+            <h1 class="text-2xl font-bold mb-2 text-yellow-500">Épargnes</h1>
         
             @if (session('success'))
                 <div class="bg-green-500 text-white px-4 py-2 rounded mb-4">{{ session('success') }}</div>

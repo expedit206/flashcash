@@ -11,7 +11,9 @@ use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TacheController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -91,6 +93,8 @@ Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->nam
 // CRUD sur les comptes
 
 
+// Route pour afficher les tâches de parrainage
+Route::get('/taches', [TacheController::class, 'index'])->name('taches.index');
 Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users.refer');
 
 
