@@ -16,11 +16,11 @@
         
                 <div class="flex justify-between items-center mb-2 text-sm ml-3">
                     <span>Gains accumulés :</span>
-                    <span class="text-yellow-500 font-bold">{{ number_format($totalCommissions, 2, ',', ' ') }} XAF</span>
+                    <span class="text-yellow-500 font-bold">{{ config('parrainage.taux_interet.vip1') * $totalFirstDepositsVip1 / 100 + config('parrainage.taux_interet.vip2') * $totalFirstDepositsVip2 / 100 +config('parrainage.taux_interet.vip3') * $totalFirstDepositsVip3 / 100 }} XAF</span>
                 </div>
         
                 <div class="flex justify-between items-center mb-2 text-sm ml-3">
-                    <span>Solde total :</span>
+                    <span>Mon Solde :</span>
                     <span class="text-yellow-500 font-bold">{{ number_format($solde_total, 2, ',', ' ') }} XAF</span>
                 </div>
         

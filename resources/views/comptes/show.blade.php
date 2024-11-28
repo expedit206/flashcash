@@ -42,7 +42,7 @@
                 <div class="bg-gradient-to-r from-blue-300 to-blue-500 rounded-lg shadow-lg p-4  py-1 transition-transform transform hover:scale-105 flex items-center">
                     <i class="fas fa-wallet text-3xl text-blue-800 mr-2"></i>
                     <div>
-                        <p class="text-sm font-semibold">Solde total</p>
+                        <p class="text-sm font-semibold">Mon Solde </p>
                         <p class="text-sm">{{ number_format($totalBalance, 2, ',', ' ') }} XAF</p>
                     </div>
                 </div>

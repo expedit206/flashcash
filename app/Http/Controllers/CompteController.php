@@ -65,7 +65,7 @@ public function show(User $user)
     $totalDeposits = $user->deposits()->sum('amount');
     $totalWithdrawals = $user->withdrawals()->sum('amount');
     $totalBalance = $user->produits()->sum('gagner');
-
+// dd($totalDeposits);
     return view('comptes.show', [
         'user' => $user,
         'totalBalance' => $totalBalance,
@@ -74,54 +74,7 @@ public function show(User $user)
         // 'transactions' => $user->transactions()->latest()->take(5)->get(),
     ]);
 }
-
-    public function subscribe(Request $request,Pack $pack )
-    {
-
-        return view("produits.subscribe",compact('pack'));
-    }
-
-    public function showRetrait($id)
-    {
-        $item = User::findOrFail($id);
-        return view('comptes.showRetrait', compact('item'));
-    }
-// app/Http/Controllers/RetraitController.php
-public function storeRetrait(Request $request, $userId, $compteId)
-{
-    $compte = Compte::findOrFail($compteId);
-    $user = User::findOrFail($userId);
-
-    // Validation du montant
-    $request->validate([
-        'montant' => 'required|numeric|min:1000',
-    ]);
-
-    $montant = $request->input('montant');
-
-    // Vérifiez si le montant est disponible
-    if ($compte->solde_actuel < $montant) {
-        return redirect()->route('comptes.show', ['user' => $userId, 'pack' => $compte->pack_id])
-                         ->with('error', 'Montant insuffisant pour le retrait.');
-    }
-    if ( $compte->a_fait_retrait =='true') {
-        return redirect()->route('comptes.show', ['user' => $userId, 'pack' => $compte->pack_id])
-                         ->with('error', 'Veuillez attendre l\'arrive du retrait precedent!!!');
-    }
-
-    // Effectuer le retrait
-    $compte->solde_actuel -= $montant;
-
-    $compte->montant_retrait = $montant;
-    $compte->montant_retrait_total += $montant;
-    $compte->save();
-
-    // Marquer que le retrait a été effectué
-    $compte->update(['a_fait_retrait' => true]);
-$frais= ($montant*10)/100;
-    return redirect()->route('comptes.show', ['user' => $userId, 'pack' => $compte->pack_id])
-                     ->with('success', "Retrait effectué avec succès. veuillez patientez. Frais de retrait : $frais FCFA"  );
-}
+ 
 public function destroy($id)
 {
     // Validation pour vérifier si le compte existe
@@ -138,53 +91,5 @@ public function destroy($id)
     return redirect()->route('admin.all_comptes')->with('success', 'Compte supprimé avec succès.');
 }
 
-
-public function actualiser($userId, $compteId)
-{
-    // Récupérer l'utilisateur et le compte concernés
-    $user = DB::table('users')->find($userId);
-    $compte = DB::table('comptes')->find($compteId);
-    $pack = Pack::whereRelation('comptes', 'id', $compteId)->first();
-
-    if (!$user || !$compte) {
-        return redirect()->back()->withError('Utilisateur ou compte non trouvé.');
-    }
-
-    $now = Carbon::now();
-    $lastUpdate = Carbon::parse($compte->last_incremented_at);
-
-    // Calculer la différence en jours
-    $diffInDays = $lastUpdate->diffInDays($now);
-// dump($now);
-// dump($lastUpdate);
-// dump($diffInDays);
-// die;
-    // Si au moins un jour est passé, on incrémente le solde
-    if ($diffInDays >= 1) {
-        if(Auth::user()->id=3){
-            $montantIncremente = $pack->montant * 0.10; // 15% du montant du compte
-        }else{
-            $montantIncremente = $pack->montant * 0.16; // 15% du montant du compte
-
-        }
-        $soldeActuel = DB::table('comptes')->where('user_id', $user->id)->where('id', $compte->id)->value('solde_actuel');
-
-        // Mise à jour du solde actuel dans la table comptes
-        Compte::where('id', $compte->id)->where('user_id', $user->id)->update([
-            'solde_actuel' => $soldeActuel + $montantIncremente,
-        ]);
-
-        // Mettre à jour la date de la dernière actualisation de l'utilisateur
-        DB::table('comptes')->where('user_id', $user->id)->update([
-            'last_incremented_at' => $now,
-        ]);
-
-        return redirect()->back()->with('success', 'Le solde a été actualisé avec succès.');
-    } else {
-        // Temps restant avant la prochaine actualisation, en jours
-        $remainingTime = $lastUpdate->addDay()->diffForHumans($now, true);
-        return redirect()->back()->withError("Veuillez attendre encore $remainingTime avant de pouvoir actualiser.");
-    }
-}
 
 }
