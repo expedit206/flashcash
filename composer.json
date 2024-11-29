@@ -6,10 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-<<<<<<< HEAD
-=======
-       /// "ext-pgsql": "*",
->>>>>>> 59e033202f612d2a7229f30318a3b18af5705974
         "cinetpay/cinetpay-php": "^1.9",
         "doctrine/dbal": "^4.1",
         "laravel/framework": "^11.9",

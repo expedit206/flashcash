@@ -7,6 +7,7 @@ use App\Models\Epargne;
 use Illuminate\Http\Request;
 
 
+
 class EpargneController extends Controller
 {
     public function index()
