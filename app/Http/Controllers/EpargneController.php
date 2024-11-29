@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Epargne;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class EpargneController extends Controller
 {
