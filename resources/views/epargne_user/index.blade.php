@@ -5,26 +5,27 @@
 
 
     <div class="bg-gray-800 text-white p-2 px-6 shadow-lg pb-2">
-        <h2 class="text-2xl font-bold mb-4">Mes Épargnes</h2>
+        <h2 class="text-2xl font-bold mb-4 text-yellow-600">Mes Épargnes</h2>
     
-        <div class="flex justify-between items-center mb-2 text-sm">
-            <span class="mr-2">Mon Solde :</span>
-            <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
-        </div>
-    
-        <div class="flex justify-between items-center mb-2 text-sm">
+        
+        <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span>Montant  épargné :</span>
             <span class="text-green-500 font-bold">{{ number_format($montantEpargneTotal, 2) }} XAF</span>
         </div>
     
-        <div class="flex justify-between items-center mb-2 text-sm">
+        <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span>Nombre d'épargnes :</span>
             <span class="font-bold">{{ $epargnes->count() }}</span>
         </div>
-    
-        <div class="flex justify-between items-center text-sm">
+        
+        <div class="flex justify-between items-center text-sm pl-2">
             <span>Montant a retirer :</span>
             <span class="text-green-500 font-bold">{{ number_format($revenuTotalEpargne, 2) }} XAF</span>
+        </div>
+
+        <div class="flex justify-between items-center mt-2 text-sm pl-2">
+            <span class="mr-2">Mon Solde :</span>
+            <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
         </div>
     </div>
 
@@ -122,5 +123,5 @@
     
         </div>
     </div>
-    
+    P087313804424G  71335
 </x-app-layout>

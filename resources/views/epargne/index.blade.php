@@ -62,7 +62,7 @@
                         <form action="{{ route('epargne.user.store') }}" method="POST">
                             @csrf
                             <input type="number" name="montant" class="w-full mb-1"
-                                placeholder="Montant d'épargne (100 XAF Minimum)" required> <!-- Montant d'exemple -->
+                                placeholder="Montant d'épargne (100 XAF Minimum)" min= 100 required> <!-- Montant d'exemple -->
                             <input type="text" hidden name="epargne_id" value="{{ $epargne->id }}">
 
                             <button type="submit"

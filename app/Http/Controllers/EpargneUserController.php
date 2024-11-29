@@ -69,10 +69,20 @@ $user->epargnes()->attach($request->epargne_id, [
     $epargneUser = $epargneUser->first();
         // Vérifiez si l'utilisateur a cette épargne
         if ($epargneUser) {
+            $createdAt = strtotime($epargneUser->created_at);
+            $duree = $epargneUser->epargne->duree; // Durée en jours
+            // Supposons que le modèle Epargne a un champ rendement
+            $dateLimite = $createdAt + ($duree * 24 * 60 * 60); // Timestamp de la date limite
+            
+            // Vérifier si le délai est écoulé
+            if ($dateLimite > time()) {
+                return redirect()->route('epargne.user.index')->with('error', 'Le délai pour retirer cette épargne n\'est pas encore écoulé.');
+            }
             // Calculer le montant à ajouter au solde
             $montant = $epargneUser->montant; // Montant de l'épargne
             // dd($montant);
-            $rendement = $epargneUser->epargne->rendement; // Supposons que le modèle Epargne a un champ rendement
+            $rendement = $epargneUser->epargne->rendement; 
+            // Supposons que le modèle Epargne a un champ rendement
             // Calcul du total à ajouter au solde
             $totalAjoute = $montant * (1 + $rendement); // Montant + Rendement
     

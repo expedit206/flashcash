@@ -70,9 +70,9 @@ class ProduitUserController extends Controller
         });
 
         // Calculer la durée restante pour chaque produit
+        $soldeTotal = $user->solde_total;
 
-
-        return view('produit_user.index', compact('produits', 'totalRevenu', 'revenueToday'));
+        return view('produit_user.index', compact('produits', 'totalRevenu', 'revenueToday', 'soldeTotal'));
     }
 
     /**

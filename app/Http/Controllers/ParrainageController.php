@@ -64,6 +64,8 @@ class ParrainageController extends Controller
             'totalFirstDepositsNiveau3'
         ));
     }
+ 
+    
     public function getFilleuls(User $user)
     {
         $niveaux = [];

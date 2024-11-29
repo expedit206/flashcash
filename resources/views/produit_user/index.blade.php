@@ -28,20 +28,23 @@
 
         <div class="bg-gray-800 text-white p-6  shadow-lg pb-6">
             <h2 class="text-2xl font-bold mb-4 text-yellow-500">Mes produits</h2>
-        <div class="flex justify-between items-center mb-2 text-sm">
+        <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span class="mr-2">Revenu total :</span>
             <span class="text-green-500 font-bold">{{ number_format($totalRevenu, 2) }} XAF</span>
-        </div>
-        maintenant que nous avons gerer deja tous ca, je voudrais maintenant gerer les tache de parrainage je t'explique: les tache de parainage sont les bonus que les utilisateur recois sur leur nombre de parainage direct. comme exemple de tache: parrainer 3 persone qui achete le produit T-cash et gagner 2500,parrainer 10 personne et gagner 7000 ainsi de suite, et peut etre les tache speciale, parrainner 5 personne qui achete le t-cash(de 5 a 10) et gagner 10000.  
+        </div>  
 
-        <div class="flex justify-between items-center mb-2 text-sm">
+        <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span>revenu d'aujourd'hui :</span>
             <span class="text-green-500 font-bold">{{ number_format($revenueToday, 2) }} XAF</span>
         </div>
 
-        <div class="flex justify-between items-center mb-2 text-sm">
+        <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span>Produit(s) consommé(s) :</span>
             <span class="font-bold">{{ $produits->count() }}</span>
+        </div>
+        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+            <span>Mon Solde :</span>
+            <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
         </div>
 
         <div class="flex justify-between mt-4">
