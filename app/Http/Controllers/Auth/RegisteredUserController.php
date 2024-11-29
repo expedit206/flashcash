@@ -63,7 +63,7 @@ class RegisteredUserController extends Controller
 
         // Génération du lien d'affiliation unique
         $user->generateReferralLink();
-
+        
         event(new Registered($user));
 
         Auth::login($user);
