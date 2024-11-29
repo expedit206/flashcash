@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\produit;
+use App\Models\Produit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class produitController extends Controller
+class ProduitController extends Controller
 {
     // Afficher la liste des produits
     public function index()
     {
-        $produits = produit::orderBy('id','asc')->get();
+        $produits = Produit::orderBy('id','asc')->get();
         // dd($produits);
 $user=Auth::user();
         return view('produits.index', compact('produits','user'));
