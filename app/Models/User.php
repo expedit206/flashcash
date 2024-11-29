@@ -116,7 +116,7 @@ public function isAdmin()
 
 public function generateReferralLink()
 {
-    $this->referral_link = url('/register') . '?user_id=' . $this->id;
+    // $this->referral_link = url('/register') . '?user_id=' . $this->id;
     $this->save();
 }
 
