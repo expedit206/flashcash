@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class produitController extends Controller
+class ProduitController extends Controller
 {
     // Afficher la liste des produits
     public function index()
