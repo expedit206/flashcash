@@ -12,6 +12,7 @@ class EpargneUser extends Model
  
     protected $table ='epargne_user';
     protected $fillable = ['user_id', 'epargne_id', 'montant'];
+    protected $with = ['epargne', 'user'];
 
 
     public function epargne()
