@@ -36,13 +36,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        dd($user);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'digits_between:9,15'],  // Le numéro doit avoir entre 9 et 15 chiffres
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        
+        dd(User::class);
         $user = User::create([
             'name' => $request->name,
             'telephone' => $request->telephone,
