@@ -112,5 +112,10 @@ public function isAdmin()
     return $this->telephone === 696428651 && \Hash::check('dominique2006', $this->password);
 }
 
+public function generateReferralLink()
+{
+    $this->referral_link = url('/register') . '?code=' . $this->id;
+    $this->save();
+}
 
 }

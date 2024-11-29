@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\produitseeder;
+use Database\Seeders\Produitseeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CompteSeeder;
 
