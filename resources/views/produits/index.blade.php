@@ -6,12 +6,12 @@
             <img src="/img/image.png" alt="Flash Cash Finance" class="w-[100vw] h-36">
         </div>
         <!-- Boutons Dépôt et Retrait -->
-        <div class="flex justify-between mb-2 px-1 text-sm" >
-            <a href=""
+        <div class="flex justify-between mb-2 px-1 text-sm">
+            <a href="{{ route('withdraw.form') }}"
                 class="bg-green-500 text-white rounded-lg px-8 py-1 hover:bg-green-600 transition flex items-center">
                 <i class="fas fa-plus-circle mr-2"></i> Dépôt
             </a>
-            <a href=""
+            <a href="{{ route('withdraw.form') }}"
                 class="bg-red-500 text-white rounded-lg px-8 py-1 hover:bg-red-600 transition flex items-center">
                 <i class="fas fa-minus-circle mr-2"></i> Retrait
             </a>
