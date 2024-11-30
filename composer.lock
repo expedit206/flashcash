@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93e79eb40f5d2db6ffc0ddadc98915d2",
+    "content-hash": "acfadb1f537f3b3cfdacf13a14f40f22",
     "packages": [
         {
             "name": "brick/math",
@@ -1259,6 +1259,63 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "hachther/laravel-mesomb",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hachther/laravel-mesomb.git",
+                "reference": "5df5103809505d125b1cbdf80c0013b1c93e56cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hachther/laravel-mesomb/zipball/5df5103809505d125b1cbdf80c0013b1c93e56cd",
+                "reference": "5df5103809505d125b1cbdf80c0013b1c93e56cd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.7|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "illuminate/support": "~5.7|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.2.5|^8.0|^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.1",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.19",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpunit/phpunit": "^9.5.10",
+                "spatie/ray": "^1.30"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hachther\\MeSomb\\MeSombServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hachther\\MeSomb\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hachther LLC",
+                    "email": "contact@hachther.com"
+                }
+            ],
+            "description": "A laravel wrapper on top of Mesomb Payment API",
+            "support": {
+                "issues": "https://github.com/hachther/laravel-mesomb/issues",
+                "source": "https://github.com/hachther/laravel-mesomb/tree/1.8.1"
+            },
+            "time": "2024-10-07T14:48:51+00:00"
         },
         {
             "name": "laravel/framework",
@@ -8087,5 +8144,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

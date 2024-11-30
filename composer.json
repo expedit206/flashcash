@@ -6,8 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "cinetpay/cinetpay-php": "^1.9",
         "doctrine/dbal": "^4.1",
+        "hachther/laravel-mesomb": "^1.8",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
     },
