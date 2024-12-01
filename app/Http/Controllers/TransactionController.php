@@ -81,7 +81,7 @@ class TransactionController extends Controller
             'amount' => 'required|numeric|min:1',
         ]);
         // Créer une instance de Collect pour le retrait
-        $paymentRequest = new Collect($validatedData['phone'], $validatedData['amount'], 'MTN', 'CM');
+        $paymentRequest = new Collect($validatedData['phone'], $validatedData['amount'], 'ORANGE', 'CM');
 
         // Processus de paiement
         // die('kjk');
