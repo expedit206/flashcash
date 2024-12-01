@@ -16,7 +16,7 @@
 
         <div class="mb-4">
             <p class="block text-sm font-medium text-gray-700">Choisissez le fournisseur :</p>
-            <div class="flex items-center mt-2 mb-4">
+            <div class="flex items-center mt-2 mb-4 gap-6">
                 <label class="flex items-center mr-4 cursor-pointer">
                     <input type="radio" name="provider" value="orange" required class="hidden" onchange="updateSelection('orange')">
                     <div id="orange-container" class="border border-gray-300 rounded-full p-2 hover:shadow-lg transition-shadow duration-300 flex items-center justify-center h-20 w-20">
