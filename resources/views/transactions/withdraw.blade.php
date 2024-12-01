@@ -24,7 +24,7 @@
                     </div>
                 </label>
                 <label class="flex items-center cursor-pointer">
-                    <input type="radio" name="provider" value="mtn required class="hidden" onchange="updateSelection('mtn')">
+                    <input type="radio" name="provider" value="mtn" required class="hidden" onchange="updateSelection('mtn')">
                     <div id="mtn-container" class="border border-gray-300 rounded-full p-2 hover:shadow-lg transition-shadow duration-300 flex items-center justify-center h-20 w-20">
                         <img src="/img/mtn.jpg" alt="MTN Logo" class="h-16 w-16 rounded-full">
                     </div>
