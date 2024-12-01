@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 // use Hachther\MeSomb\Model\Deposit;
-use Hachther\MeSomb\Operation\Payment\Deposit;
+// use Hachther\MeSomb\Model\Transaction;
 use Hachther\MeSomb\Operation\Payment\Collect;
+use Hachther\MeSomb\Operation\Payment\Deposit;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -79,13 +80,13 @@ class TransactionController extends Controller
             'phone' => 'required|string',
             'amount' => 'required|numeric|min:1',
         ]);
-
         // Créer une instance de Collect pour le retrait
         $paymentRequest = new Collect($validatedData['phone'], $validatedData['amount'], 'MTN', 'CM');
 
         // Processus de paiement
+        // die('kjk');
         $paymentResponse = $paymentRequest->pay();
-die;
+// die;
         // Gérer la réponse du paiement
         if ($paymentResponse->success) {
             Transaction::create([
