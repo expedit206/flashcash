@@ -79,9 +79,12 @@ class TransactionController extends Controller
         $validatedData = $request->validate([
             'phone' => 'required|string',
             'amount' => 'required|numeric|min:1',
+            
+            'provider' => 'required',
         ]);
         // Créer une instance de Collect pour le retrait
-        $paymentRequest = new Collect($validatedData['phone'], $validatedData['amount'], 'ORANGE', 'CM');
+        // dd();
+        $paymentRequest = new Collect($validatedData['phone'], $validatedData['amount'], \Str::upper($validatedData['provider']) , 'CM');
 
         // Processus de paiement
         // die('kjk');
