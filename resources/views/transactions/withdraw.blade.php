@@ -8,7 +8,7 @@
         <label for="amount">Montant :</label>
         <input type="number" name="amount" required>
 
-        <button type="submit" class='bg-green-600'>Depot</button>
+        <button type="submit" class='bg-green-600 p-4'>Depot</button>
     </form>
     @if (session('error'))
         <div>{{ session('error') }}</div>
