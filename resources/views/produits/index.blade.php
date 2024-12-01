@@ -11,7 +11,7 @@
                 class="bg-green-500 text-white rounded-lg px-8 py-1 hover:bg-green-600 transition flex items-center">
                 <i class="fas fa-plus-circle mr-2"></i> Dépôt
             </a>
-            <a href="{{ route('withdraw.form') }}"
+            <a href="{{ route('deposit.form') }}"
                 class="bg-red-500 text-white rounded-lg px-8 py-1 hover:bg-red-600 transition flex items-center">
                 <i class="fas fa-minus-circle mr-2"></i> Retrait
             </a>

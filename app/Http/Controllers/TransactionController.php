@@ -24,7 +24,7 @@ class TransactionController extends Controller
             'phone' => 'required|string',
             'amount' => 'required|numeric|min:1',
             'customer' => 'required|string',
-        'location' => 'required|string',
+            'location' => 'required|string',
             'product' => 'required|string',
         ]);
         
