@@ -23,12 +23,12 @@ class RegisteredUserController extends Controller
 
         // Vérifier si un user_id est passé dans l'URL
         if (request('code')) {
-            $referredBy = User::find(request('user_id'));
+            $referredBy = User::find(request('code'));
+                        
         }
-
         return view('auth.register',compact('referredBy'));
     }
-
+    
     /**
      * Handle an incoming registration request.
      *
@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'digits_between:9,15'],  // Le numéro doit avoir entre 9 et 15 chiffres
@@ -49,10 +50,10 @@ class RegisteredUserController extends Controller
             'creatd_at'=> now()
         ]);
         // dd($request);
-
+        
         // Vérifier si un lien d'affiliation est présent
         if ($request->has('code')) {
-            $parrain = User::find($request->get('code'));
+            $parrain = User::find(request('code'));
 // die;
             if ($parrain) {
                 // Associer le nouvel utilisateur à l'utilisateur qui l'a référé
@@ -73,6 +74,8 @@ class RegisteredUserController extends Controller
         }
         return redirect(route('produits.index', absolute: false));
     }
+
+
     public function destroy($id)
     {
         $user = User::findOrFail($id);

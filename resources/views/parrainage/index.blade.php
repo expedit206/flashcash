@@ -11,12 +11,12 @@
                 
                 <div class="flex justify-between font-bold items-center mb-2 text-sm ml-3">
                     <span>Investissement total :</span>
-                    <span class="text-green-600 font-bold">{{ number_format($totalFirstDepositsVip1 + $totalFirstDepositsVip2 + $totalFirstDepositsVip3, 2, ',', ' ') }} XAF</span>
+                    <span class="text-green-600 font-bold">{{ number_format($totalFirstInvestmentVip1 + $totalFirstInvestmentVip2 + $totalFirstInvestmentVip3, 2, ',', ' ') }} XAF</span>
                 </div>
         
                 <div class="flex justify-between font-bold items-center mb-2 text-sm ml-3">
                     <span>Gains accumulés :</span>
-                    <span class="text-green-600 font-bold">{{ config('parrainage.taux_interet.vip1') * $totalFirstDepositsVip1 / 100 + config('parrainage.taux_interet.vip2') * $totalFirstDepositsVip2 / 100 +config('parrainage.taux_interet.vip3') * $totalFirstDepositsVip3 / 100 }} XAF</span>
+                    <span class="text-green-600 font-bold">{{ config('parrainage.taux_interet.vip1') * $totalFirstInvestmentVip1 / 100 + config('parrainage.taux_interet.vip2') * $totalFirstInvestmentVip2 / 100 +config('parrainage.taux_interet.vip3') * $totalFirstInvestmentVip3 / 100 }} XAF</span>
                 </div>
         
                 <div class="flex justify-between font-bold items-center mb-2 text-sm ml-3">
@@ -40,10 +40,10 @@
                     Niveau 1
                 </h3>
                 <div class="ml-auto">
-                    <p>Investissement: <strong>{{ number_format($totalFirstDepositsVip1, 2, ',', ' ') }} XAF</strong></p>
+                    <p>Investissement: <strong>{{ number_format($totalFirstInvestmentVip1, 2, ',', ' ') }} XAF</strong></p>
                     <p>Rendement: <strong>{{ config('parrainage.taux_interet.vip1') }}%</strong></p>
                     <p>Nombre de filleuls: <strong>{{ $vip1->count() }}</strong></p>
-                    <p>Gain: <strong>{{ config('parrainage.taux_interet.vip1') * $totalFirstDepositsVip1 / 100 }}</strong></p>
+                    <p>Gain: <strong>{{ config('parrainage.taux_interet.vip1') * $totalFirstInvestmentVip1 / 100 }}</strong></p>
                 </div>
                 <div class="ml-2">
                     <i class="fas fa-chevron-right text-2xl text-gray-600"></i>
@@ -56,10 +56,10 @@
                     Niveau 2
                 </h3>
                 <div class="ml-auto">
-                    <p>Investissement: <strong>{{ number_format($totalFirstDepositsVip2, 2, ',', ' ') }} XAF</strong></p>
+                    <p>Investissement: <strong>{{ number_format($totalFirstInvestmentVip2, 2, ',', ' ') }} XAF</strong></p>
                     <p>Rendement: <strong>{{ config('parrainage.taux_interet.vip2') }}%</strong></p>
                     <p>Nombre de filleuls: <strong>{{ $vip2->count() }}</strong></p>
-                    <p>Gain: <strong>{{ config('parrainage.taux_interet.vip2') * $totalFirstDepositsVip2 / 100 }}</strong></p>
+                    <p>Gain: <strong>{{ config('parrainage.taux_interet.vip2') * $totalFirstInvestmentVip2 / 100 }}</strong></p>
                 </div>
                 <div class="ml-2">
                     <i class="fas fa-chevron-right text-2xl text-gray-600"></i>
@@ -72,10 +72,10 @@
                     Niveau 3
                 </h3>
                 <div class="ml-auto">
-                    <p>Investissement: <strong>{{ number_format($totalFirstDepositsVip3, 2, ',', ' ') }} XAF</strong></p>
+                    <p>Investissement: <strong>{{ number_format($totalFirstInvestmentVip3, 2, ',', ' ') }} XAF</strong></p>
                     <p>Rendement: <strong>{{ config('parrainage.taux_interet.vip3') }}%</strong></p>
                     <p>Nombre de filleuls: <strong>{{ $vip3->count() }}</strong></p>
-                    <p>Gain: <strong>{{ config('parrainage.taux_interet.vip3') * $totalFirstDepositsVip3 / 100 }}</strong></p>
+                    <p>Gain: <strong>{{ config('parrainage.taux_interet.vip3') * $totalFirstInvestmentVip3 / 100 }}</strong></p>
                 </div>
                 <div class="ml-2">
                     <i class="fas fa-chevron-right text-2xl text-gray-600"></i>

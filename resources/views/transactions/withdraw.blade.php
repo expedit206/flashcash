@@ -56,7 +56,7 @@
                     <option value="+7">+7 (RUS)</option>       <!-- Russie -->
                     <option value="+55">+55 (BRA)</option>     <!-- Brésil -->
                 </select>
-                <input type="text" name="phone" required class="mt-0 p-2 border border-gray-300 rounded-r w-3/4" min='9' max='9' oninput="checkForm()">
+                <input type="text" name="phone" required class="mt-0 p-2 border border-gray-300 rounded-r w-3/4" min='digits_between:9,15' max='digits_between:9,15' oninput="checkForm()">
             </div>
             @error('phone')
             <p class="bg-[rgba(255,0,0,0.2)] p-3 rounded-md  text-black italic">

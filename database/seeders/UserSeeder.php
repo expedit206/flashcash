@@ -21,8 +21,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
            [ 'name' => 'Expedit',
             'telephone' => 696428651,
-            'password' => Hash::make('dominique2006'),  // Hachage du mot de passe
-            'parrain_id' => 3 ,  // Hachage du mot de passe
+            'password' => Hash::make('aaaaaaaa'),  // Hachage du mot de passe
+            'parrain_id' => null ,  // Hachage du mot de passe
             'created_at' => now(),
             'updated_at' => now(),],
             [ 'name' => 'aaa',
