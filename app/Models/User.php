@@ -118,10 +118,5 @@ public function taches()
 {
     return $this->belongsToMany(Tache::class, 'tache_user');
 }
-public function generateReferralLink()
-{
-    // $this->referral_link = url('/register') . '?user_id=' . $this->id;
-    $this->save();
-}
 
 }

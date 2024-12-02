@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
         $referredBy = null;
 
         // Vérifier si un user_id est passé dans l'URL
-        if (request('user_id')) {
+        if (request('code')) {
             $referredBy = User::find(request('user_id'));
         }
 
@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
 
         // Vérifier si un lien d'affiliation est présent
         if ($request->has('code')) {
-            $parrain = User::find($request->get('user_id'));
+            $parrain = User::find($request->get('code'));
 // die;
             if ($parrain) {
                 // Associer le nouvel utilisateur à l'utilisateur qui l'a référé
@@ -62,7 +62,7 @@ class RegisteredUserController extends Controller
         }
 
         // Génération du lien d'affiliation unique
-        $user->generateReferralLink();
+       
         
         event(new Registered($user));
 

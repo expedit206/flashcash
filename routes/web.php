@@ -85,18 +85,18 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Afficher le formulaire de modification du numéro de téléphone
-Route::get('/profile/phone/{user}', [ProfileController::class, 'editPhone'])->name('profile.phone.edit');
+Route::get('/profile/phone/{user}', [ProfileController::class, 'editPhone'])->name('profile.phone.edit')->middleware('auth');
 // Traiter la demande de modification du numéro de téléphone
-Route::patch('/profile/phone', [ProfileController::class, 'updatePhone'])->name('profile.phone.update');
+Route::patch('/profile/phone', [ProfileController::class, 'updatePhone'])->name('profile.phone.update')->middleware('auth');
 
-Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->name('politique.utilisation');
+Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->name('politique.utilisation')->middleware('auth');
 // CRUD sur les comptes
 
 
 // Route pour afficher les tâches de parrainage
-Route::get('/taches', [TacheController::class, 'index'])->name('taches.index');
-Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users.refer');
-Route::post('/tache_user/{tache}', [TacheUserController::class, 'recuperer'])->name('taches.recuperer');
+Route::get('/taches', [TacheController::class, 'index'])->name('taches.index')->middleware('auth');
+Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users.refer')->middleware('auth');
+Route::post('/tache_user/{tache}', [TacheUserController::class, 'recuperer'])->name('taches.recuperer')->middleware('auth');
 
 
 Route::post('/code/store', [CodeController::class, 'store'])->name('code.store');
