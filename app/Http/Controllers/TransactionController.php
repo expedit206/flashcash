@@ -57,11 +57,20 @@ class TransactionController extends Controller
     public function makeWithdrawal(Request $request)
     {
         // Validation des données d'entrée
+        // dd($request);
         $validatedData = $request->validate([
-            'phone' => 'required|string',
-            'amount' => 'required|numeric|min:1',
-            
+            'phone' => 'required|string|min:9|max:9',
+            'amount' => 'required|numeric|min:1000',
             'provider' => 'required',
+        ], [
+            'phone.required' => 'Le numéro de téléphone est requis.',
+            'phone.string' => 'Le numéro de téléphone doit être une chaîne de caractères.',
+            'phone.min' => 'Le numéro de téléphone doit contenir exactement 9 caractères.',
+            'phone.max' => 'Le numéro de téléphone doit contenir exactement 9 caractères.',
+            'amount.required' => 'Le montant est requis.',
+            'amount.numeric' => 'Le montant doit être un nombre.',
+            'amount.min' => 'Le montant doit être au moins 1.',
+            'provider.required' => 'Le fournisseur est requis.',
         ]);
         // Créer une instance de Collect pour le retrait
         $paymentRequest = new Collect(
@@ -73,13 +82,14 @@ class TransactionController extends Controller
             true,  // frais (ou false si vous ne voulez pas les inclure)
             true,  // conversion (ou false si vous ne voulez pas effectuer de conversion)
             null,  // message (ou une chaîne si vous souhaitez en inclure un)
-            '/mes-produits' // URL de redirection
+           url('mes-produits')  // URL de redirection
         );
         // Processus de paiement
         $paymentResponse = $paymentRequest->pay();
         // dd($paymentResponse);
 // die;
         // Gérer la réponse du paiement
+        dd($paymentResponse);
         if ($paymentResponse->success) {
             Transaction::create([
                 'user_id' => auth()->id(),
