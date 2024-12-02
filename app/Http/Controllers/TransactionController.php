@@ -69,7 +69,7 @@ class TransactionController extends Controller
             'phone.max' => 'Le numéro de téléphone doit contenir exactement 9 caractères.',
             'amount.required' => 'Le montant est requis.',
             'amount.numeric' => 'Le montant doit être un nombre.',
-            'amount.min' => 'Le montant doit être au moins 1.',
+            'amount.min' => 'Le montant doit être au moins 1000.',
             'provider.required' => 'Le fournisseur est requis.',
         ]);
         // Créer une instance de Collect pour le retrait
@@ -101,7 +101,7 @@ class TransactionController extends Controller
             ]);
             return redirect()->route('transactions.index')->with('success', 'Retrait réussi !');
         } else {
-            return redirect()->back()->with('error', 'Échec du retrait.');
+            return redirect()->back()->with('error', 'Échec du retrait : verifier votre solde et choisissez le service correspondant.');
         }
     }
 

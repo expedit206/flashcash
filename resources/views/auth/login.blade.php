@@ -6,7 +6,7 @@
             background: url('/img/bg-login-jpg');
         }
     </style> --}}
-<div class="h-[35vh] ">
+<div class="h-[40vh] ">
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <p class="text-center font-bold text-xl">Connexion</p>
     <form method="POST" action="{{ route('login') }}" class=''>
@@ -21,8 +21,8 @@
                 <div class="flex gap-2 items-center">
                     <span class="text-xl">📞</span>
                     <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min="9" />
-                    <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
-                    </div>
+                </div>
+                <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
                 </div>
                 
                 <!-- Mot de passe -->

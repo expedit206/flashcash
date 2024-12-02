@@ -2,43 +2,11 @@
     <div class="pb-16">
 
         <div class="bg-white rounded-lg shadow-md pb-6 ">
-            <header class="bg-gray-800 text-white py-2">
-
-                <div class="container mx-auto flex  items-center justify-center">
-
-                    <div class="flex items-start flex-col justify-between w-[35%] h-[35%]">
-                        <h1 class="text-mdl font-bold text-center">FlashCash</h1>
-
-                        <x-application-logo class="" />
-
-                    </div>
-
-                    <div class="mt-2 pl-3 text-white">
-
-
-                        <p class="">Tel : {{ auth()->user()->telephone }}
-                            
-                        </p>
-
-                        <p class="">Code : {{ auth()->user()->id }}</p>
-
-                    </div>
-
-                </div>
-
-            </header>
+            <x-header/>
 
 
 
-            <div class="flex justify-between my-4 px-4">
-                <a href="" class="bg-gray-500 text-white rounded-lg px-8 py-2 hover:bg-gray-600 transition flex items-center text-sm">
-                    <i class="fas fa-plus-circle mr-2"></i> Dépôt
-                </a>
-                <a href="" class="bg-gray-500 text-white rounded-lg px-8 py-2 hover:bg-gray-600 transition flex items-center text-sm">
-                    <i class="fas fa-minus-circle mr-2"></i> Retrait
-                </a>
-            </div>
-                
+           <x-button-transaction/>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
                 <div class="bg-gradient-to-r from-gray-500 to-gray-600 rounded-lg shadow-lg p-4  py-1 transition-transform transform hover:scale-105 flex items-center">

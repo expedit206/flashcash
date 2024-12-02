@@ -47,18 +47,7 @@
             <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
         </div>
 
-        <div class="flex justify-between mt-4 ml-2">
-            <a href="#"
-                class="bg-gray-700 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg flex items-center">
-                <i class="fas fa-download mr-2"></i>
-                Dépôt
-            </a>
-            <a href="#"
-                class="bg-gray-700 hover:bg-gray-700 text-white  font-bold py-2 px-4 pl-5 rounded-lg flex items-center">
-                <i class="fas fa-upload mr-2"></i>
-                Retirer
-            </a>
-        </div>
+        <x-button-transaction/>
     </div>
 
     @forelse ($produits as $produit)

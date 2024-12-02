@@ -7,39 +7,9 @@
             {{-- <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36"> --}}
             {{-- <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36"> --}}
         {{-- </div> --}}
-        <header class="bg-gray-800 text-white py-2">
-
-            <div class="container mx-auto flex  items-center justify-center">
-
-                <div class="flex items-start flex-col justify-between w-[35%] h-[35%]">
-                    <h1 class="text-mdl font-bold text-center">FlaxhCash</h1>
-
-                    <x-application-logo class="" />
-
-                </div>
-
-                <div class="mt-2 pl-3 text-white">
-
-                    <p class="">Tel : {{ auth()->user()->telephone }}
-                    </p>
-                    <p class="">Code : {{ auth()->user()->id }}</p>
-
-                </div>
-
-            </div>
-
-        </header>
+       <x-header />
         <!-- Boutons Dépôt et Retrait -->
-        <div class="flex justify-between mb-2 px-1 text-sm mt-4">
-            <a href="{{ route('withdraw.form') }}"
-                class="bg-gray-800 text-white rounded-lg px-8 py-1 hover:bg-green-600 transition flex items-center">
-                <i class="fas fa-plus-circle mr-2"></i> Dépôt
-            </a>
-            <a href="{{ route('deposit.form') }}"
-                class="bg-gray-800 text-white rounded-lg px-8 py-1 hover:bg-red-600 transition flex items-center">
-                <i class="fas fa-minus-circle mr-2"></i> Retrait
-            </a>
-        </div>
+       <x-button-transaction/>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($produits as $produit)
