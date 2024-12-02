@@ -30,25 +30,6 @@ class TransactionController extends Controller
         
         // Créer une instance de Deposit
         $paymentRequest = new Deposit($validatedData['phone'], $validatedData['amount'], 'MTN', 'CM');
-
-
-// $paymentRequest->setCustomer([
-//     'phone' => $validatedData['customer'],
-//     'town' => $validatedData['location'],
-//     // Ajoutez d'autres détails si nécessaire
-// ]);
-
-// $paymentRequest->setLocation([
-//     'town' => $validatedData['location'],
-//     'country' => 'CM', // par exemple
-// ]);
-
-// $paymentRequest->setProduct([
-//     'id' => '2', // Remplacez par l'ID réel du produit
-//     'name' => $validatedData['product'],
-//     'category' => 'category_name' // Remplacez par la catégorie réelle
-// ]);
-
         // Processus de paiement
         $paymentResponse = $paymentRequest->pay();
 
@@ -83,12 +64,20 @@ class TransactionController extends Controller
             'provider' => 'required',
         ]);
         // Créer une instance de Collect pour le retrait
-        // dd();
-        $paymentRequest = new Collect($validatedData['phone'], $validatedData['amount'], \Str::upper($validatedData['provider']) , 'CM');
-
+        $paymentRequest = new Collect(
+            $validatedData['phone'],
+            $validatedData['amount'],
+            \Str::upper($validatedData['provider']),
+            'CM', // pays
+            'XAF', // devise (ajoutez le paramètre si nécessaire)
+            true,  // frais (ou false si vous ne voulez pas les inclure)
+            true,  // conversion (ou false si vous ne voulez pas effectuer de conversion)
+            null,  // message (ou une chaîne si vous souhaitez en inclure un)
+            '/mes-produits' // URL de redirection
+        );
         // Processus de paiement
-        // die('kjk');
         $paymentResponse = $paymentRequest->pay();
+        // dd($paymentResponse);
 // die;
         // Gérer la réponse du paiement
         if ($paymentResponse->success) {

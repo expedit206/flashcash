@@ -111,15 +111,15 @@ use App\Http\Controllers\TransactionController;
 Route::get('/deposit', [TransactionController::class, 'showDepositForm'])->name('deposit.form')->middleware('auth');;
 
 // Route pour traiter le dépôt
-Route::post('/deposit', [TransactionController::class, 'makeDeposit'])->name('deposit.submit')->middleware('auth');;
+Route::post('/deposit', [TransactionController::class, 'makeDeposit'])->name('deposit.submit')->middleware('auth');
 
 // Route pour afficher le formulaire de retrait
-Route::get('/withdraw', [TransactionController::class, 'showWithdrawalForm'])->name('withdraw.form');
+Route::get('/withdraw', [TransactionController::class, 'showWithdrawalForm'])->name('withdraw.form')->middleware('auth');
 
 // Route pour traiter le retrait
-Route::post('/withdraw', [TransactionController::class, 'makeWithdrawal'])->name('withdraw.submit')->middleware('auth');;
+Route::post('/withdraw', [TransactionController::class, 'makeWithdrawal'])->name('withdraw.submit')->middleware('auth');
 
 // Route pour afficher les transactions
-Route::get('/transactions', [TransactionController::class, 'showTransactions'])->name('transactions.index')->middleware('auth');;
+Route::get('/transactions', [TransactionController::class, 'showTransactions'])->name('transactions.index')->middleware('auth');
 
 require __DIR__.'/auth.php';
