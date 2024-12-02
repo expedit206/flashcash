@@ -6,7 +6,7 @@
             background: url('/img/bg-login-jpg');
         }
     </style> --}}
-<div class="h-[40vh] ">
+<div class="h-[50vh] ">
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <p class="text-center font-bold text-xl">Connexion</p>
     <form method="POST" action="{{ route('login') }}" class=''>
