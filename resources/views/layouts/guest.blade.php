@@ -19,7 +19,7 @@
 
     </head>
     <body class="font-sans text-gray-900 antialiased ">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-800">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-800 ">
             <div class="flex justify-center">
                 <a href="/" class="flex justify-center h-[60%] w-[60%] md:h[70%] md:w-[50%] lg:w-[25%]">
                     <div class="flex justify-center">
@@ -29,9 +29,18 @@
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4  shadow-md shadow-slate-600 bg-slate-200 overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-md shadow-slate-600 bg-slate-200 overflow-hidden ">
                 {{ $slot }}
             </div>
         </div>
+        <footer class="bg-gray-800 text-white py-4 absolute top-[85vh] px-auto  w-[100vw]">
+            <div class="container mx-auto text-center">
+                <p>&copy; {{ date('Y') }} Flash Cash. Tous droits réservés.</p>
+                <p>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">Conditions d'utilisation</a> |
+                    <a href="#" class="text-gray-400 hover:text-gray-300">Politique de confidentialité</a>
+                </p>
+            </div>
+        </footer>
     </body>
 </html>

@@ -40,21 +40,21 @@
 
         <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span>Produit(s) consommé(s) :</span>
-            <span class="font-bold">{{ $produits->count() }}</span>
+            <span class="font-bold text-green-500">{{ $produits->count() }}</span>
         </div>
         <div class="flex justify-between items-center mb-2 text-sm pl-2">
             <span>Mon Solde :</span>
             <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
         </div>
 
-        <div class="flex justify-between mt-4">
+        <div class="flex justify-between mt-4 ml-2">
             <a href="#"
-                class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-bold py-2 px-4 rounded-lg flex items-center">
+                class="bg-gray-700 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg flex items-center">
                 <i class="fas fa-download mr-2"></i>
                 Dépôt
             </a>
             <a href="#"
-                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg flex items-center">
+                class="bg-gray-700 hover:bg-gray-700 text-white  font-bold py-2 px-4 pl-5 rounded-lg flex items-center">
                 <i class="fas fa-upload mr-2"></i>
                 Retirer
             </a>
@@ -67,9 +67,9 @@
             <h3 class="text-lg font-bold">{{ $produit->name }} ({{ $produit->pivot->count }} fois) </h3>
             <span class="font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
         </div>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-2 gap-2 ">
             <div>
-                <p class="text-gray-800 mb-1">Temps restant:</p>
+                <p class="text-gray-900 font-bold mb-1">Temps restant:</p>
                 @php
                     $createdAt = \Carbon\Carbon::parse($produit->pivot->created_at);
                     $duration = $produit->nbjour; // Durée en jours
@@ -85,16 +85,16 @@
                 </script>
             </div>
             <div>
-                <p class="text-gray-800 mb-1">Rendement:</p>
+                <p class="text-gray-900 font-bold mb-1">Rendement:</p>
                 <span>{{ number_format($produit->rendement, 2) }} %</span>
             </div>
             <div>
-                <p class="text-gray-800 mb-1">Revenu quotidien:</p>
+                <p class="text-gray-900 font-bold mb-1">Revenu quotidien:</p>
                 <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
             </div>
             <div>
                 {{-- @dd($produit) --}}
-                <p class="text-gray-800 mb-1">Revenu gagné:</p>
+                <p class="text-gray-900 font-bold mb-1">Revenu gagné:</p>
                 <span>{{ number_format($produit->pivot->gagner, 2) }} XAF</span>
             </div>
         </div>

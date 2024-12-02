@@ -7,21 +7,21 @@
 
         {{-- <div class="pb-16"> --}}
             <div class="bg-gray-800 text-white px-6 py-3 shadow-lg pb-3">
-                <h2 class="text-xl font-bold mb-2 text-yellow-400 ">Système d'Équipe</h2>
+                <h2 class="text-xl font-bold mb-2 text-yellow-500 ">Système d'Équipe</h2>
                 
-                <div class="flex justify-between items-center mb-2 text-sm ml-3">
+                <div class="flex justify-between font-bold items-center mb-2 text-sm ml-3">
                     <span>Investissement total :</span>
-                    <span class="text-yellow-500 font-bold">{{ number_format($totalFirstDepositsVip1 + $totalFirstDepositsVip2 + $totalFirstDepositsVip3, 2, ',', ' ') }} XAF</span>
+                    <span class="text-green-600 font-bold">{{ number_format($totalFirstDepositsVip1 + $totalFirstDepositsVip2 + $totalFirstDepositsVip3, 2, ',', ' ') }} XAF</span>
                 </div>
         
-                <div class="flex justify-between items-center mb-2 text-sm ml-3">
+                <div class="flex justify-between font-bold items-center mb-2 text-sm ml-3">
                     <span>Gains accumulés :</span>
-                    <span class="text-yellow-500 font-bold">{{ config('parrainage.taux_interet.vip1') * $totalFirstDepositsVip1 / 100 + config('parrainage.taux_interet.vip2') * $totalFirstDepositsVip2 / 100 +config('parrainage.taux_interet.vip3') * $totalFirstDepositsVip3 / 100 }} XAF</span>
+                    <span class="text-green-600 font-bold">{{ config('parrainage.taux_interet.vip1') * $totalFirstDepositsVip1 / 100 + config('parrainage.taux_interet.vip2') * $totalFirstDepositsVip2 / 100 +config('parrainage.taux_interet.vip3') * $totalFirstDepositsVip3 / 100 }} XAF</span>
                 </div>
         
-                <div class="flex justify-between items-center mb-2 text-sm ml-3">
+                <div class="flex justify-between font-bold items-center mb-2 text-sm ml-3">
                     <span>Mon Solde :</span>
-                    <span class="text-yellow-500 font-bold">{{ number_format($solde_total, 2, ',', ' ') }} XAF</span>
+                    <span class="text-green-600 font-bold">{{ number_format($solde_total, 2, ',', ' ') }} XAF</span>
                 </div>
         
               
@@ -34,7 +34,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
-            <a href="{{ route('filleuls', ['niveau' => 1]) }}" class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
+            <a href="{{ route('filleuls', ['niveau' => 1]) }}" class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg shadow-black p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
                 <h3 class="text-lg md:text-xl font-semibold flex flex-col items-center">
                     <i class="fas fa-crown text-3xl text-yellow-500 mr-2"></i>
                     Niveau 1
@@ -50,7 +50,7 @@
                 </div>
             </a>
             
-            <a href="{{ route('filleuls', ['niveau' => 2]) }}" class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
+            <a href="{{ route('filleuls', ['niveau' => 2]) }}" class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg shadow-black p-4 flex items-center transition-transform transform hover:scale-105 mb-2 cursor-pointer">
                 <h3 class="text-lg md:text-xl font-semibold flex flex-col items-center">
                     <i class="fas fa-crown text-3xl text-green-800 mr-2"></i>
                     Niveau 2

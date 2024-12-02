@@ -22,11 +22,13 @@ class UserSeeder extends Seeder
            [ 'name' => 'Expedit',
             'telephone' => 696428651,
             'password' => Hash::make('dominique2006'),  // Hachage du mot de passe
+            'parrain_id' => 3 ,  // Hachage du mot de passe
             'created_at' => now(),
             'updated_at' => now(),],
-           [ 'name' => 'aaa',
+            [ 'name' => 'aaa',
             'telephone' => 600028651,
             'password' => Hash::make('aaaaaaaa'),  // Hachage du mot de passe
+            'parrain_id' => 3 ,  // Hachage du mot de passe
             'created_at' => now(),
             'updated_at' => now(),],
         ]);

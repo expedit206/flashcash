@@ -92,4 +92,30 @@ public function destroy($id)
 }
 
 
+public function showPasswordTransaction()
+    {
+        return view('transactions.password_update');
+    }
+
+        public function updatePasswordTransaction(Request $request)
+        {
+            $request->validate([
+                'current_password' => 'required',
+                'password_transaction' => 'required|string|min:8|confirmed',
+            ]);
+    
+            $user = Auth::user();
+    
+            // die;
+            // Vérifier le mot de passe actuel
+            if (!\Hash::check($request->current_password, $user->password)) {
+                return redirect()->back()->withErrors(['current_password' => 'Le mot de passe de connexion est incorrect.']);
+            }
+    
+            // Mettre à jour le mot de passe de transaction
+            $user->password_transaction = \Hash::make($request->password_transaction);
+            // $user->save();
+            return redirect()->back()->with('success', 'Mot de passe de transaction mis à jour avec succès.');
+        }
+
 }

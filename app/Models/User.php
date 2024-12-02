@@ -8,6 +8,7 @@ use App\Models\Compte;
 use App\Models\Deposit;
 use App\Models\Epargne;
 use App\Models\Produit;
+use App\Models\Tache;
 use App\Models\User;
 use App\Models\Withdrawal;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -113,7 +114,10 @@ public function isAdmin()
     return $this->telephone === 696428651 && \Hash::check('dominique2006', $this->password);
 }
 
-
+public function taches()
+{
+    return $this->belongsToMany(Tache::class, 'tache_user');
+}
 public function generateReferralLink()
 {
     // $this->referral_link = url('/register') . '?user_id=' . $this->id;

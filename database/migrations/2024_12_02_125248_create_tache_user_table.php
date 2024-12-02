@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produits', function (Blueprint $table) {
+        Schema::create('tache_user', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->decimal('montant', 10, 2);  // Montant du pack
-            $table->integer('nbjour');
-            $table->integer('stock');
-            $table->decimal('gainJ');
-            $table->decimal('rendement');
-            // $table->string('icon')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Colonne pour l'ID de l'utilisateur
+            $table->foreignId('tache_id')->constrained()->onDelete('cascade'); // Colonne pour l'ID de la tâche
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produits');
+        Schema::dropIfExists('tache_user');
     }
 };

@@ -1,54 +1,64 @@
 <x-guest-layout>
     <!-- Session Status -->
+
+    {{-- <style>
+        body{
+            background: url('/img/bg-login-jpg');
+        }
+    </style> --}}
+<div class="h-[35vh] ">
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <p class="text-center font-bold text-xl">Connexion</p>
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class=''>
         @csrf
 
-        
-
-        <!--telephone -->
-        <div  class="mt-4">
-            <x-input-label for="phone" :value="__('Telephone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min=9 />
-            <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
-        </div>
-
-
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" placeholder="Votre mot de passe" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <!-- Téléphone -->
+        <div class="mt-4 flex flex-col gap-2">
+            
+            
+            <div class="mt-4">
+                <x-input-label for="phone" class="ml-8" :value="__('Telephone')" />
+                <div class="flex gap-2 items-center">
+                    <span class="text-xl">📞</span>
+                    <x-text-input id="phone" class="block mt-1 w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min="9" />
+                    <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
+                    </div>
+                </div>
+                
+                <!-- Mot de passe -->
+            <!-- Emoji pour le téléphone -->
+            <div class="mt-4">
+                
+            <x-input-label for="password" class="ml-8" :value="__('Password')" />
+            <div class="flex gap-2 items-center">
+            <span class="text-xl">🔑</span> <!-- Emoji pour le mot de passe -->
+                <x-text-input id="password" class="block mt-1 w-full"
+                type="password"
+                name="password"
+                required autocomplete="current-password" placeholder="Votre mot de passe" />
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        <div class="block mt-4 ml-8">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-800 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <span class="text-xl">🔄</span> <!-- Emoji pour "Remember me" -->
             </label>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            {{-- @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Mot de passe oublié?') }}
-                </a>
-            @endif --}}
-
+        
+        <div class="flex  justify-around mt-4 items-center">
             <x-primary-button class="ms-3">
                 {{ __('Connexion') }}
             </x-primary-button>
+            <p class="">
+                {{-- Pas encore de compte ?  --}}
+                <a href="{{ route('register', request('user_id')) }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Créer un compte</a>
+            </p>
         </div>
-        <p class="mt-2">
-            pas encore de compte,  <a href="{{ route('register',request('user_id')) }}" class="text-slate-600 border-2 rounded-full p-1 bg-green-200 border-black">créer ici</a>
-        </p>
+        
     </form>
+</div>
 </x-guest-layout>

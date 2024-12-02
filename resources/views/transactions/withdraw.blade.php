@@ -78,7 +78,7 @@
             @enderror
         </div>
 
-        <input id="submit-button" type="submit" class="bg-green-600 text-white p-4 rounded hover:bg-green-700 transition duration-300" value="Valider" disabled>
+        <input id="submit-button" type="submit" class="bg-gray-600 text-white p-4 rounded hover:bg-green-700 transition duration-300" value="Valider" disabled>
     </form>
 {{-- 
     @if (session('error'))

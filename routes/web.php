@@ -12,7 +12,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TacheController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TacheUserController;
 
 
 
@@ -96,7 +96,7 @@ Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->nam
 // Route pour afficher les tâches de parrainage
 Route::get('/taches', [TacheController::class, 'index'])->name('taches.index');
 Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users.refer');
-
+Route::post('/tache_user/{tache}', [TacheUserController::class, 'recuperer'])->name('taches.recuperer');
 
 
 Route::post('/code/store', [CodeController::class, 'store'])->name('code.store');
@@ -106,6 +106,8 @@ Route::get('/codes', [CodeController::class, 'index'])->name('code.index');
 
 
 use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\Route;
+
 
 // Route pour afficher le formulaire de dépôt
 Route::get('/deposit', [TransactionController::class, 'showDepositForm'])->name('deposit.form')->middleware('auth');;
@@ -122,4 +124,7 @@ Route::post('/withdraw', [TransactionController::class, 'makeWithdrawal'])->name
 // Route pour afficher les transactions
 Route::get('/transactions', [TransactionController::class, 'showTransactions'])->name('transactions.index')->middleware('auth');
 
+
+Route::get('/showPasswordTransaction', [CompteController::class, 'showPasswordTransaction'])->name('showPasswordTransaction');
+Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
 require __DIR__.'/auth.php';

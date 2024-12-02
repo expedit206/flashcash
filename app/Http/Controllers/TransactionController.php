@@ -89,7 +89,7 @@ class TransactionController extends Controller
         // dd($paymentResponse);
 // die;
         // Gérer la réponse du paiement
-        dd($paymentResponse);
+        // dd($paymentResponse);
         if ($paymentResponse->success) {
             Transaction::create([
                 'user_id' => auth()->id(),

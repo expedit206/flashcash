@@ -8,6 +8,7 @@ use Database\Seeders\CompteSeeder;
 use Database\Seeders\EpargneSeeder;
 use Database\Seeders\ProduitSeeder;
 use Database\Seeders\ProduitUserSeeder;
+use Database\Seeders\TacheSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProduitUserSeeder::class,
             EpargneSeeder::class,
+            TacheSeeder::class,
             // CompteSeeder::class,
         ]);
     }
