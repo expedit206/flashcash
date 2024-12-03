@@ -1,8 +1,8 @@
 <?php
 return [
     'taux_interet' => [
-        'vip1' => 15,
-        'vip2' => 4,
-        'vip3' => 1.8,
+        'vip1' => 20,
+        'vip2' => 5,
+        'vip3' => 1.7,
     ],
 ];

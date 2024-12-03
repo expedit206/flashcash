@@ -2,7 +2,7 @@
 
     <div class="container mx-auto flex  items-center justify-center">
 
-        <div class="flex items-start flex-col justify-between w-[35%] h-[35%]">
+        <div class="flex items-start flex-col justify-between w-[35%] h-[31%]">
             <h1 class="text-mdl font-bold text-center">FlaxhCash</h1>
 
             <x-application-logo class="" />

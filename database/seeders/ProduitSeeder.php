@@ -36,7 +36,7 @@ class ProduitSeeder extends Seeder
                 'stock' => 10,
                 'gainJ' => 270.00,
                 'img'=>'/img/FC1.jpg',
-                'rendement' => 5.4,
+                'rendement' => 6,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],

@@ -28,20 +28,32 @@ class EpargneSeeder extends Seeder
             ],
             [
                 'nom' => 'Sécurité Financière',
-                'duree' => 25,
-                'rendement' => 0.67,
+                'duree' => 30,
+                'rendement' => 0.95,
                 'statut' => 'en cours',
             ],
             [
                 'nom' => 'Rendement Futuriste',
                 'duree' => 45,
-                'rendement' => 1,
+                'rendement' => 1.2,
                 'statut' => 'en cours',
             ],
             [
                 'nom' => 'Épargne Visionnaire',
-                'duree' => 75,
-                'rendement' => 1.2,
+                'duree' => 60,
+                'rendement' => 1.8,
+                'statut' => 'en cours',
+            ],
+            [
+                'nom' => 'Épargne Visionnaire',
+                'duree' => 80,
+                'rendement' => 2.1,
+                'statut' => 'en cours',
+            ],
+            [
+                'nom' => 'Épargne Visionnaire',
+                'duree' => 100,
+                'rendement' => 4,
                 'statut' => 'en cours',
             ],
         ];
