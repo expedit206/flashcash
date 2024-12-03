@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('nbjour');
             $table->integer('stock');
             $table->decimal('gainJ');
+            $table->string('img');
             $table->decimal('rendement');
             // $table->string('icon')->nullable();
             $table->timestamps();

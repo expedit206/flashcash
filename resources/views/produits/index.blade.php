@@ -14,7 +14,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach ($produits as $produit)
                 <div class="bg-gradient-to-r from-yellow-300 to-orange-200 rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 mb-4">
-                    <img src="/img/image.png" alt="{{ $produit->name }}" class="w-full h-28 object-cover rounded-md">
+                    <img src="{{ $produit->img }}" alt="{{ $produit->name }}" class="w-full h-28 object-cover rounded-md">
                     <div class="flex justify-between items-center mt-2">
                         <h2 class="text-md font-semibold text-gray-900">{{ $produit->name }} ({{ $produit->nbjour }} jrs)</h2>
                         <p class="text-base font-bold text-gray-900">{{ number_format($produit->montant, 2, ',', ' ') }} XAF</p>

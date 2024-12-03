@@ -51,7 +51,7 @@
 
                 </a> --}}
 
-                <a href="#"
+                <a href="{{ route('wallet.store') }}"
                     class="bg-gray-100 hover:bg-gray-200 rounded-lg shadow-lg p-4 py-2 transition-transform transform hover:scale-105 flex items-center">
 
                     <i class="fas fa-wallet text-1xl text-gray-600 mr-2"></i>

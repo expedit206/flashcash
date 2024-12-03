@@ -119,4 +119,9 @@ public function taches()
     return $this->belongsToMany(Tache::class, 'tache_user');
 }
 
+// Dans le modèle User
+public function wallets()
+{
+    return $this->hasMany(Wallet::class); // Ajustez si nécessaire
+}
 }

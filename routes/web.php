@@ -6,6 +6,9 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\EpargneController;
 use App\Http\Controllers\EpargneUserController;
+use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ParrainageController;
 use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
@@ -27,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+});    
 
 
 
@@ -38,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/produits/{id}/edit', [ProduitController::class, 'edit'])->name('produits.edit');
     Route::put('/produits/{id}', [ProduitController::class, 'update'])->name('produits.update');
 
-});
+});    
 
 Route::get('/mes-produits', [ProduitUserController::class, 'index'])->name('produit.user.index')->middleware('auth');
 Route::post('/produit_user/store', [ProduitUserController::class, 'store'])->name('produit.user.store');
@@ -54,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/mes-epargne/store', [EpargneUserController::class, 'store'])->name('epargne.user.store');
     Route::get('/mes-epargne/index', [EpargneUserController::class, 'index'])->name('epargne.user.index');
     Route::post('/mes-epargne/retirer/{EpargneUser}', [EpargneUserController::class, 'retirer'])->name('epargne.user.retirer');
-});
+});    
 // web.php// routes/web.php
 
 
@@ -82,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/comptes/create', [CompteController::class, 'create'])->name('comptes.create');
     Route::post('/admin/comptes/store', [CompteController::class, 'store'])->name('comptes.store');
 
-});
+});    
 
 // Afficher le formulaire de modification du numéro de téléphone
 Route::get('/profile/phone/{user}', [ProfileController::class, 'editPhone'])->name('profile.phone.edit')->middleware('auth');
@@ -105,9 +108,6 @@ Route::get('/codes', [CodeController::class, 'index'])->name('code.index');
 
 
 
-use App\Http\Controllers\TransactionController;
-use Illuminate\Support\Facades\Route;
-
 
 // Route pour afficher le formulaire de dépôt
 Route::get('/deposit', [TransactionController::class, 'showDepositForm'])->name('deposit.form')->middleware('auth');;
@@ -127,4 +127,13 @@ Route::get('/transactions', [TransactionController::class, 'showTransactions'])-
 
 Route::get('/showPasswordTransaction', [CompteController::class, 'showPasswordTransaction'])->name('showPasswordTransaction');
 Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
-require __DIR__.'/auth.php';
+Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
+
+use App\Http\Controllers\WalletController;
+
+Route::get('/wallet/configure', [WalletController::class, 'showConfigurationForm'])->name('wallet.configure');
+Route::post('/wallet/store', [WalletController::class, 'storeWallet'])->name('wallet.store');
+Route::get('/wallet/edit/{wallet}', [WalletController::class, 'edit'])->name('wallet.edit');
+Route::post('/wallet/update/{wallet}', [WalletController::class, 'update'])->name('wallet.update');
+
+require __DIR__.'/auth.php';    

@@ -28,7 +28,6 @@ class TransactionController extends Controller
             'product' => 'required|string',
         ]);
         
-        // Créer une instance de Deposit
         $paymentRequest = new Deposit($validatedData['phone'], $validatedData['amount'], 'MTN', 'CM');
         // Processus de paiement
         $paymentResponse = $paymentRequest->pay();
