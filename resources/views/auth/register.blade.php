@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh]">
+    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] overflow-scroll">
         @csrf
 
         <div class="w-full">
