@@ -6,7 +6,7 @@
             background: url('/img/bg-login-jpg');
         }
     </style> --}}
-<div class="h-[50vh] ">
+{{-- <div class="h-[60vh] "> --}}
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <p class="text-center font-bold text-xl">Connexion</p>
     <form method="POST" action="{{ route('login') }}" class=''>
@@ -60,5 +60,5 @@
         </div>
         
     </form>
-</div>
+{{-- </div> --}}
 </x-guest-layout>

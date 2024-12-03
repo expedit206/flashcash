@@ -1,9 +1,10 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] overflow-scroll">
+    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] ">
         @csrf
 
         <div class="w-full">
-            <x-input-label for="name" :value="__('Nom *')" />
+            <x-input-label 
+            r="name" :value="__('Nom *')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Abena tiako"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
