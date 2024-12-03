@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="/build/assets/app.css">
 
     </head>
-    <body class="font-sans text-gray-900 antialiased overflow-scroll max-h-[100vh] -z-50">
+    <body class="font-sans text-gray-900 antialiased overflow-y-scroll max-h-[100vh] -z-50">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-800  -z-40">
             <div class="flex justify-center">
                 <a href="/" class="flex justify-center h-[60%] w-[60%] md:h[70%] md:w-[50%] lg:w-[25%]">
@@ -29,7 +29,7 @@
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-4 px-6 py-4 shadow-md shadow-slate-600 bg-slate-200 overflow-scroll ">
+            <div class="w-full sm:max-w-md mt-4 px-6 py-4 shadow-md shadow-slate-600 bg-slate-200 overflow-y-scroll ">
                 {{ $slot }}
             </div>
         </div>
