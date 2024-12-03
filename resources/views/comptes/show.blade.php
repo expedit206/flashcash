@@ -100,7 +100,7 @@
 
                     <i class="fas fa-sign-out-1lt text-3xl text-gray-600 mr-2"></i>
 
-                    <span class="text-md font-semibold">Se déconnecter</span>
+                    <span class="text-md font-semibold mt-6">Se déconnecter</span>
 
                 </a>
 
