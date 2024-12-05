@@ -1,5 +1,5 @@
 <x-app-layout>
-    <h1>Dépôt d'Argent</h1>
+    <h1>Retrait d'Argent</h1>
     <form action="{{ route('deposit.submit') }}" method="POST">
         @csrf
 
@@ -18,7 +18,7 @@
         <label for="product">Produit :</label>
         <input type="text" name="product" required placeholder="Nom du produit"> --}}
 
-        <button type="submit">Déposer</button>
+        <button type="submit">Retirer</button>
     </form>
 
     @if (session('error'))

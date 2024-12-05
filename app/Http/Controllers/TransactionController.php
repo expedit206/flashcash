@@ -60,7 +60,7 @@ class TransactionController extends Controller
         // dd($request);
         $validatedData = $request->validate([
             'phone' => 'required|string|digits_between:9,15',
-            'amount' => 'required|numeric|min:1000',
+            'amount' => 'required|numeric|min:100',
             'provider' => 'required',
         ], [
             'phone.required' => 'Le numéro de téléphone est requis.',
