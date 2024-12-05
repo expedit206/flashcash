@@ -23,7 +23,7 @@ class TacheSeeder extends Seeder
             ['description' => 'Parrainer 155 personnes qui achètent le produit T-Cash (de 1 à 10)', 'bonus' => 80000, 'cible' => 125, 'type'=> 'standard'],
             ['description' => 'Parrainer 175 personnes qui achètent le produit T-Cash (de 1 à 10)', 'bonus' => 100000, 'cible' => 150, 'type'=> 'standard'],
             ['description' => 'Parrainer 200 personnes qui achètent le produit T-Cash (de 1 à 10)', 'bonus' => 120000, 'cible' => 200, 'type'=> 'standard'],
-            ['description' => 'Parrainer 5 personnes qui achètent le produit T-Cash Bonus', 'bonus' => 1000, 'cible' => 5, 'type'=> 'special'],
+            ['description' => 'Parrainer 5 personnes qui achètent le produit T-Cash Bonus', 'bonus' => 100, 'cible' => 5, 'type'=> 'special'],
             ['description' => 'Parrainer 15 personnes qui achètent le produit T-Cash Bonus', 'bonus' => 3000, 'cible' => 15, 'type'=> 'special'],
             ['description' => 'Parrainer 35 personnes qui achètent le produit T-Cash Bonus', 'bonus' => 10000, 'cible' => 35, 'type'=> 'special'],
             ['description' => 'Parrainer 50 personnes qui achètent le produit T-Cash Bonus', 'bonus' => 15000, 'cible' => 50, 'type'=> 'special'],

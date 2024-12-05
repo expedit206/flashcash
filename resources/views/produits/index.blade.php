@@ -7,7 +7,29 @@
             {{-- <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36"> --}}
             {{-- <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36"> --}}
         {{-- </div> --}}
-       <x-header />
+
+        <!-- Image en haut -->
+<div class="mb-4 h-1/5 overflow-hidden">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36 object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="/img/acceuil2.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36 object-cover">
+            </div>
+            <div class="swiper-slide">
+                <img src="/img/acceuil4.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36 object-cover">
+            </div>
+            <!-- Ajoutez d'autres diapositives ici -->
+        </div>
+        <!-- Ajouter des boutons de navigation si nécessaire -->
+        {{-- <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div> --}}
+    </div>
+</div>
+
+       {{-- <x-header /> --}}
         <!-- Boutons Dépôt et Retrait -->
        <x-button-transaction/>
 

@@ -9,14 +9,14 @@
         <label for="amount">Montant :</label>
         <input type="number" name="amount" required>
 
-        <label for="customer">Client :</label>
-        <input type="text" name="customer" required placeholder="Numéro ou ID du client">
+        {{-- <label for="customer">Client :</label> --}}
+        {{-- <input type="text" name="customer" required placeholder="Numéro ou ID du client">
 
         <label for="location">Emplacement :</label>
         <input type="text" name="location" required placeholder="Ville ou adresse">
 
         <label for="product">Produit :</label>
-        <input type="text" name="product" required placeholder="Nom du produit">
+        <input type="text" name="product" required placeholder="Nom du produit"> --}}
 
         <button type="submit">Déposer</button>
     </form>

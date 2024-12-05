@@ -55,7 +55,7 @@
         
         <div class="grid grid-cols-1 gap-4 mb-24">
             @foreach ($taches as $tache)
-    @if ($tache['type'] === 'standard')
+    @if ($tache['type'] === 'special')
         <div class="bg-white rounded-lg shadow p-4">
             <h3 class="text-md italic font-semibold text-gray-500">{{ $tache['description'] }}</h3>
             <div class="grid grid-cols-2 md:grid-cols-2 gap-4 text-sm">

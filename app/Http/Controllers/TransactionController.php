@@ -23,13 +23,14 @@ class TransactionController extends Controller
         $validatedData = $request->validate([
             'phone' => 'required|string',
             'amount' => 'required|numeric|min:1',
-            'customer' => 'required|string',
-            'location' => 'required|string',
-            'product' => 'required|string',
+            // 'customer' => 'required|string',
+            // 'location' => 'required|string',
+            // 'product' => 'required|string',
         ]);
         
-        $paymentRequest = new Deposit($validatedData['phone'], $validatedData['amount'], 'MTN', 'CM');
+        $paymentRequest = new Deposit($validatedData['phone'], $validatedData['amount'], 'ORANGE', 'CM', 'XAF');
         // Processus de paiement
+        // dd($paymentRequest);
         $paymentResponse = $paymentRequest->pay();
 
         // Gérer la réponse du paiement
@@ -44,7 +45,7 @@ class TransactionController extends Controller
             ]);
             return redirect()->route('transactions.index')->with('success', 'Dépôt réussi !');
         } else {
-            return redirect()->back()->with('error', 'Échec du dépôt.');
+            return redirect()->back()->with('error', 'Échec du retrait verifier votre solde FlashCash.');
         }
     }
 
