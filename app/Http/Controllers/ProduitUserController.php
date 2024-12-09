@@ -134,21 +134,12 @@ public function store(Request $request)
     $produit = Produit::find($request->produit_id);
 
 
-    if ($produit->stock == 0) {
-        return redirect()->route('produits.index')->with('error', 'Produit non disponible en stock.');
-    }
 // dd($user->solde_total);
     // Vérifier si l'utilisateur a suffisamment de fonds
     if ($user->solde_total < $produit->montant) {
         return redirect()->route('produits.index')->with('error', 'Fonds insuffisants pour acheter ce produit.');
-    }else{
-        $user->solde_total -= $produit->montant;
-        $user->save();
-
+        // break;
     }
-    // Vérifier la disponibilité du stock
-    
-    // Vérification si l'utilisateur a déjà acheté ce produit
     $produitUserExist = ProduitUser::where('user_id', $user->id)
     ->where('produit_id', $produit->id)
     ->latest('created_at') // Récupérer la dernière occurrence
@@ -157,6 +148,13 @@ public function store(Request $request)
     if ($produitUserExist && $produit->stock <= $produitUserExist->count) {
         return redirect()->route('produits.index')->with('error', 'Vous avez épuisé votre stock.');
     }
+        $user->solde_total -= $produit->montant;
+        $user->save();
+
+    
+    // Vérifier la disponibilité du stock
+    
+    // Vérification si l'utilisateur a déjà acheté ce produit
 
     $produitUser = new ProduitUser();
         if ($produitUserExist) {

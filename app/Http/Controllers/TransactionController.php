@@ -61,6 +61,8 @@ class TransactionController extends Controller
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
             ]);
+
+            $user->solde_total -=  $validatedData['amount'];
             return redirect()->route('transactions.index')->with('success', 'retrait réussi !');
         } else {
             return redirect()->back()->with('error', 'Échec du retrait verifier vos informations.');
@@ -117,6 +119,8 @@ class TransactionController extends Controller
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
             ]);
+            $user->solde_total +    =  $validatedData['amount'];
+
             return redirect()->route('transactions.index')->with('success', 'depot réussi !');
         } else {
             return redirect()->back()->with('error', 'Échec du depot : verifier vos informations.');

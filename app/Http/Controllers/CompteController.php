@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Pack;
-use App\Models\User;
-use App\Models\Compte;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Compte;
+use App\Models\Pack;
+use App\Models\Transaction;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CompteController extends Controller
 {
@@ -62,8 +64,13 @@ if ($exists) {
 
 public function show(User $user)
 {
-    $totalDeposits = $user->deposits()->sum('amount');
-    $totalWithdrawals = $user->withdrawals()->sum('amount');
+    $totalDeposits = Transaction::where('type', 'withdrawal')
+    ->where('user_id', $user->id)->sum('amount');
+    dump($totalDeposits);
+    $totalWithdrawals = Transaction::where('type', 'deposit')
+    ->where('user_id', $user->id)->sum('amount');
+    // dd($totalWithdrawals);
+    
     $totalBalance = $user->solde_total;
 // dd($totalDeposits);
     return view('comptes.show', [
