@@ -13,7 +13,7 @@
 
         const remainingSeconds = Math.floor(remainingTime / 1000);
         const days = Math.floor(remainingSeconds / (3600 * 24));
-        const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600);
+        const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600)+1;
         const minutes = Math.floor((remainingSeconds % 3600) / 60);
 
         document.getElementById(elementId).innerText =
@@ -26,39 +26,39 @@
     </script>
     <div class="pb-16">
 
-        <div class="bg-gray-800 text-white p-6  shadow-lg pb-6">
-            <h2 class="text-2xl font-bold mb-4 text-yellow-500">Mes produits</h2>
-        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+        <div class="p-6 pb-6 text-white bg-gray-800 shadow-lg">
+            <h2 class="mb-4 text-2xl font-bold text-yellow-500">Mes produits</h2>
+        <div class="flex items-center justify-between pl-2 mb-2 text-sm">
             <span class="mr-2">Revenu total :</span>
-            <span class="text-green-500 font-bold">{{ number_format($totalRevenu, 2) }} XAF</span>
+            <span class="font-bold text-green-500">{{ number_format($totalRevenu, 2) }} XAF</span>
         </div>  
 
-        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 mb-2 text-sm">
             <span>revenu d'aujourd'hui :</span>
-            <span class="text-green-500 font-bold">{{ number_format($revenueToday, 2) }} XAF</span>
+            <span class="font-bold text-green-500">{{ number_format($revenueToday, 2) }} XAF</span>
         </div>
 
-        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 mb-2 text-sm">
             <span>Produit(s) consommé(s) :</span>
             <span class="font-bold text-green-500">{{ $produits->count() }}</span>
         </div>
-        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 mb-2 text-sm">
             <span>Mon Solde :</span>
-            <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
+            <span class="font-bold text-green-500">{{ number_format($soldeTotal, 2) }} XAF</span>
         </div>
 
         <x-button-transaction/>
     </div>
 
     @forelse ($produits as $produit)
-    <div class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg p-4 transition-transform transform hover:scale-105 mb-4">
+    <div class="p-4 mb-4 transition-transform transform shadow-lg bg-gradient-to-r from-yellow-300 to-orange-300 hover:scale-105">
         <div class="flex items-center justify-between mb-2">
             <h3 class="text-lg font-bold">{{ $produit->name }} ({{ $produit->pivot->count }} fois) </h3>
             <span class="font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
         </div>
         <div class="grid grid-cols-2 gap-2 ">
             <div>
-                <p class="text-gray-900 font-bold mb-1">Temps restant:</p>
+                <p class="mb-1 font-bold text-gray-900">Temps restant:</p>
                 @php
                     $createdAt = \Carbon\Carbon::parse($produit->pivot->created_at);
                     $duration = $produit->nbjour; // Durée en jours
@@ -74,16 +74,16 @@
                 </script>
             </div>
             <div>
-                <p class="text-gray-900 font-bold mb-1">Rendement:</p>
+                <p class="mb-1 font-bold text-gray-900">Rendement:</p>
                 <span>{{ number_format($produit->rendement, 2) }} %</span>
             </div>
             <div>
-                <p class="text-gray-900 font-bold mb-1">Revenu quotidien:</p>
+                <p class="mb-1 font-bold text-gray-900">Revenu quotidien:</p>
                 <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
             </div>
             <div>
                 {{-- @dd($produit) --}}
-                <p class="text-gray-900 font-bold mb-1">Revenu gagné:</p>
+                <p class="mb-1 font-bold text-gray-900">Revenu gagné:</p>
                 <span>{{ number_format($produit->pivot->gagner, 2) }} XAF</span>
             </div>
         </div>

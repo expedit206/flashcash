@@ -12,16 +12,26 @@ class ProduitUser extends Model
     use HasFactory;
     protected $table ='produit_user';
 
-    protected $fillable = ['produit_id', 'user_id', 'count', 'gagner', 'icon'];
+    protected $fillable = ['produit_id', 'user_id', 'count', 'gagner', 'icon', 'last_checked'];
 
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function produit()
     {
-        return $this->hasMany(Produit::class);
+        return $this->belongsTo(Produit::class);
     }
+
+    // public function calculateDailyRevenue()
+    // {
+    //     // Exemple : 5% de revenu par jour
+    //     $dailyRate = $this->produit->gainJ; // Taux de revenu quotidien du produit
+    //     $daysSincePurchase = now()->diffInDays($this->last_checked ?? $this->created_at);
+    //     // dd($this);
+    //     // dd(floor(-$daysSincePurchase));
+    //     return  $dailyRate * floor(-$daysSincePurchase);
+    // }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Produit;
 use App\Models\ProduitUser;
+use App\Models\User;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
@@ -23,11 +24,20 @@ class ProduitUserController extends Controller
 
         foreach ($produitUsers as $produitUser) {
         // die;
-        $produit = Produit::find($produitUser->produit_id) ;
-        // dd($produitUser);    
+
         
-    if ($produitUser) {
-           
+        if ($produitUser) {
+        // die;
+            // $revenue = $produitUser->calculateDailyRevenue();
+
+                // Ajouter les revenus au solde de l'utilisateur
+                // $user->solde_total += $revenue;
+                // die;
+                // Mettre à jour le produit utilisateur pour éviter de recalculer
+                // $produitUser->last_checked = now(); // Stocker la dernière vérification
+                // dd($produitUser->last_checked);
+                $produit = Produit::find($produitUser->produit_id) ;
+                // dd($produitUser);    
                 // Passer la date au JavaScript
             $lastIncrementedAt = new DateTime($produitUser->last_incremented_at); // Exemple : remplacez par votre valeur
             $now = new DateTime('now'); // Date actuelle
@@ -38,19 +48,22 @@ class ProduitUserController extends Controller
             // Calculer la différence en jours
             $secondsPerDay = 60*60*24 ; // Nombre de secondes dans un jour
             $daysElapsed = ($nowTimestamp - $lastIncrementedAtTimestamp) / $secondsPerDay;
-   
+            
         
         // Vérifiez si le nombre de jours est supérieur ou égal à 1
         // echo "La différence en jours est : " . $daysElapsed . "<br>";
+        dd($daysElapsed);
         if ($daysElapsed >= 1) {
-            if ($daysElapsed >= 2) {
-                $produitUser->gagner += $produit->gainJ;
+            // if ($daysElapsed >= 2) {
+                $produitUser->gagner += $produit->gainJ * $daysElapsed;
+                $user->solde_total += $produit->gainJ * $daysElapsed;
                 $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at);
-                // Ajouter un jour
-                $produitUser->last_incremented_at->modify('+1 day');
-            }
-            $produitUser->save();
+                // Ajouter un jour  
+                $produitUser->last_incremented_at->modify("+".$daysElapsed." day" );
+            // }
         } 
+        $produitUser->save();
+        $user->save();
      }
    
 
@@ -159,10 +172,10 @@ public function store(Request $request)
 
     $produitUserCount= ProduitUser::where('user_id', $user->id)
     ->count();
-    dd($produitUserCount);
-    if(produitUserCount == 1){//si c'est sa premiere fois d'incestir on calcule  le bonus de ses parrains
+    if($produitUserCount == 1){//si c'est sa premiere fois d'incestir on calcule  le bonus de ses parrains
+        // dd($produitUserCount);
 
-        $this->incrementReferralBonuses($filleul);
+        $this->incrementReferralBonuses($user);
     }
 
     // Décrémenter le stock du produit

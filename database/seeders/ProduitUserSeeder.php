@@ -27,7 +27,7 @@ class ProduitUserSeeder extends Seeder
         // Créer 5 entrées pour la table produit_user
         for ($i = 0; $i < 5; $i++) {
             // Date de création unique en ajoutant une se   conde basée sur l'index
-            $createdAt = now()->subDays(rand(0, 30))->addSeconds($i);
+            $createdAt = now()->subDays(rand(0, 3))->addSeconds($i);
             $i=$i+3;
             // Insérer dans la table produit_user
             DB::table('produit_user')->insert([
