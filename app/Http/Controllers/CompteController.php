@@ -66,7 +66,7 @@ public function show(User $user)
 {
     $totalDeposits = Transaction::where('type', 'withdrawal')
     ->where('user_id', $user->id)->sum('amount');
-    dump($totalDeposits);
+    // dump($totalDeposits);
     $totalWithdrawals = Transaction::where('type', 'deposit')
     ->where('user_id', $user->id)->sum('amount');
     // dd($totalWithdrawals);

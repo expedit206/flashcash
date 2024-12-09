@@ -119,7 +119,7 @@ class TransactionController extends Controller
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
             ]);
-            $user->solde_total +    =  $validatedData['amount'];
+            $user->solde_total +=  $validatedData['amount'];
 
             return redirect()->route('transactions.index')->with('success', 'depot réussi !');
         } else {
