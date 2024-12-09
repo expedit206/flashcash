@@ -21,16 +21,32 @@ class TransactionController extends Controller
     {
         // Validation des données d'entrée
         $validatedData = $request->validate([
-            'phone' => 'required|string',
-            'amount' => 'required|numeric|min:1',
-            // 'customer' => 'required|string',
-            // 'location' => 'required|string',
-            // 'product' => 'required|string',
+            'phone' => 'required|string|digits_between:9,15',
+            'amount' => 'required|numeric|min:100',
+            'provider' => 'required',
+            'password_transaction' => 'required|string', // Ajout de la validation pour le mot de passe de transaction
+
+        ], [
+            'phone.required' => 'Le numéro de téléphone est requis.',
+            'phone.string' => 'Le numéro de téléphone doit être une chaîne de caractères.',
+            'phone.digits_between:9,15' => 'Le numéro de téléphone doit contenir exactement 9 caractères.',
+            'amount.required' => 'Le montant est requis.',
+            'amount.numeric' => 'Le montant doit être un nombre.',
+            'amount.min' => 'Le montant doit être au moins 1000.',          
+            'provider.required' => 'Le fournisseur est requis.',
         ]);
         
-        $paymentRequest = new Deposit($validatedData['phone'], $validatedData['amount'], 'ORANGE', 'CM', 'XAF');
-        // Processus de paiement
-        // dd($paymentRequest);
+        $user = auth()->user();
+        if (!\Hash::check($validatedData['password_transaction'], $user->password_transaction)) {
+            return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
+        }
+        $paymentRequest = new Deposit(
+            $validatedData['phone'],
+            $validatedData['amount'], 
+            \Str::upper($validatedData['provider']), 
+            'CM', 
+            'XAF'
+        );
         $paymentResponse = $paymentRequest->pay();
 
         // Gérer la réponse du paiement
@@ -43,9 +59,9 @@ class TransactionController extends Controller
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
             ]);
-            return redirect()->route('transactions.index')->with('success', 'Dépôt réussi !');
+            return redirect()->route('transactions.index')->with('success', 'retrait réussi !');
         } else {
-            return redirect()->back()->with('error', 'Échec du retrait verifier votre solde FlashCash.');
+            return redirect()->back()->with('error', 'Échec du retrait verifier vos informations.');
         }
     }
 
@@ -84,6 +100,7 @@ class TransactionController extends Controller
            url('mes-produits')  // URL de redirection
         );
         // Processus de paiement
+        // dd($paymentRequest);
         $paymentResponse = $paymentRequest->pay();
         // dd($paymentResponse);
 // die;
@@ -98,9 +115,9 @@ class TransactionController extends Controller
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
             ]);
-            return redirect()->route('transactions.index')->with('success', 'Retrait réussi !');
+            return redirect()->route('transactions.index')->with('success', 'depot réussi !');
         } else {
-            return redirect()->back()->with('error', 'Échec du retrait : verifier votre solde et choisissez le service correspondant.');
+            return redirect()->back()->with('error', 'Échec du depot : verifier vos informations.');
         }
     }
 

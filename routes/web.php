@@ -127,7 +127,6 @@ Route::get('/transactions', [TransactionController::class, 'showTransactions'])-
 
 Route::get('/showPasswordTransaction', [CompteController::class, 'showPasswordTransaction'])->name('showPasswordTransaction');
 Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
-Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
 
 use App\Http\Controllers\WalletController;
 

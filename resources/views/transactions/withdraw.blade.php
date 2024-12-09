@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="bg-gray-800 text-white px-6 py-3 shadow-lg mb-4">
-        <h2 class="text-xl font-bold mb-2 text-yellow-400">Détails du Dépôt</h2>
+        <h2 class="text-xl font-bold mb-2 text-yellow-400">Détails de la recharge</h2>
         <div class="flex justify-between items-center mb-2 text-sm ml-3">
-            <span>Faites votre dépôt rapidement et facilement.</span>
+            <span>Recharger votre compte FlashCash rapidement et facilement.</span>
         </div>
         <div class="flex justify-between items-center mb-2 text-sm ml-3">
             <span>Choisissez votre fournisseur (Orange ou MTN) et entrez votre numéro de téléphone.</span>
@@ -78,7 +78,7 @@
             @enderror
         </div>
 
-        <input id="submit-button" type="submit" class="bg-gray-600 text-white p-4 rounded hover:bg-green-700 transition duration-300" value="Valider" disabled>
+        <input id="submit-button" type="submit" class="bg-gray-600 text-white p-4 rounded hover:bg-green-700 transition duration-300" value="Recharger" disabled>
     </form>
 {{-- 
     @if (session('error'))

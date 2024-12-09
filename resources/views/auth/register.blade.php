@@ -64,7 +64,7 @@
         <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirmer mot de passe *')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+            <x-text-input id="password_confirmation" class="block mt-1 w-full "
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" placeholder="Confirmer votre mot de passe" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />

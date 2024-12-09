@@ -114,7 +114,7 @@ public function showPasswordTransaction()
     
             // Mettre à jour le mot de passe de transaction
             $user->password_transaction = \Hash::make($request->password_transaction);
-            // $user->save();
+            $user->save();
             return redirect()->back()->with('success', 'Mot de passe de transaction mis à jour avec succès.');
         }
 

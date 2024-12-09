@@ -157,10 +157,47 @@ public function store(Request $request)
     $produitUser->created_at = now(); // Date actuelle
     $produitUser->save(); // Enregistrement dans la base de données
 
+    $produitUserCount= ProduitUser::where('user_id', $user->id)
+    ->count();
+    dd($produitUserCount);
+    if(produitUserCount == 1){//si c'est sa premiere fois d'incestir on calcule  le bonus de ses parrains
+
+        $this->incrementReferralBonuses($filleul);
+    }
+
     // Décrémenter le stock du produit
-    $produit->save(); // Enregistrer la mise à jour du stock
+    // $produit->save(); // Enregistrer la mise à jour du stock
 
     // Redirection avec un message de succès
     return redirect()->route('produit.user.index')->with('success', 'Produit acheté avec succès!');
+}
+
+private function incrementReferralBonuses(User $user)
+{
+    // Récupérer les taux d'intérêt de la configuration
+    $tauxInteret = config('parrainage.taux_interet');
+    
+    // Récupérer le premier parrain du user
+    $parrain1 = $user->parrain; // Supposons que tu as une relation définie pour récupérer le parrain
+
+    // Niveau 1
+    if ($parrain1) {
+        $parrain1->solde_total += $tauxInteret['vip1'];
+        $parrain1->save();
+
+        // Niveau 2
+        if ($parrain1->parrain) {
+            $parrain2 = $parrain1->parrain;
+            $parrain2->solde_total += $tauxInteret['vip2'];
+            $parrain2->save();
+
+            // Niveau 3
+            if ($parrain2->parrain) {
+                $parrain3 = $parrain2->parrain;
+                $parrain3->solde_total += $tauxInteret['vip3'];
+                $parrain3->save();
+            }
+        }
+    }
 }
 }

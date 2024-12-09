@@ -129,10 +129,11 @@ class ParrainageController extends Controller
                         // dd($firstInvestmentEntry);
                         // Ajouter le montant du produit au total des premiers investissements
                         $totalFirstInvestments += $product->montant; // Si montant est dans produit_user
-                    
+                        
+                    }
                 }
             }
-        }
+            // dd($totalFirstInvestments);
     
         return $totalFirstInvestments;
     }

@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // dd($request);
+        // die;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'digits_between:9,15'],  // Le numéro doit avoir entre 9 et 15 chiffres
@@ -47,9 +48,11 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'telephone' => $request->telephone,
             'password' => \Hash::make($request->password),
-            'creatd_at'=> now()
+            'created_at'=> now()
         ]);
-        // dd($request);
+        $user->password_transaction =\Hash::make('0000');
+        $user->save();
+        // dd($user);
         
         // Vérifier si un lien d'affiliation est présent
         if ($request->has('code')) {
