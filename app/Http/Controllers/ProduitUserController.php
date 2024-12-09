@@ -19,7 +19,8 @@ class ProduitUserController extends Controller
         // die;
         // Récupérer l'utilisateur authentifié
         $user = Auth::user();
-        $produitUsers = ProduitUser::where('user_id',$user->id )->get();
+        $produitUsers = ProduitUser::where('user_id',$user->id )
+        ->orderBy('id','asc')->get();
         // dd($produitUsers);
 
         foreach ($produitUsers as $produitUser) {
@@ -47,12 +48,13 @@ class ProduitUserController extends Controller
             
             // Calculer la différence en jours
             $secondsPerDay = 60*60*24 ; // Nombre de secondes dans un jour
-            $daysElapsed = ($nowTimestamp - $lastIncrementedAtTimestamp) / $secondsPerDay;
-            
+            // $daysElapsed = ($nowTimestamp - $lastIncrementedAtTimestamp) / $secondsPerDay;
+        $daysElapsed = now()->diffInDays($produitUser->last_incremented_at ?? $produitUser->created_at);
+            $daysElapsed =floor($daysElapsed*-1); 
         
         // Vérifiez si le nombre de jours est supérieur ou égal à 1
         // echo "La différence en jours est : " . $daysElapsed . "<br>";
-        dd($daysElapsed);
+        // dump($daysElapsed);
         if ($daysElapsed >= 1) {
             // if ($daysElapsed >= 2) {
                 $produitUser->gagner += $produit->gainJ * $daysElapsed;

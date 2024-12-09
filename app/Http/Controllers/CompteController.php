@@ -64,7 +64,7 @@ public function show(User $user)
 {
     $totalDeposits = $user->deposits()->sum('amount');
     $totalWithdrawals = $user->withdrawals()->sum('amount');
-    $totalBalance = $user->produits()->sum('gagner');
+    $totalBalance = $user->solde_total;
 // dd($totalDeposits);
     return view('comptes.show', [
         'user' => $user,

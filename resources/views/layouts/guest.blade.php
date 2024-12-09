@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'FlashCash') }}</title>
         
         <link rel="shortcut icon" href="/img/logo_flashcash.png" type="image/x-icon">
         <!-- Fonts -->
@@ -20,17 +20,17 @@
 
     </head>
     <body class="font-sans text-gray-900 antialiased overflow-y-scroll max-h-[100vh] -z-50">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-800  -z-40">
+        <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-800 sm:justify-center sm:pt-0 -z-40">
             <div class="flex justify-center">
                 <a href="/" class="flex justify-center h-[60%] w-[60%] md:h[70%] md:w-[50%] lg:w-[25%]">
                     <div class="flex justify-center">
 
-                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                        <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
                     </div>
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-4 px-6 py-4 shadow-md shadow-slate-600 bg-slate-200">
+            <div class="w-full px-6 py-4 mt-4 shadow-md sm:max-w-md shadow-slate-600 bg-slate-200">
                 {{ $slot }}
             </div>
         </div>

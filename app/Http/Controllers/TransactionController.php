@@ -38,7 +38,7 @@ class TransactionController extends Controller
         
         $user = auth()->user();
         if (!\Hash::check($validatedData['password_transaction'], $user->password_transaction)) {
-            return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
+            // return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
         }
         $paymentRequest = new Deposit(
             $validatedData['phone'],
@@ -51,6 +51,8 @@ class TransactionController extends Controller
 
         // Gérer la réponse du paiement
         if ($paymentResponse->success) {
+        // die;
+
             Transaction::create([
                 'user_id' => auth()->id(),
                 'amount' => $validatedData['amount'],

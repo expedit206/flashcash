@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-        <title>{{ config('app.name', 'POTJACKER') }}</title>
+        <title>{{ config('app.name','FlashCash') }}</title>
 
         <!-- Fonts -->
         <link rel="shortcut icon" href="/img/logo_flashcash.png" type="image/x-icon">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     </head>
-    <body class="font-sans antialiased   ">
+    <body class="font-sans antialiased ">
         <style>
             .fa-times{
                 background: rgb(47, 68, 182);
@@ -42,8 +42,8 @@
 
             <!-- Page Heading -->
             @isset($header)
-                <header class=" shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-7">
+                <header class="shadow ">
+                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-7">
                         {{ $header }}
                     </div>
                 </header>
@@ -55,7 +55,7 @@
             </main>
         </div>
 
-            {{-- <a href="https://api.whatsapp.com/send?text={{ urlencode('Check%20out%20this%20amazing%20app:%20https://potjacker-a78c3d041f48.herokuapp.com/') }}" target="_blank" class="fixed text-green-500 top-[90vh] left-[80vw] flex items-center gap-1">Partage<i class="fas fa-share-alt text-2xl"></i>
+            {{-- <a href="https://api.whatsapp.com/send?text={{ urlencode('Check%20out%20this%20amazing%20app:%20https://FlashCash-a78c3d041f48.herokuapp.com/') }}" target="_blank" class="fixed text-green-500 top-[90vh] left-[80vw] flex items-center gap-1">Partage<i class="text-2xl fas fa-share-alt"></i>
             </a> --}}
 
             <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
