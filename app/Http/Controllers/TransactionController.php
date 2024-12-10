@@ -24,8 +24,7 @@ class TransactionController extends Controller
             'phone' => 'required|string|digits_between:9,15',
             'amount' => 'required|numeric|min:100',
             'provider' => 'required',
-            'password_transaction' => 'required|string', // Ajout de la validation pour le mot de passe de transaction
-
+            'password_transaction' => 'required|string', // Ajout de la validation pour le mot de passe de transaction  s
         ], [
             'phone.required' => 'Le numéro de téléphone est requis.',
             'phone.string' => 'Le numéro de téléphone doit être une chaîne de caractères.',
@@ -38,7 +37,7 @@ class TransactionController extends Controller
         
         $user = auth()->user();
         if (!\Hash::check($validatedData['password_transaction'], $user->password_transaction)) {
-            // return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
+            return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
         }
         $paymentRequest = new Deposit(
             $validatedData['phone'],

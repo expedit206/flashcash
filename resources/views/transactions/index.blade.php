@@ -15,7 +15,7 @@
             <div class="p-2 bg-white rounded-lg shadow-lg">
                 <div class="flex items-center justify-between mb-1">
                     <h2 class="font-bold text-gray-600 text-md">Montant: {{ $transaction->amount }}</h2>
-                    <p class="text-gray-800">Type: {{ $transaction->type=='withdrawal' ? 'Recharge' : ($transaction->type=='deposit'? 'Retrait' : $transaction->type) }}</p>
+                    <p class="text-gray-800">Type: {{ $transaction->type=='withdrawal' ? '  Recharge' : ($transaction->type=='deposit'? 'Retrait' : $transaction->type) }}</p>
                 </div>
                 <div class="flex items-center justify-between mb-2">
                     <p class="text-gray-600">Statut: {{ $transaction->status }}</p>

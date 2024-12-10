@@ -1,15 +1,15 @@
-<header class="bg-gray-800 text-white py-2">
+<header class="py-2 text-white bg-gray-800">
 
-    <div class="container mx-auto flex  items-center justify-center">
+    <div class="container flex items-center justify-center mx-auto">
 
         <div class="flex items-start flex-col justify-between w-[35%] h-[31%]">
-            <h1 class="text-mdl font-bold text-center">FlaxhCash</h1>
+            <h1 class="font-bold text-center text-mdl">FlashCash</h1>
 
             <x-application-logo class="" />
 
         </div>
 
-        <div class="mt-2 pl-3 text-white">
+        <div class="pl-3 mt-2 text-white">
 
             <p class="">Tel : {{ auth()->user()->telephone }}
             </p>
