@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Produit extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'montant', 'benefice','icon'];
+    protected $fillable = ['nom', 'montant', 'benefice', 'status'];
 
     public function comptes()
     {

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('gainJ');
             $table->string('img');
             $table->decimal('rendement');
+            $table->string('status');
             // $table->string('icon')->nullable();
             $table->timestamps();
         });

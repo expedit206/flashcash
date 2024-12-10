@@ -33,7 +33,7 @@
         <!-- Boutons Dépôt et Retrait -->
        <x-button-transaction/>
 
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 font-R" >
             @foreach ($produits as $produit)
                 <div class="p-4 mb-4 transition-transform transform rounded-lg shadow-lg bg-gradient-to-r from-yellow-300 to-orange-200 hover:scale-105">
                     <img src="{{ $produit->img }}" alt="{{ $produit->name }}" class="object-cover w-full rounded-md h-28">
@@ -42,18 +42,27 @@
                         <p class="text-base font-bold text-gray-900">{{ number_format($produit->montant, 2, ',', ' ') }} XAF</p>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-gray-800">Stock: {{ $produit->stock }}</p>
-                        <p class="text-sm font-bold text-gray-800">Gain Journalier: {{ number_format($produit->montant*$produit->rendement/100, 2, ',', ' ') }} XAF</p>
-                        <p class="text-sm font-bold text-gray-800">Rendement: {{ $produit->rendement }}%</p>
-                        <p class="text-sm font-bold text-gray-800">Revenu Total: {{ number_format($produit->montant *$produit->nbjour* ($produit->rendement / 100), 2, ',', ' ') }} XAF</p>
+                        <p class="text-sm font-bold text-gray-900">Stock: {{ $produit->stock }}</p>
+                        <p class="text-sm font-bold text-gray-900">Gain Journalier: {{ number_format($produit->montant*$produit->rendement/100, 2, ',', ' ') }} XAF</p>
+                        <p class="text-sm font-bold text-gray-900">Rendement: {{ $produit->rendement }}%</p>
+                        <p class="text-sm font-bold text-gray-900">Revenu Total: {{ number_format($produit->montant *$produit->nbjour* ($produit->rendement / 100), 2, ',', ' ') }} XAF</p>
+                        <p class="text-sm font-bold text-gray-900">
+                            Status: 
+                            <span class="italic {{ $produit->status === 'disponible' ? 'text-green-400' : 'text-red-400' }}">
+
+                                {{ $produit->status }}
+                            </span>
+                        </p>
                     </div>
                     <div class="mt-2">
                         <form action="{{ route('produit.user.store') }}" onsubmit="confirm('Confirmer l\'achat de ce produit')" method="POST">
                             @csrf
                             <input type="hidden" name="produit_id" value="{{ $produit->id }}">
+                            @if($produit->status === 'disponible')
                             <button type="submit" class="flex items-center justify-center w-full px-4 py-2 text-white transition bg-gray-800 rounded-lg hover:bg-blue-700">
                                 <i class="mr-2 fas fa-shopping-cart"></i> Acheter
                             </button>
+                        @endif
                         </form>
                     </div>
                 </div>

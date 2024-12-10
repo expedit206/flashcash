@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Commission;
+// use App\Models\Commission;
 use App\Models\Deposit;
 use App\Models\Produit;
 use App\Models\ProduitUser;
@@ -21,7 +21,7 @@ class ParrainageController extends Controller
         $solde_total = $user->solde_total;
 
         // Calcul des revenus de commission
-        $totalCommissions = Commission::where('user_id', $user->id)->sum('amount');
+        // $totalCommissions = Commission::where('user_id', $user->id)->sum('amount');
 
         // Récupérer les filleuls de l'utilisateur (VIP 1)
         $vip1 = User::where('parrain_id', $user->id)->get();
@@ -35,7 +35,7 @@ class ParrainageController extends Controller
         $totalFirstInvestmentVip3 = $this->calculateTotalFirstInvestments($vip3);
 
         return view('parrainage.index', compact(
-            'totalCommissions',
+            // 'totalCommissions',
             'totalFirstInvestmentVip1',
             'totalFirstInvestmentVip2',
             'totalFirstInvestmentVip3',
