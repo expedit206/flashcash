@@ -79,7 +79,7 @@
                             <i class="mr-2 text-xl text-green-600 fab fa-whatsapp"></i>
                             <span class="font-semibold text-md">WhatsApp</span>
                         </a>
-                        <a href="https://t.me/FastCashGroup237" target="_blank"
+                        <a href="https://t.me/+jxxWPpNZTtJiM2Q0" target="_blank"
                             class="flex items-center p-4 transition-transform transform bg-blue-100 rounded-lg shadow-lg hover:bg-blue-200 hover:scale-105">
                             <i class="mr-2 text-xl text-blue-600 fab fa-telegram"></i>
                             <span class="font-semibold text-md">Telegram</span>
