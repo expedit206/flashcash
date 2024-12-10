@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="container pb-8 mx-auto mb-10 -z-1">
+    <div class="container pb-8 mx-auto mb-10 bg-yellow-200 -z-1">
         <!-- Image en haut -->
         {{-- <div class="mb-4 h-1/5 bg-blue-950">
             <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36">

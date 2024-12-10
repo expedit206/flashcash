@@ -32,76 +32,62 @@
         </div>
 
         <div class="p-6 mt-2 bg-white rounded-lg shadow-md">
-
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-
-                {{-- <a href="#"
-                    class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
-                    <i class="mr-2 text-gray-600 fas fa-file-invoice t1xt-3xl"></i>
-
-                    <span class="font-semibold text-md">Ma facture</span>
-
-                </a> --}}
-
-                {{-- <a href="{{ route('wallet.configure') }}"
-                    class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
-                    <i class="mr-2 text-gray-600 fas fa-wallet text-1xl"></i>
-
-                    <span class="font-semibold text-md">Informations portefeuille</span>
-                </a> --}}
-
+        
                 <a href="{{ route('profile.edit') }}"
                     class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
                     <i class="mr-2 text-gray-600 fas fa-lock text-1xl"></i>
-
                     <span class="font-semibold text-md">Mot de passe connexion</span>
                 </a>
-
+        
                 <a href="{{ route('transactions.index') }}"
-                class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-            
-                <i class="mr-2 text-gray-600 fas fa-history text-1xl"></i>
-            
-                <span class="font-semibold text-md">Historique de transaction</span>
-            </a>
-                
+                    class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
+                    <i class="mr-2 text-gray-600 fas fa-history text-1xl"></i>
+                    <span class="font-semibold text-md">Historique de transaction</span>
+                </a>
+        
                 <a href="{{ route('showPasswordTransaction') }}"
                     class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
                     <i class="mr-2 text-gray-600 fas fa-lock text-1xl"></i>
-
                     <span class="font-semibold text-md">Mot de passe transaction</span>
                 </a>
-
+        
                 <a href="#"
                     class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
                     <i class="mr-2 text-gray-600 fas fa-users text-1xl"></i>
-
                     <span class="font-semibold text-md">Qui sommes-nous</span>
                 </a>
-
+        
                 <a href="{{ route('taches.index') }}"
                     class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
                     <i class="mr-2 text-gray-600 fas fa-tasks text-1xl"></i>
-
                     <span class="font-semibold text-md">Tâche</span>
                 </a>
-
+        
                 <a href="{{ route('logout') }}"
                     class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
-
                     <i class="mr-2 text-gray-600 fas fa-sign-out text-1xl"></i>
-
-                    <span class="font-semibold text-md ">Se déconnecter</span>
+                    <span class="font-semibold text-md">Se déconnecter</span>
                 </a>
-
+        
+                <!-- Option Contactez-nous -->
+                <div class="col-span-1 mt-4 md:col-span-2 mb-4">
+                    <h2 class="mb-2 text-lg font-bold text-gray-800">Contactez-nous</h2>
+                    <div class="flex flex-col space-y-2">
+                        <a href="https://wa.me/your-whatsapp-link" target="_blank"
+                            class="flex items-center p-4 transition-transform transform bg-green-100 rounded-lg shadow-lg hover:bg-green-200 hover:scale-105">
+                            <i class="mr-2 text-xl text-green-600 fab fa-whatsapp"></i>
+                            <span class="font-semibold text-md">WhatsApp</span>
+                        </a>
+                        <a href="https://t.me/your-telegram-link" target="_blank"
+                            class="flex items-center p-4 transition-transform transform bg-blue-100 rounded-lg shadow-lg hover:bg-blue-200 hover:scale-105">
+                            <i class="mr-2 text-xl text-blue-600 fab fa-telegram"></i>
+                            <span class="font-semibold text-md">Telegram</span>
+                        </a>
+                    </div>
+                </div>
+        
             </div>
-
         </div>
     </div>
 

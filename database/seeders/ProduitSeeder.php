@@ -31,7 +31,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now, // Ajouter la date de mise à jour
             ],
             [
-                'name' => 'T-Cash B',
+                'name' => 'T-Cash 1',
                 'montant' => 5000.00,
                 'nbjour' => 40,
                 'stock' => 10,
@@ -43,7 +43,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash C',
+                'name' => 'T-Cash 2',
                 'montant' => 12000.00,
                 'nbjour' => 38,
                 'stock' => 8,  // Épuisé
@@ -55,7 +55,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 3',
                 'montant' => 25000.00,
                 'nbjour' => 36,
                 'stock' => 8,
@@ -67,7 +67,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 4',
                 'montant' => 48000.00,
                 'nbjour' => 34,
                 'stock' => 7,
@@ -79,7 +79,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 5',
                 'montant' => 87000.00,
                 'nbjour' => 30,
                 'stock' => 5,
@@ -91,7 +91,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 6',
                 'montant' => 180000.00,
                 'nbjour' => 30,
                 'stock' => 5,
@@ -103,7 +103,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 7',
                 'montant' => 260000.00,
                 'nbjour' => 30,
                 'stock' => 4,
@@ -115,7 +115,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 8',
                 'montant' => 350000.00,
                 'nbjour' => 30,
                 'stock' => 4,
@@ -127,7 +127,7 @@ class ProduitSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'name' => 'T-Cash D',
+                'name' => 'T-Cash 9',
                 'montant' => 700000.00,
                 'nbjour' => 30,
                 'stock' => 2,
