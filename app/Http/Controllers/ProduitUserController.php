@@ -59,9 +59,9 @@ class ProduitUserController extends Controller
             // if ($daysElapsed >= 2) {
                 $produitUser->gagner += $produit->montant*$produit->rendement/100 * $daysElapsed;
                 $user->solde_total += $produit->montant*$produit->rendement/100 * $daysElapsed;
-                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at->setTimezone('Africa/Douala'));
+                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at);
                 // Ajouter un jour  
-                $produitUser->last_incremented_at->setTimezone('Africa/Douala')->modify("+".$daysElapsed." day" );
+                $produitUser->last_incremented_at->modify("+".$daysElapsed." day" );
             // }
         } 
         $produitUser->save();
