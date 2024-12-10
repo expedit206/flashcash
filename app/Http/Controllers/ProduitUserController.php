@@ -59,9 +59,9 @@ class ProduitUserController extends Controller
             // if ($daysElapsed >= 2) {
                 $produitUser->gagner += $produit->gainJ * $daysElapsed;
                 $user->solde_total += $produit->gainJ * $daysElapsed;
-                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at);
+                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at->setTimezone('Africa/Douala'));
                 // Ajouter un jour  
-                $produitUser->last_incremented_at->modify("+".$daysElapsed." day" );
+                $produitUser->last_incremented_at->setTimezone('Africa/Douala')->modify("+".$daysElapsed." day" );
             // }
         } 
         $produitUser->save();
@@ -167,7 +167,7 @@ public function store(Request $request)
     $produitUser->user_id = $user->id;
     $produitUser->produit_id = $produit->id;
     $produitUser->gagner = 0; // Initialiser à zéro
-    $produitUser->created_at = now(); // Date actuelle
+    $produitUser->created_at = now()->setTimezone('Africa/Douala'); // Date actuelle
     $produitUser->save(); // Enregistrement dans la base de données
 
     $produitUserCount= ProduitUser::where('user_id', $user->id)

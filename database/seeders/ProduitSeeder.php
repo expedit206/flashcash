@@ -15,7 +15,7 @@ class ProduitSeeder extends Seeder
      */
     public function run()
     {
-        $now = Carbon::now(); // Obtenir la date et l'heure actuelles
+        $now = Carbon::now()->setTimezone('Africa/Douala'); // Obtenir la date et l'heure actuelles
 
         DB::table('produits')->insert([
             [

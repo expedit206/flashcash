@@ -60,9 +60,13 @@ class TransactionController extends Controller
                 'status' => 'success',
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
+                'created_at' => now()->setTimezone('Africa/Douala'),
+
             ]);
 
             $user->solde_total -=  $validatedData['amount'];
+            $user->save();
+
             return redirect()->route('transactions.index')->with('success', 'retrait réussi !');
         } else {
             return redirect()->back()->with('error', 'Échec du retrait verifier vos informations.');
@@ -78,6 +82,8 @@ class TransactionController extends Controller
     {
         // Validation des données d'entrée
         // dd($request);
+        $user = auth()->user();
+
         $validatedData = $request->validate([
             'phone' => 'required|string|digits_between:9,15',
             'amount' => 'required|numeric|min:100',
@@ -111,6 +117,9 @@ class TransactionController extends Controller
         // Gérer la réponse du paiement
         // dd($paymentResponse);
         if ($paymentResponse->success) {
+            // die;
+            $now = new \DateTime('now'); // Date actuelle
+
             Transaction::create([
                 'user_id' => auth()->id(),
                 'amount' => $validatedData['amount'],
@@ -118,9 +127,10 @@ class TransactionController extends Controller
                 'status' => 'success',
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
+                'created_at' => now()->setTimezone('Africa/Douala'),
             ]);
             $user->solde_total +=  $validatedData['amount'];
-
+            $user->save();
             return redirect()->route('transactions.index')->with('success', 'depot réussi !');
         } else {
             return redirect()->back()->with('error', 'Échec du depot : verifier vos informations.');

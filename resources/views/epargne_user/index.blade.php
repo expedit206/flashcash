@@ -4,32 +4,32 @@
     <!-- Boutons -->
 
 
-    <div class="bg-gray-800 text-white p-2 px-6 shadow-lg pb-2">
-        <h2 class="text-2xl font-bold mb-4 text-yellow-600">Mes Épargnes</h2>
+    <div class="p-2 px-6 pb-2 text-white bg-gray-800 shadow-lg">
+        <h2 class="mb-4 text-2xl font-bold text-yellow-600">Mes Épargnes</h2>
     
         
-        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 mb-2 text-sm">
             <span>Montant  épargné :</span>
-            <span class="text-green-500 font-bold">{{ number_format($montantEpargneTotal, 2) }} XAF</span>
+            <span class="font-bold text-green-500">{{ number_format($montantEpargneTotal, 2) }} XAF</span>
         </div>
     
-        <div class="flex justify-between items-center mb-2 text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 mb-2 text-sm">
             <span>Nombre d'épargnes :</span>
             <span class="font-bold">{{ $epargnes->count() }}</span>
         </div>
         
-        <div class="flex justify-between items-center text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 text-sm">
             <span>Montant a retirer :</span>
-            <span class="text-green-500 font-bold">{{ number_format($revenuTotalEpargne, 2) }} XAF</span>
+            <span class="font-bold text-green-500">{{ number_format($revenuTotalEpargne, 2) }} XAF</span>
         </div>
 
-        <div class="flex justify-between items-center mt-2 text-sm pl-2">
+        <div class="flex items-center justify-between pl-2 mt-2 text-sm">
             <span class="mr-2">Mon Solde :</span>
-            <span class="text-green-500 font-bold">{{ number_format($soldeTotal, 2) }} XAF</span>
+            <span class="font-bold text-green-500">{{ number_format($soldeTotal, 2) }} XAF</span>
         </div>
     </div>
 
-    <div class="flex items-center space-x-0 justify-center gap-2 p-2">
+    <div class="flex items-center justify-center gap-2 p-2 space-x-0">
         <a href="{{ route('epargne.index') }}"
             class="{{ request()->routeIs('epargne.index') ? 'bg-yellow-500' : 'bg-gray-600' }} hover:bg-gray-700 rounded-lg text-white font-bold py-2 px-4 w-1/2">
             Épargne disponible
@@ -44,18 +44,18 @@
 
 
 
-    <div class="container mx-auto pb-20">
+    <div class="container pb-20 mx-auto">
 
         @if ($epargnes->isEmpty())
-            <div class="bg-yellow-500 text-white px-4 py-2 rounded text-center">Aucune épargne trouvée.</div>
+            <div class="px-4 py-2 text-center text-white bg-yellow-500 rounded">Aucune épargne trouvée.</div>
         @else
         <div class="grid grid-cols-1 gap-4">
             @foreach ($epargnes as $epargne)
-                <div class="bg-gradient-to-r from-yellow-300 to-orange-300 shadow-lg shadow-black p-4">
-                    <h5 class="text-md font-bold mb-2">{{ $epargne->nom }}</h5>
-                    <p class="text-sm mb-1 font-bold">Montant épargné: {{ number_format($epargne->pivot->montant, 2) }} XAF</p>
-                    <p class="text-sm mb-1 font-bold">Rendement : {{ number_format($epargne->rendement * 100, 2) }} %</p>
-                    <p class="text-sm mb-1 font-bold">Montant à gagner :
+                <div class="p-4 shadow-lg bg-gradient-to-r from-yellow-300 to-orange-300 shadow-black">
+                    <h5 class="mb-2 font-bold text-md">{{ $epargne->nom }}</h5>
+                    <p class="mb-1 text-sm font-bold">Montant épargné: {{ number_format($epargne->pivot->montant, 2) }} XAF</p>
+                    <p class="mb-1 text-sm font-bold">Rendement : {{ number_format($epargne->rendement * 100, 2) }} %</p>
+                    <p class="mb-1 text-sm font-bold">Montant à gagner :
                         {{ number_format($epargne->pivot->montant * $epargne->rendement + $epargne->pivot->montant, 2) }} XAF
                     </p>
         
@@ -63,13 +63,13 @@
                     @php
                         $uniqueId = \Carbon\Carbon::parse($epargne->pivot->created_at)->format('YmdHis'); // Formater la date
                     @endphp
-                    <p class="text-sm mb-1 font-bold" id="countdown-{{ $uniqueId }}">Temps restant : <span class="text-green-500 font-bold" id="time-{{ $uniqueId }}"></span></p>
+                    <p class="mb-1 text-sm font-bold" id="countdown-{{ $uniqueId }}">Temps restant : <span class="font-bold text-green-500" id="time-{{ $uniqueId }}"></span></p>
         {{-- @dd($epargne->pivot_epargne_id) --}}
                     <form action="{{ route('epargne.user.retirer', $epargne->pivot->id) }}" method="POST">
                         @csrf
                         <div class="mt-2">
                             <button type="submit"
-                                class="w-full bg-gray-600 text-white rounded-lg px-4 py-2 hover:bg-gray-600 transition">
+                                class="w-full px-4 py-2 text-white transition bg-gray-600 rounded-lg hover:bg-gray-600">
                                 Récupérer 
                             </button>
                         </div>
@@ -82,6 +82,8 @@
         
                         function updateCountdown() {
                             const now = Date.now();
+                            
+                            
                             const totalSeconds = Math.floor((endTime - now) / 1000);
         
                             if (totalSeconds <= 0) {
@@ -108,14 +110,14 @@
             @endforeach
         </div>
         @endif
-        <div class="bg-gray-800 text-white p-2 shadow-lg mt-4">
-            <h1 class="text-2xl font-bold mb-2">
+        <div class="p-2 mt-4 text-white bg-gray-800 shadow-lg">
+            <h1 class="mb-2 text-2xl font-bold">
                 Interêt des Épargnes
             </h1>
     
            
             <!-- Cadre explicatif sur l'épargne -->
-            <div class="text-white px-4 py-1 rounded mb-2">
+            <div class="px-4 py-1 mb-2 text-white rounded">
                 <p>
                     Récupérez vos épargnes et bénéficiez d'un intérêt accumulé à la fin de chaque période de décompte. Profitez de cette opportunité pour optimiser vos investissements et faire fructifier votre capital au fil du temps.
                                             </p>

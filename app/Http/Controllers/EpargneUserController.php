@@ -56,7 +56,7 @@ class EpargneUserController extends Controller
         // Attacher l'épargne à l'utilisateur avec le montant
 $user->epargnes()->attach($request->epargne_id, [
     'montant' => $request->montant,
-    'created_at' => now()
+    'created_at' => now()->setTimezone('Africa/Douala')
 ]);        $user->solde_total -= $request->montant;
         $user->save();
         // Redirection avec un message de succès

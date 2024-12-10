@@ -27,18 +27,18 @@ class ProduitUserSeeder extends Seeder
         // Créer 5 entrées pour la table produit_user
         for ($i = 0; $i < 5; $i++) {
             // Date de création unique en ajoutant une se   conde basée sur l'index
-            $createdAt = now()->subDays(rand(0, 3))->addSeconds($i);
+            $createdAt = now()->setTimezone('Africa/Douala')->subDays(rand(0, 3))->addSeconds($i);
             $i=$i+3;
             // Insérer dans la table produit_user
             DB::table('produit_user')->insert([
                 'user_id' => 3, // Utilisateur fixe
                 'produit_id' => $produits->random()->id, // ID de produit aléatoire
                 'gagner' => rand(1000, 5000), // Montant aléatoire gagné
-                'duration' => now()->subHours(rand(1, 72)), // Durée aléatoire
+                'duration' => now()->setTimezone('Africa/Douala')->subHours(rand(1, 72)), // Durée aléatoire
                 'count' => rand(1, 10), // Quantité aléatoire
-                'last_incremented_at' => now(), // Dernier incrément aléatoire
+                'last_incremented_at' => now()->setTimezone('Africa/Douala'), // Dernier incrément aléatoire
                 'created_at' => $createdAt, // Date de création unique
-                'updated_at' => now(),
+                'updated_at' => now()->setTimezone('Africa/Douala'),
             ]);
         }
     }

@@ -13,7 +13,7 @@
 
         const remainingSeconds = Math.floor(remainingTime / 1000);
         const days = Math.floor(remainingSeconds / (3600 * 24));
-        const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600)+1;
+        const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600);
         const minutes = Math.floor((remainingSeconds % 3600) / 60);
 
         document.getElementById(elementId).innerText =

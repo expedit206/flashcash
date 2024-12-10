@@ -23,14 +23,14 @@ class UserSeeder extends Seeder
             'telephone' => 696428651,
             'password' => Hash::make('aaaaaaaa'),  // Hachage du mot de passe
             'parrain_id' => null ,  // Hachage du mot de passe
-            'created_at' => now(),
-            'updated_at' => now(),],
+            'created_at' => now()->setTimezone('Africa/Douala'),
+            'updated_at' => now()->setTimezone('Africa/Douala'),],
             [ 'name' => 'aaa',
             'telephone' => 600028651,
             'password' => Hash::make('aaaaaaaa'),  // Hachage du mot de passe
             'parrain_id' => 3 ,  // Hachage du mot de passe
-            'created_at' => now(),
-            'updated_at' => now(),],
+            'created_at' => now()->setTimezone('Africa/Douala'),
+            'updated_at' => now()->setTimezone('Africa/Douala'),],
         ]);
     }
 }
