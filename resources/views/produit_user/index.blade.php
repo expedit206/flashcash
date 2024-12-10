@@ -79,7 +79,7 @@
             </div>
             <div>
                 <p class="mb-1 font-bold text-gray-900">Revenu quotidien:</p>
-                <span>{{ number_format($produit->gainJ, 2) }} XAF</span>
+                <span>{{ number_format($produit->montant*$produit->rendement/100, 2) }} XAF</span>
             </div>
             <div>
                 {{-- @dd($produit) --}}
