@@ -56,7 +56,6 @@ class RegisteredUserController extends Controller
         
         // Vérifier si un lien d'affiliation est présent
         if ($request['code']) {
-            // die;
             $parrain = User::find($request['code']);
 // die;
             if ($parrain) {
