@@ -13,7 +13,7 @@
            <!-- Ajout du solde total avec style amélioré -->
         </div>
         <!-- Section Accomplissement des Missions -->
-        <h2 class="p-3 px-4 mx-2 mt-2 mb-4 text-xl font-bold text-white bg-gray-500 rounded-lg">
+        <h2 class="p-3 px-4 mx-2 mt-2 mb-4 text-xl font-bold text-center text-white bg-gray-500 rounded-lg">
             <i class="mr-2 fas fa-tasks"></i> Accomplissement des missions
         </h2>
         

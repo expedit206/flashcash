@@ -5,13 +5,13 @@
         <!-- Cadre explicatif sur l'épargne -->
         <div class="px-4 py-2 mb-4 text-sm text-white bg-gray-700 rounded">
             <p>
-              Tous les entrées et sorties de votre porte feuille
+              Toutes les entrées et sorties de votre porte feuille
             </p>
         </div>
     </div>
 
     <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
-        @foreach ($transactions as $transaction)
+        @forelse ($transactions as $transaction)
             <div class="p-2 bg-white rounded-lg shadow-lg">
                 <div class="flex items-center justify-between mb-1">
                     <h2 class="font-bold text-gray-600 text-md">Montant: {{ $transaction->amount }}</h2>
@@ -24,6 +24,8 @@
 
                 </div>
             </div>
-        @endforeach
+            @empty
+            <p>Aucune transaction effectuée</p>
+        @endforelse
     </div>
 </x-app-layout>
