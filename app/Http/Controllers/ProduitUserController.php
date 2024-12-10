@@ -57,8 +57,8 @@ class ProduitUserController extends Controller
         // dump($daysElapsed);
         if ($daysElapsed >= 1) {
             // if ($daysElapsed >= 2) {
-                $produitUser->gagner += $produit->gainJ * $daysElapsed;
-                $user->solde_total += $produit->gainJ * $daysElapsed;
+                $produitUser->gagner += $produit->montant*$produit->rendement/100 * $daysElapsed;
+                $user->solde_total += $produit->montant*$produit->rendement/100 * $daysElapsed;
                 $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at->setTimezone('Africa/Douala'));
                 // Ajouter un jour  
                 $produitUser->last_incremented_at->setTimezone('Africa/Douala')->modify("+".$daysElapsed." day" );
@@ -81,7 +81,7 @@ class ProduitUserController extends Controller
         // Calculer le revenu accumulé et le revenu d'aujourd'hui
         $totalRevenu = $produits->sum('pivot.gagner'); // Utiliser 'pivot' pour accéder aux colonnes de la table pivot
         $revenueToday = $produits->sum(function ($produit) {
-            return $produit->gainJ; // Revenu quotidien du produit
+            return $produit->montant*$produit->rendement/100; // Revenu quotidien du produit
         });
 
         // Calculer la durée restante pour chaque produit
