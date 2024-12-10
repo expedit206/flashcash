@@ -52,11 +52,12 @@ class RegisteredUserController extends Controller
         ]);
         $user->password_transaction =\Hash::make('0000');
         $user->save();
-        // dd($user);
+        // dd($request);
         
         // Vérifier si un lien d'affiliation est présent
         if ($request['code']) {
-            $parrain = User::find(request['code']);
+            // die;
+            $parrain = User::find($request['code']);
 // die;
             if ($parrain) {
                 // Associer le nouvel utilisateur à l'utilisateur qui l'a référé

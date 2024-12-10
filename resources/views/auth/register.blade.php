@@ -4,8 +4,8 @@
 
         <div class="w-full">
             <x-input-label 
-            r="name" :value="__('Nom *')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Abena tiako"/>
+            forr="name" :value="__('Nom *')" />
+            <x-text-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Abena tiako"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
@@ -36,9 +36,9 @@
                     <option value="+7">+7 (RUS)</option>       <!-- Russie -->
                     <option value="+55">+55 (BRA)</option>     <!-- Brésil -->
                 </select>
-                <x-text-input id="phone" class="block  w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min="digits_between:9,15" />
+                <x-text-input id="phone" class="block w-full" type="number" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" placeholder="654879542" min="digits_between:9,15" />
             </div>
-            <span class="text-green-800 italic">
+            <span class="italic text-green-800">
                 {{-- Celui avec lequel vous ferez vos transferts d'argent --}}
             </span>
             <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
@@ -47,13 +47,14 @@
           <!-- Code de Parrainage -->
           <div class="mt-4">
             <x-input-label for="code" :value="__('Code de parrainage')" />
-            <x-text-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" autocomplete="code" placeholder="Entrez le code de parrainage (facultatif)" />
+            <input type="text" name="code" hidden id="aa">
+            <x-text-input id="code" class="block w-full mt-1" type="text" name="code" :value="old('code')" autocomplete="code" placeholder="Entrez le code de parrainage (facultatif)" />
             <x-input-error :messages="$errors->get('code')" class="mt-2" />
         </div>
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Mot de passe *')" />
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class="block w-full mt-1"
                             type="password"
                             name="password"
                             required autocomplete="new-password" placeholder="Votre mot de passe" />
@@ -64,7 +65,7 @@
         <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirmer mot de passe *')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full "
+            <x-text-input id="password_confirmation" class="block w-full mt-1 "
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" placeholder="Confirmer votre mot de passe" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -80,7 +81,7 @@
 
         <div class="flex items-center justify-end mt-4">
             Déjà inscrit?
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __(' Se connecter') }}
             </a>
 
@@ -93,6 +94,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const codeInput = document.getElementById('code');
+            const InputHidden = document.getElementById('aa');
             const urlParams = new URLSearchParams(window.location.search);
             const urlCode = urlParams.get('code');
 
@@ -100,13 +102,15 @@
             if (urlCode) {
                 codeInput.value = urlCode; // Remplit le champ avec le code de l'URL
                 codeInput.disabled = true; // Désactive le champ
+                InputHidden.value = codeInput.value ;
                 localStorage.setItem('code', urlCode); // Enregistre le code dans le localStorage
             } else {
                 // Vérifie si un code de parrainage existe déjà dans le localStorage
                 const storedCode = localStorage.getItem('code');
                 if (storedCode) {
                     codeInput.readOnly = true; // Désactive le champ
-                    codeInput.value = storedCode; // Remplit le champ s'il existe
+                    codeInput.value = storedCode;
+                     // Remplit le champ s'il existe
                 }
             }
         });
