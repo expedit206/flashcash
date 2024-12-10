@@ -71,15 +71,15 @@
                 </a>
         
                 <!-- Option Contactez-nous -->
-                <div class="col-span-1 mt-4 md:col-span-2 mb-4">
+                <div class="col-span-1 mt-4 mb-4 md:col-span-2">
                     <h2 class="mb-2 text-lg font-bold text-gray-800">Contactez-nous</h2>
                     <div class="flex flex-col space-y-2">
-                        <a href="https://wa.me/your-whatsapp-link" target="_blank"
+                        <a href="https://chat.whatsapp.com/CVgNzh6UXzo7i1TM7Caxnb" target="_blank"
                             class="flex items-center p-4 transition-transform transform bg-green-100 rounded-lg shadow-lg hover:bg-green-200 hover:scale-105">
                             <i class="mr-2 text-xl text-green-600 fab fa-whatsapp"></i>
                             <span class="font-semibold text-md">WhatsApp</span>
                         </a>
-                        <a href="https://t.me/your-telegram-link" target="_blank"
+                        <a href="https://t.me/FastCashGroup237" target="_blank"
                             class="flex items-center p-4 transition-transform transform bg-blue-100 rounded-lg shadow-lg hover:bg-blue-200 hover:scale-105">
                             <i class="mr-2 text-xl text-blue-600 fab fa-telegram"></i>
                             <span class="font-semibold text-md">Telegram</span>

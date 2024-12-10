@@ -55,8 +55,8 @@ class RegisteredUserController extends Controller
         // dd($user);
         
         // Vérifier si un lien d'affiliation est présent
-        if ($request->has('code')) {
-            $parrain = User::find(request('code'));
+        if ($request['code']) {
+            $parrain = User::find(request['code']);
 // die;
             if ($parrain) {
                 // Associer le nouvel utilisateur à l'utilisateur qui l'a référé
