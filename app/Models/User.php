@@ -70,7 +70,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Epargne::class)->withPivot('montant','id')->withTimestamps();
     }
-
+    
     public function parrain()
     {
         return $this->belongsTo(User::class, 'parrain_id'); // Relation avec le parrain

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
+use App\Models\ProduitUser;
 // use Hachther\MeSomb\Model\Deposit;
 // use Hachther\MeSomb\Model\Transaction;
+use App\Models\Transaction;
 use Hachther\MeSomb\Operation\Payment\Collect;
 use Hachther\MeSomb\Operation\Payment\Deposit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class TransactionController extends Controller
 {
@@ -22,7 +25,7 @@ class TransactionController extends Controller
         // Validation des données d'entrée
         $validatedData = $request->validate([
             'phone' => 'required|string|digits_between:9,15',
-            'amount' => 'required|numeric|min:100',
+            'amount' => 'required|numeric|min:1000',
             'provider' => 'required',
             'password_transaction' => 'required|string', // Ajout de la validation pour le mot de passe de transaction  s
         ], [
@@ -39,6 +42,22 @@ class TransactionController extends Controller
         if (!\Hash::check($validatedData['password_transaction'], $user->password_transaction)) {
             return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
         }
+        //verifie si il a acheter un produit
+        $produitUser = ProduitUser::find($user->id);
+        if(!$produitUser){
+            return redirect()->back()->with('error', 'vous devez acheter un produit avant d\'effectuer votre retrait.');
+
+        }
+        // les actionnaire ne retirre pas de l'argent
+        if($user->id == 5 ||$user->id == 7 || $user->id == 10 || $user->id == 16 || $user->id == 20 || $user->id == 25 || $user->id == 21 ){
+
+            return redirect()->back()->with('error', 'vous faites partir des actionnaires');
+        }
+
+        // verifie si le sode suffit
+        if($user->solde_total < $validatedData['amount']){
+             return redirect()->back()->with('error', 'votre solde est insuffisant pour effectuer ce retrait.');
+         }
         $paymentRequest = new Deposit(
             $validatedData['phone'],
             $validatedData['amount'], 
