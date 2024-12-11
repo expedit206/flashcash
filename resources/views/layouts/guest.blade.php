@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <title>{{ config('app.name', 'FlashCash') }}</title>
+        <title> FlashCash</title>
         
         <link rel="shortcut icon" href="/img/logo_flashcash.png" type="image/x-icon">
         <!-- Fonts -->
@@ -30,7 +30,7 @@
                 </a>
             </div>
 
-            <div class="w-full px-6 py-4 mt-4 shadow-md sm:max-w-md shadow-slate-600 bg-slate-200">
+            <div class="w-full px-6 py-4 mt-10 mb-24 shadow-md mb- sm:max-w-md shadow-slate-600 bg-slate-200">
                 {{ $slot }}
             </div>
         </div>

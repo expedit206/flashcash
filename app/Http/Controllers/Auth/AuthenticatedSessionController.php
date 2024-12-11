@@ -27,6 +27,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $request->session()->put('show_promo_modal', true);
+        // die; 
 
         if (auth()->user()->isAdmin()) {
             return redirect()->route('produits.index');

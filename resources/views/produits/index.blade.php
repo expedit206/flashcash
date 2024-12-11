@@ -1,14 +1,121 @@
 <x-app-layout>
 
-    <div class="container pb-8 mx-auto mb-10 bg-yellow-200 -z-1">
-        <!-- Image en haut -->
-        {{-- <div class="mb-4 h-1/5 bg-blue-950">
-            <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36">
-            {{-- <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36"> --}}
-            {{-- <img src="/img/acceuil.jpg" alt="Flash Cash Finance" class="w-[100vw] h-36"> --}}
-        {{-- </div> --}}
 
-        <!-- Image en haut -->
+    {{-- //promotion --}}
+    <style>
+        .modal-fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.modal-fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+    </style>
+    
+<!-- Modal --><div id="promoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 modal fade" tabindex="-1" role="dialog" aria-labelledby="promoModalLabel" aria-hidden="true" style="display: none;">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-lg modal-dialog">
+        <div class="modal-content">
+            <div class="flex items-center p-4 border-b modal-header">
+                <span class="mr-2 text-2xl">🎄</span> <!-- Emoji de sapin de Noël -->
+                <h5 class="text-lg font-semibold modal-title">Promotion de Noël</h5>
+                <button type="button" class="text-gray-500 close hover:text-gray-700" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="p-4 text-center modal-body">
+                <p class="text-md">Profitez de notre promotion spéciale de Noël avec un rendement élevé sur nos produits !</p>
+                <p class="mt-2 font-semibold text-red-600">Cette promotion se termine le 2 janvier 2025.</p>
+                <div class="mt-4">
+                    <span class="text-3xl">✨</span> <!-- Étoile -->
+                    <span class="text-3xl">🎁</span> <!-- Emoji de cadeau -->
+                    <span class="text-3xl">❄️</span> <!-- Flocon de neige -->
+                </div>
+            </div>
+            <div class="p-4 text-center border-t modal-footer">
+                <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded btn btn-primary" id="closeModal">OK</button>
+            </div>
+        </div>
+    </div><div id="promoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 modal fade" tabindex="-1" role="dialog" aria-labelledby="promoModalLabel" aria-hidden="true" style="display: none;">
+        <div class="w-full max-w-md bg-white rounded-lg shadow-lg modal-dialog">
+            <div class="modal-content">
+                <div class="flex items-center p-4 border-b modal-header">
+                    <span class="mr-2 text-2xl">🎄</span>
+                    <h5 class="text-lg font-semibold modal-title">Promotion de Noël</h5>
+                    <button type="button" class="text-gray-500 close hover:text-gray-700" data-dismiss="modal" aria-label="Close">&times;</button>
+                </div>
+                <div class="p-4 text-center modal-body">
+                    <p class="text-md">Profitez de notre promotion spéciale de Noël avec un rendement élevé sur nos produits !</p>
+                    <p class="mt-2 font-semibold text-red-600">Cette promotion se termine le 2 janvier 2025.</p>
+                    <div class="mt-4">
+                        <span class="text-3xl">✨</span>
+                        <span class="text-3xl">🎁</span>
+                        <span class="text-3xl">❄️</span>
+                    </div>
+                </div>
+                <div class="p-4 text-center border-t modal-footer">
+                    <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded btn btn-primary" id="closeModal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Vérifie si la session indique d'afficher le modal
+        @if(session('show_promo_modal'))
+            var promoModal = document.getElementById('promoModal');
+            promoModal.style.display = 'flex'; // Afficher le modal
+            promoModal.classList.add('modal-fade-in'); // Ajouter la classe d'animation
+
+            // Supprime la session après l'affichage
+            @php
+                session()->forget('show_promo_modal');
+            @endphp
+        @endif
+
+        // Ferme le modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            var promoModal = document.getElementById('promoModal');
+            promoModal.classList.remove('modal-fade-in'); // Retirer la classe d'animation d'entrée
+            promoModal.classList.add('modal-fade-out'); // Ajouter la classe d'animation de sortie
+
+            // Attendre la fin de l'animation avant de cacher le modal
+            promoModal.addEventListener('animationend', function() {
+                promoModal.style.display = 'none'; // Cacher le modal
+                promoModal.classList.remove('modal-fade-out'); // Retirer la classe d'animation de sortie
+                promoModal.setAttribute('aria-hidden', 'true'); // Mettre à jour l'attribut aria-hidden
+            }, { once: true });
+        });
+    });
+</script>
+    {{-- //promotion --}}
+
+
+    
+    <div class="container pb-8 mx-auto mb-10 bg-yellow-200 -z-1">
+   
 <div class="mb-4 overflow-hidden h-1/5">
     <div class="swiper-container">
         <div class="swiper-wrapper">

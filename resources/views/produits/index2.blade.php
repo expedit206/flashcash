@@ -1,33 +1,34 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between font-semibold text-xl text-green-300 leading-tight">
 
-            <h2 class="font-semibold text-xl text-gray-100 leading-tight">
+    <x-slot name="header">
+        <div class="flex justify-between text-xl font-semibold leading-tight text-green-300">
+
+            <h2 class="text-xl font-semibold leading-tight text-gray-100">
                 {{ __('Pack Disponibls') }}
             </h2>
             <div class="flex gap-4">
 
                 <a href="{{ route('comptes.index') }}">
-                    <span>Mon GAME <i class="fas fa-chart-line text-blue-400 text-1xl"></i></span>
+                    <span>Mon GAME <i class="text-blue-400 fas fa-chart-line text-1xl"></i></span>
                 </a>
             </div>
         </div>
     </x-slot>
 
-    <div class="py-12 bg-gray-800 min-h-screen">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=" overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="min-h-screen py-12 bg-gray-800">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-100">
                     @if(session('success'))
-                        <div class="bg-green-500 text-white p-3 rounded mb-4">
+                        <div class="p-3 mb-4 text-white bg-green-500 rounded">
                             {{ session('success') }}
                         </div>
                     @endif
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         @forelse($produits as $pack)
                         {{-- @dd($produits) --}}
-                            <div class="bg-gray-700 p-6 rounded-lg shadow-md flex flex-col items-center ">
+                            <div class="flex flex-col items-center p-6 bg-gray-700 rounded-lg shadow-md ">
                                 <p><i class="fas  {{ $pack->icon }}
                                     {{$pack->name == 'Junior'? 'text-green-300':""}}
                                      {{$pack->name == 'Elite'? 'text-blue-600':""}}
@@ -37,9 +38,9 @@
                                      {{($pack->name == 'Ultimate'? 'text-sky-500':'')}}
 
                                  text-6xl"></i></p>
-                                <h3 class="text-3xl font-bold text-gray-100 mb-2">{{ $pack->name }}</h3>
-                                <p class="text-gray-300 mb-4">Montant: {{ $pack->montant }} Fcfa</p>
-                                <span class="text-gray-300 mb-4">Gain:
+                                <h3 class="mb-2 text-3xl font-bold text-gray-100">{{ $pack->name }}</h3>
+                                <p class="mb-4 text-gray-300">Montant: {{ $pack->montant }} Fcfa</p>
+                                <span class="mb-4 text-gray-300">Gain:
 
                                     @auth
                                     @if(Auth::user()->id==3)
@@ -58,15 +59,15 @@
                                 <form action="{{ route('produits.subscribe', $pack->id) }}" method="POST">
                                     @csrf
 
-                                  <div class="flex gap-4 items-center">
-                                      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                  <div class="flex items-center gap-4">
+                                      <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
                                           Souscrire
                                         </button>
                                     @auth
-                                        <a href="{{ route('comptes.show',['user'=>auth()->user()->id, 'pack'=>$pack->id]) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Voir</a>
+                                        <a href="{{ route('comptes.show',['user'=>auth()->user()->id, 'pack'=>$pack->id]) }}" class="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-400">Voir</a>
 
                     @if (auth()->user()->isAdmin() )
-                        <a href="{{ route('produits.edit', $pack->id) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Modifier</a>
+                        <a href="{{ route('produits.edit', $pack->id) }}" class="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-400">Modifier</a>
                     </td>
                     @endif
                                     @endauth

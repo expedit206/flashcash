@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form id="deposit-form" action="{{ route('deposit.submit') }}" method="POST" class="p-6 bg-white rounded shadow-md">
+    <form id="deposit-form" action="{{ route('deposit.submit') }}" method="POST" class="p-6 mb-8 bg-white rounded shadow-md">
         @csrf
     
         <div class="mb-4">

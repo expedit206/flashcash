@@ -2,7 +2,7 @@
 
     <div class="container flex items-center justify-center mx-auto">
 
-        <div class="flex items-start flex-col justify-between w-[35%] h-[31%]">
+        <div class="flex  flex-col items-center justify-between w-[35%] h-[31%]">
             <h1 class="font-bold text-center text-mdl">FlashCash</h1>
 
             <x-application-logo class="" />
