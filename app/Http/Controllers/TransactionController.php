@@ -43,8 +43,9 @@ class TransactionController extends Controller
             return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
         }
         //verifie si il a acheter un produit
-        $produitUser = ProduitUser::find($user->id);
+        $produitUser = ProduitUser::where('user_id', $user->id)->first();
         if(!$produitUser){
+            // dd($user->id);
             return redirect()->back()->with('error', 'vous devez acheter un produit avant d\'effectuer votre retrait.');
 
         }

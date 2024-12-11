@@ -18,7 +18,10 @@
                     <p class="text-gray-800">Type: {{ $transaction->type=='withdrawal' ? '  Recharge' : ($transaction->type=='deposit'? 'Retrait' : $transaction->type) }}</p>
                 </div>
                 <div class="flex items-center justify-between mb-2">
-                    <p class="text-gray-600">Statut: {{ $transaction->status }}</p>
+                    <p class="text-gray-600">Statut: 
+                        <span class='text-green-500'>
+                            {{ $transaction->status }}</p>
+                        </span>
                     {{-- <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->format('d/m/Y H:i') }}</p> --}}
                     <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->copy()->addHour()->format('d/m/Y H:i') }}</p>
 

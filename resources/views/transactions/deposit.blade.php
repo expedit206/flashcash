@@ -1,18 +1,18 @@
 <x-app-layout>
-    <div class="px-6 py-3 mb-4 text-white bg-gray-800 shadow-lg">
+    <div class="px-6 py-3 mb-2 text-white bg-gray-800 shadow-lg">
         <h2 class="mb-2 text-xl font-bold text-yellow-400">Détails du retrait</h2>
         <div class="flex items-center justify-between mb-2 ml-3 text-sm">
             <span>Retirez de l'argent de votre compte FlashCash de manière simplifiée.</span>
         </div>
-        <div class="flex items-center justify-between mb-2 ml-3 text-sm">
-            <span>Choisissez votre fournisseur (Orange ou MTN) et entrez votre numéro de téléphone.</span>
-           <p>
-               frais de retrait 15%
-            </p>
-        </div>
     </div>
 
-    <form id="deposit-form" action="{{ route('deposit.submit') }}" method="POST" class="p-6 mb-8 bg-white rounded shadow-md">
+    <!-- Message concernant les frais de retrait -->
+    <div class="p-4 mb-1 text-sm text-gray-800 bg-yellow-100 border border-yellow-300 rounded">
+        <p>Les frais de retrait sont de <span class="font-bold">15%</span> du montant total de retrait.</p>
+        <p>Le montant minimum de retrait est de <span class="font-bold">1000 XAF.</span> </p>
+    </div>
+
+    <form id="deposit-form" action="{{ route('deposit.submit') }}" method="POST" class="p-6 mb-24 bg-white rounded shadow-md">
         @csrf
     
         <div class="mb-4">
@@ -76,8 +76,8 @@
     
         <div class="mb-4">
             <label for="transaction_password" class="block text-sm font-medium text-gray-700">Mot de passe de transaction :</label>
-            <input type="password" name="password_transaction" required class="w-full p-2 mt-1 border border-gray-300 rounded" placeholder="0000 par defaut">
-            <p class="text-sm italic">0000 par defaut</p>
+            <input type="password" name="password_transaction" required class="w-full p-2 mt-1 border border-gray-300 rounded" placeholder="0000 par défaut">
+            <p class="text-sm italic">0000 par défaut</p>
             @error('transaction_password')
             <p class="bg-[rgba(255,0,0,0.2)] p-3 rounded-md text-black italic">{{ $message }}</p>
             @enderror
@@ -85,13 +85,6 @@
     
         <input id="submit-button" type="submit" class="p-4 text-white transition duration-300 bg-gray-600 rounded hover:bg-green-700" value="Retirer" disabled>
     </form>
-{{-- 
-    @if (session('error'))
-        <div class="mt-4 text-red-600">{{ session('error') }}</div>
-    @endif
-    @if (session('success'))
-        <div class="mt-4 text-green-600">{{ session('success') }}</div>
-    @endif --}}
 
     <script>
         function updateSelection(selected) {
@@ -126,11 +119,4 @@
             }
         }
     </script>
-
-    {{-- @if (session('error'))
-        <div>{{ session('error') }}</div>
-    @endif
-    @if (session('success'))
-        <div>{{ session('success') }}</div>
-    @endif --}}
 </x-app-layout>

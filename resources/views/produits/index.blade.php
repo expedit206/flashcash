@@ -40,13 +40,11 @@
             <div class="flex items-center p-4 border-b modal-header">
                 <span class="mr-2 text-2xl">🎄</span> <!-- Emoji de sapin de Noël -->
                 <h5 class="text-lg font-semibold modal-title">Promotion de Noël</h5>
-                <button type="button" class="text-gray-500 close hover:text-gray-700" data-dismiss="modal" aria-label="Close">
-                    &times;
-                </button>
+               
             </div>
             <div class="p-4 text-center modal-body">
                 <p class="text-md">Profitez de notre promotion spéciale de Noël avec un rendement élevé sur nos produits !</p>
-                <p class="mt-2 font-semibold text-red-600">Cette promotion se termine le 2 janvier 2025.</p>
+                <p class="mt-2 font-semibold text-red-600">Fin de la promotion : 2 janvier 2025.</p>
                 <div class="mt-4">
                     <span class="text-3xl">✨</span> <!-- Étoile -->
                     <span class="text-3xl">🎁</span> <!-- Emoji de cadeau -->
