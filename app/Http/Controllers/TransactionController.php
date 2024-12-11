@@ -49,7 +49,7 @@ class TransactionController extends Controller
 
         }
         // les actionnaire ne retirre pas de l'argent
-        if($user->id == 5 ||$user->id == 7 || $user->id == 10 || $user->id == 16 || $user->id == 20 || $user->id == 25 || $user->id == 21 || $user->id == 46 ){
+        if($user->id == 5 || $user->id == 7 || $user->id == 16 || $user->id == 20 || $user->id == 25 || $user->id == 21 ){
 
             return redirect()->back()->with('error', 'vous faites partir des actionnaires');
         }
@@ -58,10 +58,10 @@ class TransactionController extends Controller
         if($user->solde_total < $validatedData['amount']){
              return redirect()->back()->with('error', 'votre solde est insuffisant pour effectuer ce retrait.');
          }
-         $montantNet = $validatedData['amount'] - $validatedData['amount']*15/100;
+         $retrait = $validatedData['amount'] - $validatedData['amount']*15/100;
         $paymentRequest = new Deposit(
             $validatedData['phone'],
-            $montantNet, 
+            $retrait, 
             \Str::upper($validatedData['provider']), 
             'CM', 
             'XAF'
