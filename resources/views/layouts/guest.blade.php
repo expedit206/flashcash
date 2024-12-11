@@ -19,18 +19,27 @@
         <link rel="stylesheet" href="/build/assets/app.css">
 
     </head>
-    <body class="font-sans text-gray-900 antialiased overflow-y-scroll max-h-[100vh] -z-50">
-        <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-800 sm:justify-center sm:pt-0 -z-40">
-            <div class="flex justify-center">
+    <body class="font-sans text-gray-900 antialiased overflow-y-scroll max-h-[100vh] -z-50"
+     {{-- style="
+    background-image : url('/img/FC6.jpg')
+    " --}}
+    >
+        <div class="flex flex-col items-center min-h-screen pt-2 sm:justify-center sm:pt-0 -z-40"
+        style="
+        background-image : url('/img/FC6.jpg')
+        ">
+            {{-- <div class="flex justify-center">
                 <a href="/" class="flex justify-center h-[60%] w-[60%] md:h[70%] md:w-[50%] lg:w-[25%]">
                     <div class="flex justify-center">
 
-                        <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
                     </div>
                 </a>
-            </div>
-
-            <div class="w-full px-6 py-4 mt-10 mb-24 shadow-md mb- sm:max-w-md shadow-slate-600 bg-slate-200">
+            </div> --}}
+            
+            <div class="w-full px-6 py-4 mt-10 mb-24 shadow-md mb- sm:max-w-md shadow-slate-600"
+         
+            >
+            <x-application-logo class="w-20 h-20 mb-8 text-gray-500 fill-current" />
                 {{ $slot }}
             </div>
         </div>
@@ -38,8 +47,8 @@
             <div class="container mx-auto text-center">
                 <p>&copy; {{ date('Y') }} Flash Cash. Tous droits réservés.</p>
                 <p>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Conditions d'utilisation</a> |
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Politique de confidentialité</a>
+                    <a href="{{ route('politique.utilisation') }}" class="text-gray-400 hover:text-gray-300">Conditions d'utilisation</a> |
+                    <a href="{{ route('politique.utilisation') }}" class="text-gray-400 hover:text-gray-300">Politique de confidentialité</a>
                 </p>
             </div>
         </footer>

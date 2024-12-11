@@ -1,19 +1,22 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] ">
+    <p class="mt-4 text-xl font-bold text-center text-white">Inscription</p>
+
+    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] text-white"
+    >
         @csrf
 
         <div class="w-full">
             <x-input-label 
-            forr="name" :value="__('Nom *')" />
+            for="name" class="text-white" :value="__('Nom *')" />
             <x-text-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Abena tiako"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Telephone -->
         <div class="mt-4">
-            <x-input-label for="phone" :value="__('Téléphone *')" />
+            <x-input-label for="phone" class="text-white" :value="__('Téléphone *')" />
             <div class="flex ">
-                <select  id="prefix" class="border border-gray-300 rounded-l w-[45%] text-sm ">
+                <select  id="prefix" class="border border-gray-300 text-black rounded-l w-[45%] text-sm ">
                     <option value="+237">+237 (CMR)</option>  <!-- Cameroun -->
                     <option value="+250">+250 (RWA)</option>  <!-- Rwanda -->
                     <option value="+254">+254 (KEN)</option>  <!-- Kenya -->
@@ -46,14 +49,14 @@
 
           <!-- Code de Parrainage -->
           <div class="mt-4">
-            <x-input-label for="code" :value="__('Code de parrainage')" />
+            <x-input-label for="code" class="text-white" :value="__('Code de parrainage')" />
             <input type="text" name="code" hidden id="aa">
             <x-text-input id="code" class="block w-full mt-1" type="text" name="code" :value="old('code')" autocomplete="code" placeholder="Entrez le code de parrainage (facultatif)" />
             <x-input-error :messages="$errors->get('code')" class="mt-2" />
         </div>
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Mot de passe *')" />
+            <x-input-label for="password" class="text-white" :value="__('Mot de passe *')" />
             <x-text-input id="password" class="block w-full mt-1"
                             type="password"
                             name="password"
@@ -64,7 +67,7 @@
         
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirmer mot de passe *')" />
+            <x-input-label for="password_confirmation" class="text-white" :value="__('Confirmer mot de passe *')" />
             <x-text-input id="password_confirmation" class="block w-full mt-1 "
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" placeholder="Confirmer votre mot de passe" />
@@ -81,7 +84,7 @@
 
         <div class="flex items-center justify-end mt-4">
             Déjà inscrit?
-            <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="text-sm text-green-400 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __(' Se connecter') }}
             </a>
 

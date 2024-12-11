@@ -92,7 +92,7 @@ Route::get('/profile/phone/{user}', [ProfileController::class, 'editPhone'])->na
 // Traiter la demande de modification du numéro de téléphone
 Route::patch('/profile/phone', [ProfileController::class, 'updatePhone'])->name('profile.phone.update')->middleware('auth');
 
-Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->name('politique.utilisation')->middleware('auth');
+Route::get('/politique-utilisation', [PolitiqueController::class, 'index'])->name('politique.utilisation');
 // CRUD sur les comptes
 
 
