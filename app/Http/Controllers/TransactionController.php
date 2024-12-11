@@ -45,7 +45,7 @@ class TransactionController extends Controller
         //verifie si il a acheter un produit
         $produitUser = ProduitUser::where('user_id', $user->id)->first();
         if(!$produitUser){
-            // dd($user->id);
+            // dd($user->id)
             return redirect()->back()->with('error', 'vous devez acheter un produit avant d\'effectuer votre retrait.');
 
         }
