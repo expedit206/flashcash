@@ -52,7 +52,7 @@
                     <span class="font-semibold text-md">Mot de passe transaction</span>
                 </a>
         
-                <a href="#"
+                <a href="https://flashcash-87a97442df74.herokuapp.com/"
                     class="flex items-center p-4 py-2 transition-transform transform bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 hover:scale-105">
                     <i class="mr-2 text-gray-600 fas fa-users text-1xl"></i>
                     <span class="font-semibold text-md">Qui sommes-nous</span>

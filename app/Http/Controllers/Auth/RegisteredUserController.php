@@ -40,9 +40,26 @@ class RegisteredUserController extends Controller
         // die;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'digits_between:9,15'],  // Le numéro doit avoir entre 9 et 15 chiffres
+            'telephone' => [
+            'required',
+            'digits_between:9,15',
+            'unique:users,telephone' // Doit être unique dans la table des utilisateurs
+
+        ],  // Le numéro doit avoir entre 9 et 15 chiffres
             'password' => ['required', 'confirmed'],
-        ]);
+    ], [
+        'name.required' => 'Le champ nom est obligatoire.',
+        'name.string' => 'Le champ nom doit être une chaîne de caractères.',
+        'name.max' => 'Le champ nom ne peut pas dépasser 255 caractères.',
+        
+        'telephone.required' => 'Le champ téléphone est obligatoire.',
+        'telephone.digits_between' => 'Le numéro de téléphone doit avoir entre 9 et 15 chiffres.',
+        'telephone.unique' => 'Ce numéro de téléphone est déjà utilisé.',
+    
+        'password.required' => 'Le champ mot de passe est obligatoire.',
+        'password.confirmed' => 'Les mots de passe ne correspondent pas.',
+    ]
+    );
         
         $user = User::create([
             'name' => $request->name,
