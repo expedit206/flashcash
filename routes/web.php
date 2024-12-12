@@ -6,16 +6,15 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\EpargneController;
 use App\Http\Controllers\EpargneUserController;
-use App\Http\Controllers\TransactionController;
-use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\ParrainageController;
+
 use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TacheController;
 use App\Http\Controllers\TacheUserController;
+use App\Http\Controllers\TransactionController;
 
 
 
@@ -68,9 +67,12 @@ Route::post('/retrait/{userId}/{compteId}', [CompteController::class, 'storeRetr
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users');
+    Route::get('/admin/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin/comptes/{user}', [uUerController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/admin/comptes', [AdminController::class, 'allComptes'])->name('admin.all_comptes');
 
-    Route::get('/admin/users', [AdminController::class, 'listUsers'])->name('admin.users');
     Route::get('/admin/user/{userId}/comptes', [AdminController::class, 'viewUserComptes'])->name('admin.user.comptes');
     Route::get('/admin/comptes/{compte}/edit', [AdminController::class, 'editCompte'])->name('admin.comptes.edit');
     Route::put('/admin/comptes/{compte}', [AdminController::class, 'updateCompte'])->name('admin.comptes.update');
@@ -129,6 +131,8 @@ Route::get('/showPasswordTransaction', [CompteController::class, 'showPasswordTr
 Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
 
 use App\Http\Controllers\WalletController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::get('/wallet/configure', [WalletController::class, 'showConfigurationForm'])->name('wallet.configure');
 Route::post('/wallet/store', [WalletController::class, 'storeWallet'])->name('wallet.store');

@@ -84,7 +84,7 @@
 
         <div class="flex items-center justify-end mt-4 text-white">
             Déjà inscrit?
-            <a class="text-sm text-green-400 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="text-sm text-green-400 underline rounded-md hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __(' Se connecter') }}
             </a>
 

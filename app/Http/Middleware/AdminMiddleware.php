@@ -17,12 +17,12 @@ class AdminMiddleware
     {     // Vérification des informations d'administrateur
         $user = Auth::user();
         dd($user->password);
-        if ($user && $user->name === 'zenwex.com' && $user->password === 'dominique2006') {
+        if ($user && $user->telephone === '696428651') {
             return $next($request);
         }
 
         // Rediriger si l'utilisateur n'est pas un administrateur
-        return redirect('/login')->with('error', 'Accès refusé. Vous devez être administrateur.');
+        return redirect('/login')->with('error', 'Vous risqué la suspension.');
 
     }
 }
