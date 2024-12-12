@@ -1,7 +1,7 @@
 <x-guest-layout>
     <p class="mt-4 text-xl font-bold text-center text-white">Inscription</p>
 
-    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] text-white"
+    <form method="POST" action="{{ route('register') }}" class="w-full h-[90vh] "
     >
         @csrf
 
@@ -13,7 +13,7 @@
         </div>
 
         <!-- Telephone -->
-        <div class="mt-4">
+        <div class="mt-4 text-black">
             <x-input-label for="phone" class="text-white" :value="__('Téléphone *')" />
             <div class="flex ">
                 <select  id="prefix" class="border border-gray-300 text-black rounded-l w-[45%] text-sm ">
@@ -48,14 +48,14 @@
         </div>
 
           <!-- Code de Parrainage -->
-          <div class="mt-4">
+          <div class="mt-4 text-black">
             <x-input-label for="code" class="text-white" :value="__('Code de parrainage')" />
             <input type="text" name="code" hidden id="aa">
             <x-text-input id="code" class="block w-full mt-1" type="text" name="code" :value="old('code')" autocomplete="code" placeholder="Entrez le code de parrainage (facultatif)" />
             <x-input-error :messages="$errors->get('code')" class="mt-2" />
         </div>
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 text-black">
             <x-input-label for="password" class="text-white" :value="__('Mot de passe *')" />
             <x-text-input id="password" class="block w-full mt-1"
                             type="password"
@@ -66,7 +66,7 @@
 
         
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mt-4 text-black">
             <x-input-label for="password_confirmation" class="text-white" :value="__('Confirmer mot de passe *')" />
             <x-text-input id="password_confirmation" class="block w-full mt-1 "
                             type="password"
@@ -76,13 +76,13 @@
 
       
 
-        <div class="mt-4">
+        <div class="mt-4 text-white">
             En vous inscrivant, vous acceptez notre
             <a href="{{ route('politique.utilisation') }}" class="text-green-600 hover:text-green-900"> Politique d'Utilisation!!
             </a>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end mt-4 text-white">
             Déjà inscrit?
             <a class="text-sm text-green-400 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __(' Se connecter') }}
