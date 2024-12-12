@@ -84,4 +84,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        //retirer la variable code du local storage
+                    localStorage.removeItem('code');
+
+    </script>
 </x-app-layout>
