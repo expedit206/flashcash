@@ -48,6 +48,7 @@
             <div class="right-0 z-10 w-56 mt-2 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                 <div class="py-1 text-center" role="none ">
                     <a href="{{ route('admin.users') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Liste des Utilisateurs</a>
+                    <a href="{{ route('produit_user.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">produit_user</a>
                     {{-- <a href="{{ route('admin.settings') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paramètres</a>
                     <a href="{{ route('admin.reports') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rapports</a> --}}
                     <!-- Ajoutez d'autres liens ici -->

@@ -18,6 +18,7 @@
                         <th class="px-4 py-2 border-b">Dépôt Total</th>
                         <th class="px-4 py-2 border-b">Retrait Total</th>
                         <th class="px-4 py-2 border-b">parrain</th>
+                        <th class="px-4 py-2 border-b">Crréé le</th>
                         <th class="px-4 py-2 border-b">Actions</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                             <td class="px-4 py-2 border-b">{{ $user->depot_total }}</td>
                             <td class="px-4 py-2 border-b">{{ $user->retrait_total }}</td>
                             <td class="px-4 py-2 border-b">{{ $user->parrain_id  }} ({{ $user->parrainName }})</td>
+                            <td class="px-4 py-2 border-b">{{ $user->created_at }}</td>
                             <td class="px-4 py-2 border-b">
                                 <a href="{{ route('admin.users.edit', $user) }}" class="text-yellow-500">Modifier</a>
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display:inline;">

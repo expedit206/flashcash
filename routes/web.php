@@ -66,26 +66,35 @@ Route::get('/parrainage/filleuls', [ParrainageController::class, 'showFilleul'])
 Route::post('/retrait/{userId}/{compteId}', [CompteController::class, 'storeRetrait'])->name('retrait.store')->middleware('auth');
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users');
-    Route::get('/admin/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.users.edit');
-    Route::put('/admin/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.users.update');
-    Route::delete('/admin/comptes/{user}', [uUerController::class, 'destroy'])->name('admin.users.destroy');
-    Route::get('/admin/comptes', [AdminController::class, 'allComptes'])->name('admin.all_comptes');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users');
+    Route::get('/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin.users.destroy');
+    
 
-    Route::get('/admin/user/{userId}/comptes', [AdminController::class, 'viewUserComptes'])->name('admin.user.comptes');
-    Route::get('/admin/comptes/{compte}/edit', [AdminController::class, 'editCompte'])->name('admin.comptes.edit');
-    Route::put('/admin/comptes/{compte}', [AdminController::class, 'updateCompte'])->name('admin.comptes.update');
-    Route::delete('/admin/comptes/{compte}', [CompteController::class, 'destroy'])->name('admin.comptes.destroy');
+    Route::resource('produit_user', \App\Http\Controllers\Admin\ProduitUserController::class);
+
+    // Route::get('/produit_users', [\App\Http\Controllers\Admin\ProduitUserController::class, 'index'])->name('admin.produit_users');
+    // Route::get('/{produit_user}/edit', [App\Http\Controllers\Admin\ProduitUserController::class, 'edit'])->name('admin.produit_users.edit');
+    // Route::put('/{produit_user}/update', [App\Http\Controllers\Admin\ProduitUserController::class, 'update'])->name('admin.produit_users.update');
+
+    // Route::delete('/comptes/{user}', [uUerController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('/comptes', [AdminController::class, 'allComptes'])->name('admin.all_comptes');
+
+    Route::get('/user/{userId}/comptes', [AdminController::class, 'viewUserComptes'])->name('admin.user.comptes');
+    Route::get('/comptes/{compte}/edit', [AdminController::class, 'editCompte'])->name('admin.comptes.edit');
+    Route::put('/comptes/{compte}', [AdminController::class, 'updateCompte'])->name('admin.comptes.update');
+    Route::delete('/comptes/{compte}', [CompteController::class, 'destroy'])->name('admin.comptes.destroy');
 
     // Statistiques administratives
-    Route::get('/admin/stats/retraits', [AdminController::class, 'totalRetraits'])->name('admin.stats.retraits');
-    Route::get('/admin/stats/comptes-pack', [AdminController::class, 'comptesParPack'])->name('admin.stats.comptes-pack');
-    Route::get('/admin/comptes-retraits', [AdminController::class, 'comptesAvecRetraits'])->name('admin.comptes.retraits');
+    Route::get('/stats/retraits', [AdminController::class, 'totalRetraits'])->name('admin.stats.retraits');
+    Route::get('/stats/comptes-pack', [AdminController::class, 'comptesParPack'])->name('admin.stats.comptes-pack');
+    Route::get('/comptes-retraits', [AdminController::class, 'comptesAvecRetraits'])->name('admin.comptes.retraits');
 
 
-    Route::get('/admin/comptes/create', [CompteController::class, 'create'])->name('comptes.create');
-    Route::post('/admin/comptes/store', [CompteController::class, 'store'])->name('comptes.store');
+    Route::get('/comptes/create', [CompteController::class, 'create'])->name('comptes.create');
+    Route::post('/comptes/store', [CompteController::class, 'store'])->name('comptes.store');
 
 });    
 
@@ -104,9 +113,9 @@ Route::get('/users-who-refer', [AdminController::class, 'parrain'])->name('users
 Route::post('/tache_user/{tache}', [TacheUserController::class, 'recuperer'])->name('taches.recuperer')->middleware('auth');
 
 
-Route::post('/code/store', [CodeController::class, 'store'])->name('code.store');
+// Route::post('/code/store', [CodeController::class, 'store'])->name('code.store');
     
-Route::get('/codes', [CodeController::class, 'index'])->name('code.index');
+// Route::get('/codes', [CodeController::class, 'index'])->name('code.index');
 
 
 
