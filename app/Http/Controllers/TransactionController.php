@@ -153,7 +153,7 @@ class TransactionController extends Controller
             $user->save();
             return redirect()->route('transactions.index')->with('success', 'depot réussi !');
         } else {
-            return redirect()->back()->with('error', 'Échec du depot : verifier vos informations.');
+            return redirect()->back()->with('error', 'Échec du depot : verifier votre solde et vos informations.');
         }
     }
 

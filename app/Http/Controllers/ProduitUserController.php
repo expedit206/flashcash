@@ -28,30 +28,30 @@ class ProduitUserController extends Controller
 
         
         if ($produitUser) {
-        // die;
-            // $revenue = $produitUser->calculateDailyRevenue();
-
-                // Ajouter les revenus au solde de l'utilisateur
-                // $user->solde_total += $revenue;
-                // die;
-                // Mettre à jour le produit utilisateur pour éviter de recalculer
-                // $produitUser->last_checked = now(); // Stocker la dernière vérification
-                // dd($produitUser->last_checked);
                 $produit = Produit::find($produitUser->produit_id) ;
                 // dd($produitUser);    
                 // Passer la date au JavaScript
-            $lastIncrementedAt = new DateTime($produitUser->last_incremented_at); // Exemple : remplacez par votre valeur
-            $now = new DateTime('now'); // Date actuelle
-            // Convertir les dates en timestamp
-            $lastIncrementedAtTimestamp = $lastIncrementedAt->getTimestamp();
-            $nowTimestamp = $now->getTimestamp();
+         
+             if($user->id == 3){
+                
+        // dump($lastIncrementedAt);
+            }
             
             // Calculer la différence en jours
             $secondsPerDay = 60*60*24 ; // Nombre de secondes dans un jour
-            // $daysElapsed = ($nowTimestamp - $lastIncrementedAtTimestamp) / $secondsPerDay;
         $daysElapsed = now()->diffInDays($produitUser->last_incremented_at ?? $produitUser->created_at);
+            if($user->id == 3){
+                
+        // dump($daysElapsed);
+            }
+            if($daysElapsed <= -1){
             $daysElapsed =floor($daysElapsed*-1); 
-        
+                
+               
+            }else{
+                 $daysElapsed = 0;
+            }
+            
         // Vérifiez si le nombre de jours est supérieur ou égal à 1
         // echo "La différence en jours est : " . $daysElapsed . "<br>";
         // dump($daysElapsed);
@@ -59,7 +59,7 @@ class ProduitUserController extends Controller
             // if ($daysElapsed >= 2) {
                 $produitUser->gagner += $produit->montant*$produit->rendement/100 * $daysElapsed;
                 $user->solde_total += $produit->montant*$produit->rendement/100 * $daysElapsed;
-                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at);
+                $produitUser->last_incremented_at = new DateTime($produitUser->last_incremented_at?? $produitUser->created_at);
                 // Ajouter un jour  
                 $produitUser->last_incremented_at->modify("+".$daysElapsed." day" );
             // }
@@ -167,7 +167,7 @@ public function store(Request $request)
     $produitUser->user_id = $user->id;
     $produitUser->produit_id = $produit->id;
     $produitUser->gagner = 0; // Initialiser à zéro
-    $produitUser->created_at = now()->setTimezone('Africa/Douala'); // Date actuelle
+    $produitUser->created_at = now(); // Date actuelle
     $produitUser->save(); // Enregistrement dans la base de données
 
     $produitUserCount= ProduitUser::where('user_id', $user->id)
