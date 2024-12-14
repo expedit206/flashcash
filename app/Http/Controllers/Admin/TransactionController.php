@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -10,12 +11,12 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = Transaction::with('user')->get();
-        return view('transactions.index', compact('transactions'));
+        return view('admin.transactions.index', compact('transactions'));
     }
 
     public function create()
     {
-        return view('transactions.create');
+        return view('admin.transactions.create');
     }
 
     public function store(Request $request)
@@ -35,7 +36,7 @@ class TransactionController extends Controller
 
     public function edit(Transaction $transaction)
     {
-        return view('transactions.edit', compact('transaction'));
+        return view('admin.transactions.edit', compact('transaction'));
     }
 
     public function update(Request $request, Transaction $transaction)

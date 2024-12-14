@@ -72,10 +72,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::put('/{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.users.update');
     Route::delete('/users/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin.users.destroy');
     
-
+    
     Route::resource('produit_user', \App\Http\Controllers\Admin\ProduitUserController::class);
-
-    Route::resource('transactions', \App\Http\Controllers\Admin\TransactionController::class);
+    
+    Route::get('/transactions', [\App\Http\Controllers\Admin\transactionController::class, 'index'])->name('admin.transactions');
+    Route::get('/{transaction}/edit', [App\Http\Controllers\Admin\transactionController::class, 'edit'])->name('admin.transactions.edit');
+    Route::put('/{transaction}/update', [App\Http\Controllers\Admin\transactionController::class, 'update'])->name('admin.transactions.update');
+    Route::delete('/transactions/{transaction}', [App\Http\Controllers\Admin\transactionController::class, 'destroy'])->name('admin.transactions.destroy');
+    
 
 
     // Route::get('/produit_users', [\App\Http\Controllers\Admin\ProduitUserController::class, 'index'])->name('admin.produit_users');
