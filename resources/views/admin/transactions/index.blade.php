@@ -2,7 +2,7 @@
     <x-app-layout>
             <div class="container p-4 mx-auto">
                 <h1 class="mb-4 text-2xl font-bold">Transactions</h1>
-                <a href="{{ route('transactions.create') }}" class="px-4 py-2 text-white bg-blue-500 rounded">Ajouter une Transaction</a>
+                <a href="{{ route('admin.transactions.create') }}" class="px-4 py-2 text-white bg-blue-500 rounded">Ajouter une Transaction</a>
         
                 @if(session('success'))
                     <div class="p-2 mt-4 text-white bg-green-500 rounded">{{ session('success') }}</div>
@@ -30,8 +30,8 @@
                                 <td class="px-4 py-2 border-b">{{ $transaction->status }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->payment_method }}</td>
                                 <td class="px-4 py-2 border-b">
-                                    <a href="{{ route('transactions.edit', $transaction) }}" class="text-blue-500">Éditer</a>
-                                    <form action="{{ route('transactions.destroy', $transaction) }}" method="POST" style="display:inline;">
+                                    <a href="{{ route('route.transactions.edit', $transaction) }}" class="text-blue-500">Éditer</a>
+                                    <form action="{{ route('route.transactions.destroy', $transaction) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="ml-2 text-red-500">Supprimer</button>

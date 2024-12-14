@@ -3,7 +3,7 @@
     <div class="container p-4 mx-auto">
         <h1 class="mb-4 text-2xl font-bold">Ajouter une Transaction</h1>
 
-        <form action="{{ route('transactions.store') }}" method="POST" class="space-y-4">
+        <form action="{{ route('admin.transactions.store') }}" method="POST" class="space-y-4">
             @csrf
             <div>
                 <label class="block text-sm font-medium">Utilisateur ID:</label>
