@@ -48,7 +48,7 @@
             <div class="py-1 text-center" role="none">
                 <a href="{{ route('admin.users') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Users</a>
                 <a href="{{ route('produit_user.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">produit_user</a>
-                <a href="{{ route('admin.transactions') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">produit_user</a>
+                <a href="{{ route('admin.transactions') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">transaction</a>
                 {{-- <a href="{{ route('admin.settings') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paramètres</a>
                 <a href="{{ route('admin.reports') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rapports</a> --}}
                 <!-- Ajoutez d'autres liens ici -->
