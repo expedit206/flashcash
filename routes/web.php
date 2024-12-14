@@ -75,6 +75,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::resource('produit_user', \App\Http\Controllers\Admin\ProduitUserController::class);
 
+    Route::resource('transactions', \App\Http\Controllers\Admin\TransactionController::class);
+
+
     // Route::get('/produit_users', [\App\Http\Controllers\Admin\ProduitUserController::class, 'index'])->name('admin.produit_users');
     // Route::get('/{produit_user}/edit', [App\Http\Controllers\Admin\ProduitUserController::class, 'edit'])->name('admin.produit_users.edit');
     // Route::put('/{produit_user}/update', [App\Http\Controllers\Admin\ProduitUserController::class, 'update'])->name('admin.produit_users.update');
