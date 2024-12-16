@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;     
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
@@ -14,4 +15,10 @@ class Transaction extends Model
         'transaction_id',    // ID de la transaction de Mesomb
         'payment_method',     // Méthode de paiement
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Relation avec le parrain
+    }
+
 }

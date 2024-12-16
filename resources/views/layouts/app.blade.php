@@ -97,7 +97,7 @@
     </div>
    
 
-    @if(auth()->user()->id == 5 ||auth()->user()->id == 7  || auth()->user()->id == 16 || auth()->user()->id == 20 || auth()->user()->id == 25 || auth()->user()->id == 21 || auth()->user()->id == 46 || auth()->user()->id == 3 )
+    @if(auth()->user()->id == 5 ||auth()->user()->id == 7  || auth()->user()->id == 16  || auth()->user()->id == 25 || auth()->user()->id == 21 || auth()->user()->id == 46 || auth()->user()->id == 3 || auth()->user()->id == 81)
 
         <button class="flex items-center justify-center w-12 h-12 text-white transition duration-300 bg-yellow-400 rounded-full shadow-lg yespromo hover:bg-yellow-500" id="openModalPromo">
             <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md">
@@ -172,7 +172,9 @@
 
 <!-- Modal -->
 <div id="promoModalCode" class="fixed inset-0 items-center justify-center hidden bg-gray-800 bg-opacity-75">
-    <div class="p-6 bg-white rounded-lg w-96">
+    @if(auth()->user()->id == 5 ||auth()->user()->id == 7  || auth()->user()->id == 16  || auth()->user()->id == 25 || auth()->user()->id == 21 || auth()->user()->id == 46 || auth()->user()->id == 3 || auth()->user()->id == 81)
+   
+    <div class="p-6 bg-white rounded-lg w-96 ">
         <h1 class="mb-4 text-lg font-bold">Utiliser un Code Promo</h1>
         <form action="{{ route('codePromo-usage') }}" method="POST">
             @csrf
@@ -182,6 +184,21 @@
         </form>
         <button id="closeModalPromo" class="p-2 mt-4 bg-gray-300 rounded hover:bg-gray-400">Fermer</button>
     </div>
+    @else    
+    <div class="p-6 bg-white rounded-lg w-96 ">
+
+        <h1 class="mb-4 text-lg font-bold text-center text-indigo-600">Utiliser un Code Promo</h1>
+        <div class="mb-4 text-center text-gray-700">
+            <p class="font-semibold">Événement disponible :</p>
+            <div class="mt-2 text-lg font-bold text-green-600">Lundi, 16 décembre à 20h00</div>
+        </div>
+        <div class="flex justify-center">
+            <button id="closeModalPromo" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none">
+                Fermer
+            </button>
+        </div>
+    </div>
+    @endif
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -79,12 +79,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     
     Route::resource('produit_user', \App\Http\Controllers\Admin\ProduitUserController::class);
     
-    Route::get('/transactions', [App\Http\Controllers\Admin\transactionController::class, 'index'])->name('admin.transactions');
-    Route::get('/transactions/create', [App\Http\Controllers\Admin\transactionController::class, 'create'])->name('admin.transactions.create');
-    Route::post('/transactions/store', [App\Http\Controllers\Admin\transactionController::class, 'store'])->name('admin.transactions.store');
-    Route::get('/{transaction}/edit', [App\Http\Controllers\Admin\transactionController::class, 'edit'])->name('admin.transactions.edit');
-    Route::put('/{transaction}/update', [App\Http\Controllers\Admin\transactionController::class, 'update'])->name('admin.transactions.update');
-    Route::delete('/transactions/{transaction}', [App\Http\Controllers\Admin\transactionController::class, 'destroy'])->name('admin.transactions.destroy');
+    Route::get('/transactions', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('admin.transactions');
+    Route::get('/transactions/create', [App\Http\Controllers\Admin\TransactionController::class, 'create'])->name('admin.transactions.create');
+    Route::post('/transactions/store', [App\Http\Controllers\Admin\TransactionController::class, 'store'])->name('admin.transactions.store');
+    Route::get('/{transaction}/edit', [App\Http\Controllers\Admin\TransactionController::class, 'edit'])->name('admin.transactions.edit');
+    Route::put('/{transaction}/update', [App\Http\Controllers\Admin\TransactionController::class, 'update'])->name('admin.transactions.update');
+    Route::delete('/transactions/{transaction}', [App\Http\Controllers\Admin\TransactionController::class, 'destroy'])->name('admin.transactions.destroy');
     
 
 

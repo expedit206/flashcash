@@ -30,8 +30,8 @@
                                 <td class="px-4 py-2 border-b">{{ $transaction->status }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->payment_method }}</td>
                                 <td class="px-4 py-2 border-b">
-                                    <a href="{{ route('route.transactions.edit', $transaction) }}" class="text-blue-500">Éditer</a>
-                                    <form action="{{ route('route.transactions.destroy', $transaction) }}" method="POST" style="display:inline;">
+                                    <a href="{{ route('admin.transactions.edit', $transaction) }}" class="text-blue-500">Éditer</a>
+                                    <form action="{{ route('admin.transactions.destroy', $transaction) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="ml-2 text-red-500">Supprimer</button>
