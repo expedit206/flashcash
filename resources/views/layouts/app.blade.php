@@ -97,7 +97,6 @@
     </div>
    
 
-    @if(auth()->user()->id == 5 ||auth()->user()->id == 7  || auth()->user()->id == 16  || auth()->user()->id == 25 || auth()->user()->id == 21 || auth()->user()->id == 46 || auth()->user()->id == 3 || auth()->user()->id == 81)
 
         <button class="flex items-center justify-center w-12 h-12 text-white transition duration-300 bg-yellow-400 rounded-full shadow-lg yespromo hover:bg-yellow-500" id="openModalPromo">
             <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md">
@@ -107,7 +106,7 @@
             </div>
             <span class="text-sm font-bold"></span>
         </button>
-    @endif
+  
     <!-- Lien vers la route des tâches -->
     <a href="{{ route('taches.index') }}" class="flex items-center justify-center task-icon yes">
         <i class="fas fa-tasks way"></i> 
