@@ -10,12 +10,19 @@
         <div class="ml-3 text-sm">
             <h3 class="font-semibold">Directives pour la recharge :</h3>
             <ul class="pl-5 list-disc">
+                option 1 :
+                <li>
+ Quand vous cliquez sur recharger, patienter  <strong>15 secondes</strong>  pour que la fenêtre de validation avec code secret s'affiche
+                </li>
+                
+                option 2 :
                 <li>
                     <strong>Pour Orange :</strong> Validez votre recharge en composant le <strong>#150*50#</strong> 
                 </li>
                 <li>
                     <strong>Pour MTN :</strong> Validez votre recharge en composant le <strong>*126*1#</strong> 
                 </li>
+
                     
             </ul>
         </div>

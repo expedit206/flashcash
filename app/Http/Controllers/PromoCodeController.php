@@ -43,7 +43,7 @@ class PromoCodeController extends Controller
                     $promoCode->used_count += 1;
                     $promoCode->save();
 
-                    session()->flash('message', 'Bonus de 500 ajouté à votre solde !');
+                    session()->flash('message', 'Bonus de 500 XAF ajouté à votre solde !');
                 } else {
                     // Enregistrez l'utilisation avec status 'failed'
                     PromoCodeUser::create([
