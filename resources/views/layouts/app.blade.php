@@ -171,7 +171,7 @@
 
 <!-- Modal -->
 <div id="promoModalCode" class="fixed inset-0 items-center justify-center hidden bg-gray-800 bg-opacity-75">
-    @if(auth()->user()->id == 5 ||auth()->user()->id == 7  || auth()->user()->id == 16  || auth()->user()->id == 25 || auth()->user()->id == 21 || auth()->user()->id == 46 || auth()->user()->id == 3 || auth()->user()->id == 81)
+    {{-- @if(auth()->user()->id == 5 ||auth()->user()->id == 7  || auth()->user()->id == 16  || auth()->user()->id == 25 || auth()->user()->id == 21 || auth()->user()->id == 46 || auth()->user()->id == 3 || auth()->user()->id == 81) --}}
    
     <div class="p-6 bg-white rounded-lg w-96 ">
         <h1 class="mb-4 text-lg font-bold">Utiliser un Code Promo</h1>
@@ -183,7 +183,7 @@
         </form>
         <button id="closeModalPromo" class="p-2 mt-4 bg-gray-300 rounded hover:bg-gray-400">Fermer</button>
     </div>
-    @else    
+    {{-- @else    
     <div class="p-6 bg-white rounded-lg w-96 ">
 
         <h1 class="mb-4 text-lg font-bold text-center text-indigo-600">Utiliser un Code Promo</h1>
@@ -197,7 +197,7 @@
             </button>
         </div>
     </div>
-    @endif
+    @endif --}}
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
