@@ -89,7 +89,7 @@ class TransactionController extends Controller
 
             return redirect()->route('transactions.index')->with('success', 'retrait réussi !');
         } else {
-            return redirect()->back()->with('error', 'Échec du retrait verifier vos informations.');
+            return redirect()->back()->with('error', 'Échec du retrait: verifier votre solde et vos informations.');
         }
     }
 
@@ -106,7 +106,7 @@ class TransactionController extends Controller
 
         $validatedData = $request->validate([
             'phone' => 'required|string|digits_between:9,15',
-            'amount' => 'required|numeric|min:100',
+            'amount' => 'required|numeric|min:1000',
             'provider' => 'required',
         ], [
             'phone.required' => 'Le numéro de téléphone est requis.',

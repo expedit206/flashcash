@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('promo_codes', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->integer('used_count')->default(0);
+            $table->integer('max_usage')->default(20);
             $table->timestamps();
         });
     }

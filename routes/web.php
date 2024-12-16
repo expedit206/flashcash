@@ -1,23 +1,27 @@
 <?php
 
 // use Closure;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\EpargneController;
+
 use App\Http\Controllers\EpargneUserController;
 use App\Http\Controllers\ParrainageController;
-
 use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TacheController;
+
+use App\Http\Controllers\PromoCodeController;
+
 use App\Http\Controllers\TacheUserController;
 use App\Http\Controllers\TransactionController;
-
-
-
+use App\Http\Controllers\WalletController;
+use Illuminate\Support\Facades\Route;
 
 
 
@@ -148,8 +152,8 @@ Route::get('/transactions', [TransactionController::class, 'showTransactions'])-
 Route::get('/showPasswordTransaction', [CompteController::class, 'showPasswordTransaction'])->name('showPasswordTransaction');
 Route::post('/updatePasswordTransaction', [CompteController::class, 'updatePasswordTransaction'])->name('updatePasswordTransaction');
 
-use App\Http\Controllers\WalletController;
-use Illuminate\Support\Facades\Route;
+
+
 
 
 Route::get('/wallet/configure', [WalletController::class, 'showConfigurationForm'])->name('wallet.configure');
@@ -157,4 +161,6 @@ Route::post('/wallet/store', [WalletController::class, 'storeWallet'])->name('wa
 Route::get('/wallet/edit/{wallet}', [WalletController::class, 'edit'])->name('wallet.edit');
 Route::post('/wallet/update/{wallet}', [WalletController::class, 'update'])->name('wallet.update');
 
+Route::get('/promo-code/create', [PromoCodeController::class, 'createPromoCode'])->name('codePromo-create');
+Route::post('/promo-code/use', [PromoCodeController::class, 'usePromoCode'])->name('codePromo-usage');   
 require __DIR__.'/auth.php';    

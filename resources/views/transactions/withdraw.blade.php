@@ -1,30 +1,42 @@
 <x-app-layout>
-    <div class="bg-gray-800 text-white px-6 py-3 shadow-lg mb-4">
-        <h2 class="text-xl font-bold mb-2 text-yellow-400">Détails de la recharge</h2>
-        <div class="flex justify-between items-center mb-2 text-sm ml-3">
+    <div class="px-6 py-3 mb-4 text-white bg-gray-800 shadow-lg">
+        <h2 class="mb-2 text-xl font-bold text-yellow-400">Détails de la recharge</h2>
+        <div class="flex items-center justify-between mb-2 ml-3 text-sm">
             <span>Recharger votre compte FlashCash rapidement et facilement.</span>
         </div>
-        <div class="flex justify-between items-center mb-2 text-sm ml-3">
+        <div class="flex items-center justify-between mb-2 ml-3 text-sm">
             <span>Choisissez votre fournisseur (Orange ou MTN) et entrez votre numéro de téléphone.</span>
+        </div>
+        <div class="ml-3 text-sm">
+            <h3 class="font-semibold">Directives pour la recharge :</h3>
+            <ul class="pl-5 list-disc">
+                <li>
+                    <strong>Pour Orange :</strong> Validez votre recharge en composant le <strong>#150*50#</strong> 
+                </li>
+                <li>
+                    <strong>Pour MTN :</strong> Validez votre recharge en composant le <strong>*126*1#</strong> 
+                </li>
+                    
+            </ul>
         </div>
     </div>
 
-    <form id="deposit-form" action="{{ route('withdraw.submit') }}" method="POST" class="bg-white p-6 rounded shadow-md">
+    <form id="deposit-form" action="{{ route('withdraw.submit') }}" method="POST" class="p-6 mb-16 bg-white rounded shadow-md">
         @csrf
 
         <div class="mb-4">
             <p class="block text-sm font-medium text-gray-700">Choisissez le fournisseur :</p>
-            <div class="flex items-center mt-2 mb-4 gap-6">
+            <div class="flex items-center gap-6 mt-2 mb-4">
                 <label class="flex items-center mr-4 cursor-pointer">
                     <input type="radio" name="provider" value="orange" required class="hidden" onchange="updateSelection('orange')">
-                    <div id="orange-container" class="border border-gray-300 rounded-full p-2 hover:shadow-lg transition-shadow duration-300 flex items-center justify-center h-20 w-20">
-                        <img src="/img/orange.jpg" alt="Orange Logo" class="h-16 w-16 rounded-full">
+                    <div id="orange-container" class="flex items-center justify-center w-20 h-20 p-2 transition-shadow duration-300 border border-gray-300 rounded-full hover:shadow-lg">
+                        <img src="/img/orange.jpg" alt="Orange Logo" class="w-16 h-16 rounded-full">
                     </div>
                 </label>
                 <label class="flex items-center cursor-pointer">
                     <input type="radio" name="provider" value="mtn" required class="hidden" onchange="updateSelection('mtn')">
-                    <div id="mtn-container" class="border border-gray-300 rounded-full p-2 hover:shadow-lg transition-shadow duration-300 flex items-center justify-center h-20 w-20">
-                        <img src="/img/mtn.jpg" alt="MTN Logo" class="h-16 w-16 rounded-full">
+                    <div id="mtn-container" class="flex items-center justify-center w-20 h-20 p-2 transition-shadow duration-300 border border-gray-300 rounded-full hover:shadow-lg">
+                        <img src="/img/mtn.jpg" alt="MTN Logo" class="w-16 h-16 rounded-full">
                     </div>
                 </label>
             </div>
@@ -56,7 +68,7 @@
                     <option value="+7">+7 (RUS)</option>       <!-- Russie -->
                     <option value="+55">+55 (BRA)</option>     <!-- Brésil -->
                 </select>
-                <input type="text" name="phone" required class="mt-0 p-2 border border-gray-300 rounded-r w-3/4" min='digits_between:9,15' max='digits_between:9,15' oninput="checkForm()">
+                <input type="text" name="phone" required class="w-3/4 p-2 mt-0 border border-gray-300 rounded-r" min='digits_between:9,15' max='digits_between:9,15' oninput="checkForm()">
             </div>
             @error('phone')
             <p class="bg-[rgba(255,0,0,0.2)] p-3 rounded-md  text-black italic">
@@ -68,7 +80,7 @@
 
         <div class="mb-4">
             <label for="amount" class="block text-sm font-medium text-gray-700">Montant :</label>
-            <input type="number" name="amount" required class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="min: 1000XAF" oninput="checkForm()">
+            <input type="number" name="amount" required class="w-full p-2 mt-1 border border-gray-300 rounded" placeholder="min: 1000XAF" oninput="checkForm()">
             @error('amount')
                
                 <p class="bg-[rgba(255,0,0,0.2)] p-3 rounded-md text-black italic">
@@ -78,7 +90,7 @@
             @enderror
         </div>
 
-        <input id="submit-button" type="submit" class="bg-gray-600 text-white p-4 rounded hover:bg-green-700 transition duration-300" value="Recharger" disabled>
+        <input id="submit-button" type="submit" class="p-4 text-white transition duration-300 bg-gray-600 rounded hover:bg-green-700" value="Recharger" disabled>
     </form>
 {{-- 
     @if (session('error'))
