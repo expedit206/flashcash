@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 mb-24">
         @forelse ($transactions as $transaction)
             <div class="p-2 bg-white rounded-lg shadow-lg">
                 <div class="flex items-center justify-between mb-1">
