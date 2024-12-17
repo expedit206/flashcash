@@ -105,6 +105,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Withdrawal::class);
     }
+
+    public function actionnaires()
+    {
+        return $this->hasMany(Actionnaire::class, 'actionnaire_id'); // Ajustez si nécessaire
+    }
+
    
 //     public function epargnes()
 // {

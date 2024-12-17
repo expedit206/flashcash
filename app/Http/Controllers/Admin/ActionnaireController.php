@@ -45,7 +45,7 @@ class ActionnaireController extends Controller
         ]);
     
         // Redirection avec message de succès
-        return redirect()->route('produits.index')->with('success', 'Numéro récupéré avec succès !');
+        return redirect()->route('produits.index')->with('success', 'Numéro récupéré avec succès ! Nous vous contacterons dans un futur proche');
     }
 
     public function create(Request $request)
