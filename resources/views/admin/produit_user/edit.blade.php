@@ -1,5 +1,5 @@
     <x-app-layout>
-        <div class="container p-4 mx-auto">
+        <div class="container p-4 mx-auto mb-24">
             <h1 class="mb-4 text-2xl font-bold">Éditer le Produit</h1>
 
             <form action="{{ route('produit_user.update', $produitUser) }}" method="POST" class="space-y-4">

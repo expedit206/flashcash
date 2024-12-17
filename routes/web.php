@@ -1,27 +1,31 @@
 <?php
 
 // use Closure;
+use App\Http\Controllers\Admin\ActionnaireController;
+use App\Http\Controllers\Admin\FilleulController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\CompteController;
+
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EpargneController;
-
 use App\Http\Controllers\EpargneUserController;
 use App\Http\Controllers\ParrainageController;
 use App\Http\Controllers\PolitiqueController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitUserController;
+
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TacheController;
 
 use App\Http\Controllers\PromoCodeController;
-
+use App\Http\Controllers\TacheController;
 use App\Http\Controllers\TacheUserController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -85,30 +89,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/{transaction}/edit', [App\Http\Controllers\Admin\TransactionController::class, 'edit'])->name('admin.transactions.edit');
     Route::put('/{transaction}/update', [App\Http\Controllers\Admin\TransactionController::class, 'update'])->name('admin.transactions.update');
     Route::delete('/transactions/{transaction}', [App\Http\Controllers\Admin\TransactionController::class, 'destroy'])->name('admin.transactions.destroy');
-    
 
-
-    // Route::get('/produit_users', [\App\Http\Controllers\Admin\ProduitUserController::class, 'index'])->name('admin.produit_users');
-    // Route::get('/{produit_user}/edit', [App\Http\Controllers\Admin\ProduitUserController::class, 'edit'])->name('admin.produit_users.edit');
-    // Route::put('/{produit_user}/update', [App\Http\Controllers\Admin\ProduitUserController::class, 'update'])->name('admin.produit_users.update');
-
-    // Route::delete('/comptes/{user}', [uUerController::class, 'destroy'])->name('admin.users.destroy');
-    Route::get('/comptes', [AdminController::class, 'allComptes'])->name('admin.all_comptes');
-
-    Route::get('/user/{userId}/comptes', [AdminController::class, 'viewUserComptes'])->name('admin.user.comptes');
-    Route::get('/comptes/{compte}/edit', [AdminController::class, 'editCompte'])->name('admin.comptes.edit');
-    Route::put('/comptes/{compte}', [AdminController::class, 'updateCompte'])->name('admin.comptes.update');
-    Route::delete('/comptes/{compte}', [CompteController::class, 'destroy'])->name('admin.comptes.destroy');
-
-    // Statistiques administratives
-    Route::get('/stats/retraits', [AdminController::class, 'totalRetraits'])->name('admin.stats.retraits');
-    Route::get('/stats/comptes-pack', [AdminController::class, 'comptesParPack'])->name('admin.stats.comptes-pack');
-    Route::get('/comptes-retraits', [AdminController::class, 'comptesAvecRetraits'])->name('admin.comptes.retraits');
-
-
-    Route::get('/comptes/create', [CompteController::class, 'create'])->name('comptes.create');
-    Route::post('/comptes/store', [CompteController::class, 'store'])->name('comptes.store');
-
+    Route::get('/filleuls/{id}', [App\Http\Controllers\Admin\FilleulController::class, 'show'])->name('admin.filleuls');
+  
+    Route::get('/actionnaires', [ActionnaireController::class, 'index'])->name('actionnaires.index');
+    Route::post('/actionnaires/store', [ActionnaireController::class, 'store'])->name('actionnaires.store');
+    Route::get('/actionnaires/create', [ActionnaireController::class, 'create'])->name('actionnaires.create');
 });    
 
 // Afficher le formulaire de modification du numéro de téléphone

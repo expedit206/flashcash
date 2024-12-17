@@ -72,6 +72,7 @@ public function show(User $user)
     $totalWithdrawals = Transaction::where('type', 'deposit')
     ->where('user_id', $user->id)->sum('amount');
     $user->retrait_total = $totalWithdrawals;
+    $user->save();
     // dd($totalWithdrawals);
     
     $totalBalance = $user->solde_total;

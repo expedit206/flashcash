@@ -12,12 +12,21 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'desc')->get(); // Récupère tous les utilisateurs triés par ID décroissant
+
         foreach ($users as $user) {
-            # code...
-            if($user->parrain_id){
+            // Vérifie si l'utilisateur a un parrain
+            if ($user->parrain_id) {
+                // Récupère le nom du parrain
                 $user->parrainName = User::find($user->parrain_id)->name;
+                
+                // Compte le nombre de filleuls
+                $user->nombreFilleuls = User::where('parrain_id', $user->id)->count();
+            } else {
+                $user->parrainName = null; // Aucun parrain
+                $user->nombreFilleuls = 0; // Aucun filleul
             }
-            // dump($user);
+            
+            // dump($user); // Pour déboguer si nécessaire
         }
         return view('admin.users.index', compact('users')); // Affiche la vue avec les utilisateurs
     }

@@ -37,6 +37,12 @@
             right: 20px; /* Ajuste la position de l'icône */
             z-index: 1000; /* S'assure que l'icône est au-dessus des autres éléments */
         }
+        .yesAct {
+            position: fixed;
+            bottom: 23vh; /* Ajuste la position de l'icône */
+            right: 20px; /* Ajuste la position de l'icône */
+            z-index: 1000; /* S'assure que l'icône est au-dessus des autres éléments */
+        }
     </style>
     
     <div class="">
@@ -56,6 +62,7 @@
                 <a href="{{ route('admin.users') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Users</a>
                 <a href="{{ route('produit_user.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">produit_user</a>
                 <a href="{{ route('admin.transactions') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">transaction</a>
+                <a href="{{ route('actionnaires.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Actionnaires</a>
                 {{-- <a href="{{ route('admin.settings') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paramètres</a>
                 <a href="{{ route('admin.reports') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rapports</a> --}}
                 <!-- Ajoutez d'autres liens ici -->
@@ -107,6 +114,10 @@
             <span class="text-sm font-bold"></span>
         </button> --}}
   
+        {{-- lien pour les actionnaire --}}
+        <a href="{{ route('actionnaires.create') }}" class="flex items-center justify-center p-4 text-white transition duration-300 bg-green-500 rounded-full shadow hover:bg-green-600 yesAct">
+            <i class="fas fa-plus-circle"></i> <!-- Icône de plus stylisée -->
+        </a>
     <!-- Lien vers la route des tâches -->
     <a href="{{ route('taches.index') }}" class="flex items-center justify-center task-icon yes">
         <i class="fas fa-tasks way"></i> 
@@ -226,5 +237,7 @@
         });
     });
 </script>
+
+
 </body>
 </html>
