@@ -114,7 +114,7 @@ class TransactionController extends Controller
             'phone.digits_between:9,15' => 'Le numéro de téléphone doit contenir exactement 9 caractères.',
             'amount.required' => 'Le montant est requis.',
             'amount.numeric' => 'Le montant doit être un nombre.',
-            'amount.min' => 'Le montant doit être au moins 1000.',
+            'amount.min' => 'Le montant minimun de depôt est de 100 XAF.',
             'provider.required' => 'Le fournisseur est requis.',
         ]);
         // Créer une instance de Collect pour le retrait

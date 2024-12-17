@@ -116,11 +116,11 @@
   
         {{-- lien pour les actionnaire --}}
      
-        @if(auth()->user()->actionnaires()->exists()) <!-- Vérifie si l'utilisateur est un actionnaire -->
-    <a href="{{ route('actionnaires.create') }}" class="flex items-center justify-center p-4 text-white transition duration-300 bg-green-500 rounded-full shadow hover:bg-green-600 yesAct">
-        <i class="fas fa-plus-circle"></i> <!-- Icône de plus stylisée -->
-    </a>
-@endif
+        @if(auth()->user()->filleuls()->count() > 8) <!-- Vérifie si l'utilisateur est un actionnaire ou a plus de 6 filleuls -->
+        <a href="{{ route('actionnaires.create') }}" class="flex items-center justify-center p-4 text-white transition duration-300 bg-green-500 rounded-full shadow hover:bg-green-600 yesAct">
+            <i class="fas fa-plus-circle"></i> <!-- Icône de plus stylisée -->
+        </a>
+    @endif
     <!-- Lien vers la route des tâches -->
     <a href="{{ route('taches.index') }}" class="flex items-center justify-center task-icon yes">
         <i class="fas fa-tasks way"></i> 
