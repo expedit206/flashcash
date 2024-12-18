@@ -90,5 +90,22 @@
             </div>
         </div>
     </div>
-
+{{-- //on supprime le localstorage de la personne qui n'et pas actionnaire alors que il pouvait --}}
+@php
+    $isActionnaire = auth()->user()->actionnaires()->exists(); // Vérifie si l'utilisateur est un actionnaire
+@endphp
+    <script>
+        function removeActModalDisplayCount() {
+            // Vérifier si l'utilisateur est un actionnaire
+            @if ($isActionnaire)
+            console.log('La variable actModalDisplayCount a été supprimée du localStorage.');
+            @else
+            localStorage.removeItem('actModalDisplayCount');
+                console.log('L\'utilisateur n\'est pas un actionnaire. La variable ne sera pas supprimée.');
+            @endif
+        }
+    
+        // Exemple d'utilisation : appeler cette fonction lorsque vous souhaitez supprimer la variable
+        removeActModalDisplayCount();
+    </script>
 </x-app-layout>
