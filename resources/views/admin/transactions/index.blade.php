@@ -16,7 +16,7 @@
                             <th class="px-4 py-2 border-b">Montant</th>
                             <th class="px-4 py-2 border-b">Type</th>
                             <th class="px-4 py-2 border-b">Statut</th>
-                            <th class="px-4 py-2 border-b">Méthode de Paiement</th>
+                            <th class="px-4 py-2 border-b">creer le</th>
                             <th class="px-4 py-2 border-b">Actions</th>
                         </tr>
                     </thead>
@@ -28,7 +28,7 @@
                                 <td class="px-4 py-2 border-b">{{ $transaction->amount }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->type }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->status }}</td>
-                                <td class="px-4 py-2 border-b">{{ $transaction->payment_method }}</td>
+                                <td class="px-4 py-2 border-b">{{ $transaction->created_at }}</td>
                                 <td class="px-4 py-2 border-b">
                                     <a href="{{ route('admin.transactions.edit', $transaction) }}" class="text-blue-500">Éditer</a>
                                     <form action="{{ route('admin.transactions.destroy', $transaction) }}" method="POST" style="display:inline;">
