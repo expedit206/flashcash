@@ -39,7 +39,7 @@
             <div class="w-full px-6 py-4 mt-10 mb-24 shadow-md mb- sm:max-w-md shadow-slate-600"
          
             >
-            <header class="bg-gray-900 p-2">
+            <header class="bg-gray-900 p-2 mb-2">
                 <h1 class="text-md font-bold text-white">Découvrez notre plateforme d'investissement avec plus de 50 000 investissements.</h1>
             </header>
         

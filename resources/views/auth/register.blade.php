@@ -92,11 +92,11 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
+        <main class="p-6">
+            <h2 class="text-sm mt-4 text-white">Rejoignez notre communauté d'investisseurs et profitez de nombreuses options d'investissement adaptées à vos besoins.</h2>
+           
+        </main>
     </form>
-    <main class="p-6">
-        <h2 class="text-sm mt-4 text-white">Rejoignez notre communauté d'investisseurs et profitez de nombreuses options d'investissement adaptées à vos besoins.</h2>
-       
-    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
