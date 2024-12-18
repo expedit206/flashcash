@@ -14,6 +14,7 @@
                             <th class="px-4 py-2 border-b">ID</th>
                             <th class="px-4 py-2 border-b">Utilisateur</th>
                             <th class="px-4 py-2 border-b">Montant</th>
+                            <th class="px-4 py-2 border-b">tel</th>
                             <th class="px-4 py-2 border-b">Type</th>
                             <th class="px-4 py-2 border-b">Statut</th>
                             <th class="px-4 py-2 border-b">creer le</th>
@@ -26,6 +27,7 @@
                                 <td class="px-4 py-2 border-b">{{ $transaction->id }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->user->name }} ({{ $transaction->user->id }})</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->amount }}</td>
+                                <td class="px-4 py-2 border-b">{{ $transaction->user->telephone }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->type }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->status }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->created_at }}</td>
