@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\EpargneUser;
 use App\Models\ProduitUser;
 use App\Models\PromoCode;
 use App\Models\PromoCodeUser;
@@ -17,33 +19,46 @@ class PromoCodeController extends Controller
         $request->validate([
             'code' => 'required|string',
         ]);
-
+    
         $userId = Auth::user()->id; // Utilisateur authentifié
         $code = $request->code;
-
+    
         $promoCode = PromoCode::where('code', $code)->first();
-
+    // dump($promoC ode);
         if ($promoCode && $promoCode->used_count < $promoCode->max_usage) {
-            $usage = PromoCodeUser::where('user_id', $userId)->where('promo_code_id', $promoCode->id)->first();
-
-            if (! $usage) {
+            $usage = PromoCodeUser::where('user_id', $userId)
+                ->where('promo_code_id', $promoCode->id)
+                ->first();
+    
+            if ($usage) {
+                // Si l'utilisateur a déjà utilisé le code, vérifiez si le statut est 'failed'
+                if ($usage->status === 'failed') {
+                    // Si le statut est 'failed', on ne change pas le statut
+                    session()->flash('message', 'Vous avez déjà utilisé ce code avec un échec.');
+                } else {
+                    // Si l'utilisateur a déjà réussi
+                    session()->flash('message', 'Vous avez déjà utilisé ce code.');
+                }
+            } else {
+                // C'est la première utilisation, vérifiez les conditions
                 $user = User::find($userId);
-
+    
                 if ($this->canReceiveBonus($user)) {
+                    // L'utilisateur remplit les conditions
                     $user->solde_total += 500;
                     $user->save();
-
+    
                     // Enregistrez l'utilisation du code avec status 'success'
                     PromoCodeUser::create([
                         'user_id' => $userId,
                         'promo_code_id' => $promoCode->id,
                         'status' => 'success',
                     ]);
-
+    
                     $promoCode->used_count += 1;
                     $promoCode->save();
-
-                    session()->flash('message', 'Bonus de 500 XAF ajouté à votre solde !');
+    
+                    session()->flash('message', 'Félicitations !!! Vous venez de gagner 500 XAF de bonus !');
                 } else {
                     // Enregistrez l'utilisation avec status 'failed'
                     PromoCodeUser::create([
@@ -51,33 +66,45 @@ class PromoCodeController extends Controller
                         'promo_code_id' => $promoCode->id,
                         'status' => 'failed',
                     ]);
-
-                    session()->flash('message', 'Conditions non remplies pour recevoir le bonus. Parrainnez au moins deux personne et investissez sur un de nos produit T-Cash');
+    
+                    session()->flash('message', 'Conditions non remplies pour recevoir le bonus. *Investissez sur un de nos produits T-Cash. *Faites deux épargnes d\'un montant minimum de 1000 XAF.');
                 }
-            } else {
-                // Enregistrer l'utilisation avec status 'failed'
-                session()->flash('message', 'Vous avez déjà utilisé ce code.');
             }
         } else {
+            // die;
+
             // Enregistrer l'utilisation avec status 'failed'
-            PromoCodeUser::create([
-                'user_id' => $userId,
-                'promo_code_id' => $promoCode?->id,
-                'status' => 'failed',
-            ]);
+            
+            if(!$promoCode){
+                PromoCodeUser::create([
+                    'user_id' => $userId,
+                    'promo_code_id' => $promoCode?->id,
+                    'status' => 'failed',
+                ]);
 
-            session()->flash('message', 'Code promo invalide ou déjà utilisé.');
+                session()->flash('message', 'Code promo invalide.');
+            }else{
+
+                session()->flash('message', 'Code promo expiré');
+            }
         }
-
+    
         return redirect()->route('compte.show', $userId);
     }
 
     // Vérifiez si l'utilisateur peut recevoir le bonus
-    private function canReceiveBonus($user)
-    {
-        $filleuls = User::where('parrain_id', $user->id)->count();
-        $investments = ProduitUser::where('user_id', $user->id)->count();
+  // Vérifiez si l'utilisateur peut recevoir le bonus
+private function canReceiveBonus($user)
+{
+    // Comptez le nombre d'investissements
+    $investments = ProduitUser::where('user_id', $user->id)->count();
 
-        return $filleuls >= 2 && $investments > 0;
-    }
+    // Comptez le nombre d'épargnes d'un montant minimum de 1000
+    $epargnes = EpargneUser::where('user_id', $user->id)
+        ->where('montant', '>=', 1000)
+        ->count();
+
+    // Vérifiez les conditions
+    return $investments > 0 && $epargnes >= 2;
+}
 }

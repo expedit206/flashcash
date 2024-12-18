@@ -105,14 +105,14 @@
    
 
 
-        {{-- <button class="flex items-center justify-center w-12 h-12 text-white transition duration-300 bg-yellow-400 rounded-full shadow-lg yespromo hover:bg-yellow-500" id="openModalPromo">
+        <button class="flex items-center justify-center w-12 h-12 text-white transition duration-300 bg-yellow-400 rounded-full shadow-lg yespromo hover:bg-yellow-500" id="openModalPromo">
             <div class="flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md">
                 <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0l3 9h9l-7 5 3 9-7-5-7 5 3-9-7-5h9z"/>
                 </svg>
             </div>
             <span class="text-sm font-bold"></span>
-        </button> --}}
+        </button>
   
         {{-- lien pour les actionnaire --}}
      
