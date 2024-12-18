@@ -1,6 +1,6 @@
 
     <x-app-layout>
-        <div class="container p-4 mx-auto">
+        <div class="container p-4 mx-auto mb-16">
             <h1 class="mb-4 text-2xl font-bold">Produits Utilisateur</h1>
             <a href="{{ route('produit_user.create') }}" class="px-4 py-2 text-white bg-blue-500 rounded">Ajouter un Investissement</a>
 
@@ -8,7 +8,7 @@
                 <div class="p-2 mt-4 text-white bg-green-500 rounded">{{ session('success') }}</div>
             @endif
 
-            <table class="min-w-full mt-4 bg-white border border-gray-200 pb-24">
+            <table class="min-w-full mt-4 bg-white border border-gray-200 pb-16">
                 <thead>
                     <tr>
                         <th class="px-4 py-2 text-center border-b">ID</th>
