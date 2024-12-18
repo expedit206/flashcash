@@ -23,7 +23,7 @@ class ActionnaireController extends Controller
     
         // Filtrer ceux qui ont plus de 6 filleuls
         $actionnaires = $users->filter(function ($user) {
-            return $user->filleuls_count > 8; // Garder uniquement ceux avec plus de 6 filleuls
+            return $user->filleuls_count >= 8; // Garder uniquement ceux avec plus de 6 filleuls
         });
     
         return view('admin.actionnaires.index', compact('actionnaires'));
