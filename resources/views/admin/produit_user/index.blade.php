@@ -8,7 +8,7 @@
                 <div class="p-2 mt-4 text-white bg-green-500 rounded">{{ session('success') }}</div>
             @endif
 
-            <table class="min-w-full mt-4 bg-white border border-gray-200">
+            <table class="min-w-full mt-4 bg-white border border-gray-200 pb-24">
                 <thead>
                     <tr>
                         <th class="px-4 py-2 text-center border-b">ID</th>
