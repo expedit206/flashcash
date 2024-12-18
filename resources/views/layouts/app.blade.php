@@ -116,10 +116,60 @@
   
         {{-- lien pour les actionnaire --}}
      
-        @if(auth()->user()->filleuls()->count() > 8) <!-- Vérifie si l'utilisateur est un actionnaire ou a plus de 6 filleuls -->
-        <a href="{{ route('actionnaires.create') }}" class="flex items-center justify-center p-4 text-white transition duration-300 bg-green-500 rounded-full shadow hover:bg-green-600 yesAct">
-            <i class="fas fa-plus-circle"></i> <!-- Icône de plus stylisée -->
-        </a>
+        @if(auth()->user()->filleuls()->count() >= 8)
+        <!-- Modal -->
+        <div id="actModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="actModalContent p-6 bg-white rounded shadow-lg">
+                <h2 class="mb-4 text-lg font-semibold">🌟 Devenez un Actionnaire Privilégié !</h2>
+    
+                <p class="mb-4 text-gray-700">
+                    Nous vous remercions pour votre engagement et le soutien que vous apportez à votre réseau de filleuls. En tant que leader, vous avez la possibilité de devenir un actionnaire privilégié. Votre rôle est essentiel pour notre croissance et notre succès. En soumettant ce formulaire, vous faites un pas vers une collaboration plus étroite et vous rejoignez notre communauté d'actionnaires qui travaillent ensemble pour atteindre des objectifs communs. 🚀
+                </p>
+    
+                <p class="mb-4 text-gray-700">
+                    💬 Souhaitez-vous faire partie des actionnaires ? Votre engagement est précieux pour nous. ✨
+                </p>
+    
+                <form action="{{ route('actionnaires.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="actionnaire_id" value="{{ auth()->user()->id }}">
+    
+                    <div class="mb-4">
+                        <label for="actTelephone" class="block text-sm font-medium text-gray-700">📞 Téléphone</label>
+                        <input type="text" id="actTelephone" name="telephone" placeholder="Entrez votre numéro WhatsApp" required class="w-full px-2 py-1 border rounded">
+                    </div>
+                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded">✅ Soumettre</button>
+                    <button id="actCloseModal" type="button" class="px-4 py-2 text-white bg-red-500 rounded">❌ Fermer</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            let modalDisplayCount = localStorage.getItem('actModalDisplayCount') || 0;
+    
+            // Si le compteur est inférieur à 1, afficher le modal
+            console.log(modalDisplayCount);
+            if (modalDisplayCount < 1) {
+                
+                document.getElementById('actModal').classList.remove('hidden');
+                modalDisplayCount++;
+                localStorage.setItem('actModalDisplayCount', modalDisplayCount);
+            } else {
+                // Si le compteur est atteint, cacher le modal
+                document.getElementById('actModal').classList.add('hidden');
+            }
+    
+            // Fermer le modal
+            document.getElementById('actCloseModal').onclick = function() {
+                document.getElementById('actModal').classList.add('hidden');
+            };
+    
+            // Fermer le modal en cliquant à l'extérieur
+            window.onclick = function(event) {
+                if (event.target == document.getElementById('actModal')) {
+                    document.getElementById('actModal').classList.add('hidden');
+                }
+            };
+        </script>
     @endif
     <!-- Lien vers la route des tâches -->
     <a href="{{ route('taches.index') }}" class="flex items-center justify-center task-icon yes">
