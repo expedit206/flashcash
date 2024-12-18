@@ -39,6 +39,14 @@
             <div class="w-full px-6 py-4 mt-10 mb-24 shadow-md mb- sm:max-w-md shadow-slate-600"
          
             >
+            <header class="bg-gray-900 p-6">
+                <h1 class="text-xl font-bold text-white">Découvrez notre plateforme d'investissement avec plus de 50 000 investissements.</h1>
+            </header>
+        
+            <main class="p-6">
+                <h2 class="text-sm mt-4 text-white">Rejoignez notre communauté d'investisseurs et profitez de nombreuses options d'investissement adaptées à vos besoins.</h2>
+               
+            </main>
             <x-application-logo class="w-20 h-20 mb-8 text-gray-500 fill-current" />
                 {{ $slot }}
             </div>
