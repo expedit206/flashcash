@@ -1,6 +1,6 @@
 
     <x-app-layout>
-            <div class="container p-4 mx-auto">
+            <div class="container p-4 mx-auto mb-24">
                 <h1 class="mb-4 text-2xl font-bold">Transactions</h1>
                 <a href="{{ route('admin.transactions.create') }}" class="px-4 py-2 text-white bg-blue-500 rounded">Ajouter une Transaction</a>
         
