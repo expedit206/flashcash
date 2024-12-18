@@ -39,7 +39,7 @@
         }
         .yesAct {
             position: fixed;
-            bottom: 23vh; /* Ajuste la position de l'icône */
+            bottom: 32vh; /* Ajuste la position de l'icône */
             right: 20px; /* Ajuste la position de l'icône */
             z-index: 1000; /* S'assure que l'icône est au-dessus des autres éléments */
         }
