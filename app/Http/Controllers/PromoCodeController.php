@@ -67,7 +67,7 @@ class PromoCodeController extends Controller
                         'status' => 'failed',
                     ]);
     
-                    session()->flash('message', 'Conditions non remplies pour recevoir le bonus. *Investissez sur un de nos produits T-Cash. *Faites deux épargnes d\'un montant minimum de 1000 XAF.');
+                    session()->flash('message', 'Conditions non remplies pour recevoir le bonus. *Investissez sur le produit T-Cash-1(5000 XAF). ');
                 }
             }
         } else {
@@ -97,14 +97,10 @@ class PromoCodeController extends Controller
 private function canReceiveBonus($user)
 {
     // Comptez le nombre d'investissements
-    $investments = ProduitUser::where('user_id', $user->id)->count();
-
-    // Comptez le nombre d'épargnes d'un montant minimum de 1000
-    $epargnes = EpargneUser::where('user_id', $user->id)
-        ->where('montant', '>=', 1000)
-        ->count();
-
+    $investments = ProduitUser::where('user_id', $user->id)
+    ->where('produit_id', 2) ->count();
+    // dd()
     // Vérifiez les conditions
-    return $investments > 0 && $epargnes >= 2;
+    return $investments;
 }
 }
