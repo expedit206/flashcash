@@ -35,13 +35,22 @@
                         <tbody class="bg-white divide-y divide-gray-500">
                             @foreach ($niveaux[1] as $filleul)
                             {{-- @dd($filleul) --}}
-                                <tr>
-                                    <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-800">{{ $filleul->name }}</td>
-                                    <td class="flex flex-col justify-between px-3 py-4 whitespace-nowrap text-sm text-gray-800"><span class="text-green-900">
+                                <tr class="flex justify-between px-2">
+                                    <td class="flex flex-col justify-between px-3 py-4 whitespace-nowrap text-sm text-gray-800">
+                                         <span class="">
+                                        {{ $filleul->name }}
+                                    </span>
+                                    <span class="text-slate-400">
+                                       +237 {{$filleul->telephone}}
+                                    </span>
+                                    </td>
+                                    <td class="flex flex-col justify-between px-3 py-4 whitespace-nowrap text-sm text-gray-800">
+                                        <span class="text-green-900">
                                         {{ number_format($filleul->premier_investissement   , 2, ',', ' ') }} XAF
                                         </span>
                                         <span class="text-slate-400">
-                                            {{ $filleul->date_de_creation_premier_investissement     ? $filleul->date_de_creation_premier_investissement    ->format('d/m/Y') : 'N/A' }}</span>
+                                            {{ $filleul->date_de_creation_premier_investissement ? $filleul->date_de_creation_premier_investissement->format('d/m/Y') : 'N/A' }}
+                                        </span>
                                     </td>
                             
                                 </tr>
@@ -61,7 +70,12 @@
                         <tbody class="bg-white divide-y divide-gray-500">
                             @foreach ($niveaux[2] as $filleul)
                                 <tr>
-                                    <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-800">{{ $filleul->name }}</td>
+                                    <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-800">   <span class="">
+                                        {{ $filleul->name }}
+                                    </span>
+                                    <span class="text-slate-400">
+                                        {{$filleul->telephone}}
+                                    </span></td>
                             
                                     <td class="flex flex-col justify-between px-3 py-4 whitespace-nowrap text-sm text-gray-800"><span class="text-green-900">
                                         {{ number_format($filleul->premier_investissement   , 2, ',', ' ') }} XAF
@@ -88,8 +102,17 @@
                         <tbody class="bg-white divide-y divide-gray-600">
                             @foreach ($niveaux[3] as $filleul)
                                 <tr>
-                                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-800">{{ $filleul->name }}</td>
-                                    <td class="flex flex-col justify-between items-end px-2 py-2 whitespace-nowrap text-sm text-gray-800"><span class="text-green-900">
+                                    <td class="flex flex-col justify-betweenpx-2 py-2 whitespace-nowrap text-sm text-gray-800">
+                                        <span class="">
+                                            {{ $filleul->name }}
+                                        </span>
+                                        <span class="text-slate-400">
+                                            {{$filleul->telephone}}
+                                        </span>
+                                    </td>
+                                    </td>
+                                    <td class="flex flex-col justify-between items-end px-2 py-2 whitespace-nowrap text-sm text-gray-800">
+                                        <span class="text-green-900">
                                         {{ number_format($filleul->premier_investissement   , 2, ',', ' ') }} XAF
                                         </span>
                                         <span class="text-slate-400">

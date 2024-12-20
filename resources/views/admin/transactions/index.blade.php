@@ -27,7 +27,7 @@
                                 <td class="px-4 py-2 border-b">{{ $transaction->id }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->user->name }} ({{ $transaction->user->id }})</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->amount }}</td>
-                                <td class="px-4 py-2 border-b">{{ $transaction->user->telephone }}</td>
+                                <td class="px-4 py-2 border-b">{{ $transaction->user->telephonex }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->type }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->status }}</td>
                                 <td class="px-4 py-2 border-b">{{ $transaction->created_at }}</td>

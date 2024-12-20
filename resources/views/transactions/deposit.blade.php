@@ -9,7 +9,7 @@
     <!-- Message concernant les frais de retrait -->
     <div class="p-4 mb-1 text-sm text-gray-800 bg-yellow-100 border border-yellow-300 rounded">
         <p>Les frais de retrait sont de <span class="font-bold">15%</span> du montant total de retrait.</p>
-        <p>Le montant minimum de retrait est de <span class="font-bold">1000 XAF.</span> </p>
+        <p>Le montant minimum du premier retrait est de <span class="font-bold">3000 XAF (1000 XAF pour le premier retrait).</span> </p>
     </div>
 
     <form id="deposit-form" action="{{ route('deposit.submit') }}" method="POST" class="p-6 mb-24 bg-white rounded shadow-md">

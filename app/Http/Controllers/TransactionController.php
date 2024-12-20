@@ -59,6 +59,18 @@ class TransactionController extends Controller
         if($user->solde_total < $validatedData['amount']){
              return redirect()->back()->with('error', 'votre solde est insuffisant pour effectuer ce retrait.');
          }
+
+             // Vérification des restrictions sur les montants de retrait
+    $aDejaRetire = Transaction::where('user_id', $user->id)->where('type', 'deposit')->exists();
+    $montantMin = $aDejaRetire ? 3000 : 1000;
+
+    if ($validatedData['amount'] < $montantMin) {
+        return redirect()->back()->with(
+            'error',
+            "le montant minimum de retrait est de {$montantMin} ."
+        );
+    }
+    die;
          $montantNet = $validatedData['amount'] - $validatedData['amount']*15/100;
         $paymentRequest = new Deposit(
             $validatedData['phone'],
@@ -67,6 +79,7 @@ class TransactionController extends Controller
             'CM', 
             'XAF'
         );
+        die;
         $paymentResponse = $paymentRequest->pay();
 
         // Gérer la réponse du paiement
@@ -80,7 +93,7 @@ class TransactionController extends Controller
                 'status' => 'success',
                 'transaction_id' => $paymentResponse->transaction->id,
                 'payment_method' => 'MeSomb',
-                'created_at' => now()->setTimezone('Africa/Douala'),
+                'created_at' => now(),
 
             ]);
 

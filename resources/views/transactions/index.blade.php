@@ -22,8 +22,9 @@
                         <span class='text-green-500'>
                             {{ $transaction->status }}</p>
                         </span>
+                        {{-- @dd($transaction) --}}
                     {{-- <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->format('d/m/Y H:i') }}</p> --}}
-                    <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->copy()->addHour()->format('d/m/Y H:i') }}</p>
+                    <p class="text-sm text-gray-600">Date: {{ $transaction->created_at->format('d/m/Y H:i') }}</p>
 
                 </div>
             </div>
