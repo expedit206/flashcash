@@ -63,7 +63,6 @@
                     <p class="text-green-600 text-md">Bonus : <span class="font-bold">{{ number_format($tache['bonus'], 0, ',', ' ') }} XAF</span></p>
                     <p class="text-gray-600">Progrès : <span class="font-bold">{{ $tache['nombre_filleulSpecial'] ?? 0 }}/{{ $tache['cible'] }}</span></p>
                 </div>
-                
                 <div class="flex items-center justify-end">
                     @php
                         // Vérification si la tâche est accomplie
