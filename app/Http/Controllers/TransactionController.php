@@ -42,6 +42,7 @@ class TransactionController extends Controller
         if (!\Hash::check($validatedData['password_transaction'], $user->password_transaction)) {
             return redirect()->back()->with('error', 'Mot de passe de transaction invalide.');
         }
+        
         //verifie si il a acheter un produit
         $produitUser = ProduitUser::where('user_id', $user->id)->first();
         if(!$produitUser){
@@ -50,15 +51,21 @@ class TransactionController extends Controller
             
         }
         
+     
         //verifie si il a acheter un produitparrainer un investisseur>filleuls();
-        $filleuls = $user->filleuls();
-
-        if ($filleuls->isEmpty() || !$filleuls->some(function($filleul) {
+        
+        $filleuls = $user->filleuls()->get();
+        
+        // Vérifier si l'utilisateur a des filleuls et si au moins un d'eux est dans la table pivot produituser
+        if ($filleuls->isEmpty() || !$filleuls->contains(function($filleul) {
             return $filleul->produitUser()->exists();
         })) {
-        return redirect()->back()->with('error', 'Il faut parrainer au moins un investisseur.');
-            
+            // Si aucun filleul ou aucun filleul n'est associé à produituser, rediriger avec une erreur
+            return redirect()->back()->with('error', 'Il faut parrainer au moins une personne investisseur.');
         }
+        
+        // Continuez avec le traitement si la condition est satisfaite
+        // (placez votre logique ici)
         
         
         if(!$produitUser){
