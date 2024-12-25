@@ -47,6 +47,23 @@ class TransactionController extends Controller
         if(!$produitUser){
             // dd($user->id)
             return redirect()->back()->with('error', 'vous devez acheter un produit avant d\'effectuer votre retrait.');
+            
+        }
+        
+        //verifie si il a acheter un produitparrainer un investisseur>filleuls();
+        $filleuls = $user->filleuls();
+
+        if ($filleuls->isEmpty() || !$filleuls->some(function($filleul) {
+            return $filleul->produitUser()->exists();
+        })) {
+        return redirect()->back()->with('error', 'Il faut parrainer au moins un investisseur.');
+            
+        }
+        
+        
+        if(!$produitUser){
+            // dd($user->id)
+            return redirect()->back()->with('error', 'vous devez acheter un produit avant d\'effectuer votre retrait.');
 
         }
         // les actionnaire ne retirre pas de l'argent
