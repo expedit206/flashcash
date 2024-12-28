@@ -64,6 +64,7 @@ class TransactionController extends Controller
             return redirect()->back()->with('error', 'Il faut parrainer au moins une personne investisseur.');
         }
         
+        
         // Continuez avec le traitement si la condition est satisfaite
         // (placez votre logique ici)
         
