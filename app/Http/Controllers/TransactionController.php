@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProduitUser;
+use App\Models\Produit;
+
 // use Hachther\MeSomb\Model\Deposit;
 // use Hachther\MeSomb\Model\Transaction;
 use App\Models\Transaction;
@@ -52,17 +54,7 @@ class TransactionController extends Controller
         }
         
      
-        //verifie si il a acheter un produitparrainer un investisseur>filleuls();
-        
-        $filleuls = $user->filleuls()->get();
-        
-        // Vérifier si l'utilisateur a des filleuls et si au moins un d'eux est dans la table pivot produituser
-        if ($filleuls->isEmpty() || !$filleuls->contains(function($filleul) {
-            return $filleul->produitUser()->exists();
-        })) {
-            // Si aucun filleul ou aucun filleul n'est associé à produituser, rediriger avec une erreur
-            return redirect()->back()->with('error', 'Il faut parrainer au moins une personne investisseur.');
-        }
+       
         
 
         // Continuez avec le traitement si la condition est satisfaite
@@ -79,11 +71,7 @@ class TransactionController extends Controller
 
             return redirect()->back()->with('error', 'vous faites partir des actionnaires');
         }
-        // cas suspect
-        if($user->id == 225 ){
-
-            return redirect()->back()->with('error', 'vous avez des retraits inexpliqués');
-        }
+   
 
         // verifie si le sode suffit
         if($user->solde_total < $validatedData['amount']){
@@ -93,23 +81,45 @@ class TransactionController extends Controller
              // Vérification des restrictions sur les montants de retrait
     $aDejaRetire = Transaction::where('user_id', $user->id)->where('type', 'deposit')->exists();
     $montantMin = $aDejaRetire ? 3000 : 1000;
+    
+    //si il a deja retiré les prochain retrait c'est sous parrainage 
+    if($aDejaRetire){
+         $filleuls = $user->filleuls()->get();
+        
+        // Vérifier si l'utilisateur a des filleuls et si au moins un d'eux est dans la table pivot produituser
+        if ($filleuls->isEmpty() || !$filleuls->contains(function($filleul) {
+            return $filleul->Produits()->exists();
+        })) {
+            // Si aucun filleul ou aucun filleul n'est associé à produituser, rediriger avec une erreur
+            return redirect()->back()->with('error', 'Il faut parrainer au moins une personne investisseur.');
+        }
 
+    }
+       
     if ($validatedData['amount'] < $montantMin) {
         return redirect()->back()->with(
             'error',
             "le montant minimum de retrait est de {$montantMin} ."
         );
     }
-    die;
+
+      // cas suspect
+      if($user->id == 225 ){
+
+        return redirect()->back()->with('error', 'vous avez des retraits inexpliqués');
+    }
+
+   
          $montantNet = $validatedData['amount'] - $validatedData['amount']*15/100;
         $paymentRequest = new Deposit(
             $validatedData['phone'],
             $montantNet, 
+
             \Str::upper($validatedData['provider']), 
             'CM', 
             'XAF'
         );
-        die;
+        
         $paymentResponse = $paymentRequest->pay();
 
         // Gérer la réponse du paiement

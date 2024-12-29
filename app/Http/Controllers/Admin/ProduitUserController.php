@@ -11,7 +11,8 @@ class ProduitUserController extends Controller
     // Afficher la liste des produits
     public function index()
     {
-        $produitUsers = ProduitUser::all();
+        $produitUsers = ProduitUser::orderBy('id', 'desc')->get();
+
         return view('admin.produit_user.index', compact('produitUsers'));
     }
 
