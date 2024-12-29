@@ -63,8 +63,9 @@ $user->epargnes()->attach($request->epargne_id, [
         return redirect()->route('epargne.user.index')->with('success', 'Épargne ajoutée avec succès!');
     }
 
-    public function retirer(EpargneUser $epargneUser)
+    public function retirer($id)
     {
+        dd($id);
         $user = \Auth::user();
     $epargneUser = $epargneUser->first();
         // Vérifiez si l'utilisateur a cette épargne

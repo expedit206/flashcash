@@ -54,8 +54,8 @@ class ProduitUserController extends Controller
             
         // Vérifiez si le nombre de jours est supérieur ou égal à 1
         // echo "La différence en jours est : " . $daysElapsed . "<br>";
-        // dump($daysElapsed);
         if ($daysElapsed >= 1) {
+            dump($daysElapsed);
             // if ($daysElapsed >= 2) {
                 $produitUser->gagner += $produit->montant*$produit->rendement/100 * $daysElapsed;
                 $user->solde_total += $produit->montant*$produit->rendement/100 * $daysElapsed;

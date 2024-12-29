@@ -4,10 +4,14 @@
     function updateCountdown() {
         const currentTime = Date.now();
         const remainingTime = endTime - currentTime;
-
+        
+        
         if (remainingTime <= 0) {
-            clearInterval(timerInterval);
+            console.log(remainingTime);
+           // document.getElementById(elementId).innerText ='kkkkk'
             document.getElementById(elementId).innerText = "Temps écoulé !";
+
+            clearInterval(timerInterval);
             return;
         }
 
@@ -15,13 +19,14 @@
         const days = Math.floor(remainingSeconds / (3600 * 24));
         const hours = Math.floor((remainingSeconds % (3600 * 24)) / 3600);
         const minutes = Math.floor((remainingSeconds % 3600) / 60);
+        const sec = Math.floor((remainingSeconds % 60));
 
         document.getElementById(elementId).innerText =
             `${days} Jrs ${hours} h ${minutes} Min`;
     }
 
-    updateCountdown(); // Appeler une fois pour initialiser
-    const timerInterval = setInterval(updateCountdown, 2000); // Met à jour chaque seconde
+    //updateCountdown(); // Appeler une fois pour initialiser
+    const timerInterval = setInterval(updateCountdown, 1000); // Met à jour chaque seconde
 }
     </script>
     <div class="pb-16">
