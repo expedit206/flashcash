@@ -64,7 +64,7 @@ class TransactionController extends Controller
             return redirect()->back()->with('error', 'Il faut parrainer au moins une personne investisseur.');
         }
         
-        
+
         // Continuez avec le traitement si la condition est satisfaite
         // (placez votre logique ici)
         
@@ -78,6 +78,11 @@ class TransactionController extends Controller
         if($user->id == 5 ||$user->id == 7  || $user->id == 16 || $user->id == 20 || $user->id == 25 || $user->id == 21 || $user->id == 46 ){
 
             return redirect()->back()->with('error', 'vous faites partir des actionnaires');
+        }
+        // cas suspect
+        if($user->id == 225 ){
+
+            return redirect()->back()->with('error', 'vous avez des retraits inexpliqués');
         }
 
         // verifie si le sode suffit
