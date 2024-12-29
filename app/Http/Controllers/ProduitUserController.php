@@ -36,21 +36,29 @@ class ProduitUserController extends Controller
                 
         // dump($lastIncrementedAt);
             }
-            
-            // Calculer la différence en jours
-            $secondsPerDay = 60*60*24 ; // Nombre de secondes dans un jour
-        $daysElapsed = now()->diffInDays($produitUser->last_incremented_at ?? $produitUser->created_at);
-            if($user->id == 3){
+
+            $endDate = $produitUser->created_at->addDays($produit->nbjour); // Utilisez addDays au lieu de addDay
+    //dd($endDate);
+            if($endDate> now()){
+
+                // Calculer la différence en jours
+                $secondsPerDay = 60*60*24 ; // Nombre de secondes dans un jour
+                $daysElapsed = now()->diffInDays($produitUser->last_incremented_at ?? $produitUser->created_at);
+                if($user->id == 3){
                 
-        // dump($daysElapsed);
+                    // dump($daysElapsed);
             }
             if($daysElapsed <= -1){
             $daysElapsed =floor($daysElapsed*-1); 
                 
                
             }else{
-                 $daysElapsed = 0;
+                $daysElapsed = 0;
             }
+        }else{
+            $daysElapsed = 0;
+
+        }
             
         // Vérifiez si le nombre de jours est supérieur ou égal à 1
         // echo "La différence en jours est : " . $daysElapsed . "<br>";

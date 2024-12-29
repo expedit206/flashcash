@@ -65,9 +65,8 @@ $user->epargnes()->attach($request->epargne_id, [
 
     public function retirer($id)
     {
-        dd($id);
         $user = \Auth::user();
-    $epargneUser = $epargneUser->first();
+            $epargneUser = EpargneUser::find($id);
         // Vérifiez si l'utilisateur a cette épargne
         if ($epargneUser) {
             $createdAt = strtotime($epargneUser->created_at);

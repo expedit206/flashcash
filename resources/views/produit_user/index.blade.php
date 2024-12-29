@@ -1,4 +1,12 @@
 <x-app-layout>
+    <style>
+    .inactive {
+        color: gray; /* Couleur de texte grise */
+        opacity: 0.5; /* Rendre le texte semi-transparent */
+        pointer-events: none; /* Désactiver les interactions */
+        font-style: italic; /* Italique pour un effet inactif */
+    }
+</style>
     <script>
        function startCountdown(endTime, elementId) {
     function updateCountdown() {
@@ -7,10 +15,13 @@
         
         
         if (remainingTime <= 0) {
-            console.log(remainingTime);
-           // document.getElementById(elementId).innerText ='kkkkk'
+            
             document.getElementById(elementId).innerText = "Temps écoulé !";
+           let div = document.querySelector(`.${elementId}`);
+           //console.log(elementId);    
+           div.classList.add('inactive'); // Appliquer la classe inactive
 
+          
             clearInterval(timerInterval);
             return;
         }
@@ -56,7 +67,13 @@
     </div>
 
     @forelse ($produits as $produit)
-    <div class="p-4 mb-4 transition-transform transform shadow-lg bg-gradient-to-r from-yellow-300 to-orange-300 hover:scale-105">
+    @php
+    $createdAt = \Carbon\Carbon::parse($produit->pivot->created_at);
+    $duration = $produit->nbjour; // Durée en jours
+    $endDate = $createdAt->copy()->addDays($duration); // Date de fin
+    $formattedDate = $createdAt->format('YmdHis'); // Formatage de la date pour l'utiliser dans l'ID
+@endphp
+    <div class="countdown-{{ $produit->id }}-{{ $formattedDate }} p-4 mb-4  transition-transform transform shadow-lg bg-gradient-to-r from-yellow-300 to-orange-300 hover:scale-105">
         <div class="flex items-center justify-between mb-2">
             <h3 class="text-lg font-bold">{{ $produit->name }} ({{ $produit->pivot->count }} fois) </h3>
             <span class="font-bold">{{ number_format($produit->montant, 2) }} XAF</span>
