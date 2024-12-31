@@ -201,11 +201,12 @@ private function incrementReferralBonuses(User $user)
     // Récupérer le premier parrain du user
     $parrain1 = $user->parrain; // Supposons que tu as une relation définie pour récupérer le parrain
     $produitUser= ProduitUser::where('user_id', $user->id)->first();
-    $produit = Produit::find($produitUser->produit_id)->first();
+    $produit = $produitUser->produit;
     // Niveau 1
     if ($parrain1) {
-        // dd($tauxInteret);
         $parrain1->solde_total += $tauxInteret['vip1'] * $produit->montant/100;
+        //dump($produitUser->produit);
+        //dd($tauxInteret);
         $parrain1->save();
 
         // Niveau 2
